@@ -1,0 +1,229 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B634E980-F3FD-4CCE-9097-18D4CD158FC6}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>NeuralNetworkMaker</RootNamespace>
+    <AssemblyName>NeuralNetworkMaker</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DatasetBuilder">
+      <HintPath>..\Packages\DatasetBuilder.dll</HintPath>
+    </Reference>
+    <Reference Include="NeuralNetwork.NET">
+      <HintPath>..\Packages\NeuralNetwork.NET.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DesignButtonsControlLogic.cs" />
+    <Compile Include="Extensions.cs" />
+    <Compile Include="DesignController.cs" />
+    <Compile Include="IDesignButtonsControlLogic.cs" />
+    <Compile Include="IDesignController.cs" />
+    <Compile Include="Preferences\Controls\BrushPreferenceControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Preferences\Controls\BrushPreferenceControl.Designer.cs">
+      <DependentUpon>BrushPreferenceControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Preferences\Controls\ByValueSignCases.cs" />
+    <Compile Include="Preferences\Controls\ByValueSignPenFormatterControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Preferences\Controls\ByValueSignPenFormatterControl.Designer.cs">
+      <DependentUpon>ByValueSignPenFormatterControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Preferences\Controls\ByValueSignTextFormatterControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Preferences\Controls\ByValueSignTextFormatterControl.Designer.cs">
+      <DependentUpon>ByValueSignTextFormatterControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Preferences\Controls\ColorControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Preferences\Controls\ColorControl.Designer.cs">
+      <DependentUpon>ColorControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Preferences\Controls\NodePreferenceControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Preferences\Controls\NodePreferenceControl.Designer.cs">
+      <DependentUpon>NodePreferenceControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Preferences\Controls\PenControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Preferences\Controls\PenControl.Designer.cs">
+      <DependentUpon>PenControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Preferences\Controls\TextPreferenceControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Preferences\Controls\TextPreferenceControl.Designer.cs">
+      <DependentUpon>TextPreferenceControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Preferences\Dialogs\frmBrushPreference.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Preferences\Dialogs\frmBrushPreference.Designer.cs">
+      <DependentUpon>frmBrushPreference.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Preferences\Dialogs\frmTextPreference.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Preferences\Dialogs\frmTextPreference.Designer.cs">
+      <DependentUpon>frmTextPreference.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Preferences\Extensions\EnumExtensions.cs" />
+    <Compile Include="Preferences\Extensions\GraphicsExtensions.cs" />
+    <Compile Include="Preferences\frmPreferences.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Preferences\frmPreferences.Designer.cs">
+      <DependentUpon>frmPreferences.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Preferences\IFormatter.cs" />
+    <Compile Include="SameObject.cs" />
+    <Compile Include="Selection\Properties\IPropertyObjectFactory.cs" />
+    <Compile Include="Selection\Properties\ManyEdgesProperties.cs" />
+    <Compile Include="Selection\Properties\ManyNodesProperties.cs" />
+    <Compile Include="Selection\Properties\NeuronLayerProperties.cs" />
+    <Compile Include="Selection\Properties\ManyNeuronLayersProperties.cs" />
+    <Compile Include="Selection\Properties\ObjectPropertiesBase.cs" />
+    <Compile Include="Selection\Properties\PropertyObjectFactory.cs" />
+    <Compile Include="Selection\Resolvers\ISelectionTypeResolver.cs" />
+    <Compile Include="Selection\Resolvers\ManySelectionTypeResolver.cs" />
+    <Compile Include="Selection\Resolvers\OneSelectionTypeResolver.cs" />
+    <Compile Include="Selection\SelectionType.cs" />
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Selection\Resolvers\SelectionTypeResolverBase.cs" />
+    <Compile Include="Selection\Resolvers\SelectionTypeResolverFactory.cs" />
+    <Compile Include="Selection\Resolvers\ZeroSelectionTypeResolver.cs" />
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Preferences\Controls\BrushPreferenceControl.resx">
+      <DependentUpon>BrushPreferenceControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Preferences\Controls\ByValueSignPenFormatterControl.resx">
+      <DependentUpon>ByValueSignPenFormatterControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Preferences\Controls\ByValueSignTextFormatterControl.resx">
+      <DependentUpon>ByValueSignTextFormatterControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Preferences\Controls\ColorControl.resx">
+      <DependentUpon>ColorControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Preferences\Controls\NodePreferenceControl.resx">
+      <DependentUpon>NodePreferenceControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Preferences\Controls\PenControl.resx">
+      <DependentUpon>PenControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Preferences\Controls\TextPreferenceControl.resx">
+      <DependentUpon>TextPreferenceControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Preferences\Dialogs\frmBrushPreference.resx">
+      <DependentUpon>frmBrushPreference.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Preferences\Dialogs\frmTextPreference.resx">
+      <DependentUpon>frmTextPreference.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Preferences\frmPreferences.resx">
+      <DependentUpon>frmPreferences.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\NeuralNetwork.Model\NeuralNetwork.Model\NeuralNetwork.Model.csproj">
+      <Project>{189d29bb-e551-4fb2-92a9-b0173b522298}</Project>
+      <Name>NeuralNetwork.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\NeuralNetwork.Visualizer\NeuralNetwork.Visualizer\NeuralNetwork.Visualizer.csproj">
+      <Project>{a16491c6-9e57-4439-8bd7-74ff39e89055}</Project>
+      <Name>NeuralNetwork.Visualizer</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imgs\transparent.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="imgs\AddLayer.png" />
+    <Content Include="imgs\AddNode.png" />
+    <Content Include="imgs\Preferences.png" />
+    <Content Include="imgs\RemoveLayer.png" />
+    <Content Include="imgs\RemoveNode.png" />
+    <Content Include="imgs\zoom_in.png" />
+    <Content Include="imgs\zoom_out.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

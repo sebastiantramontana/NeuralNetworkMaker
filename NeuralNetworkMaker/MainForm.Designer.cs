@@ -45,6 +45,7 @@
          this.btnRemoveSelectedLayers = new System.Windows.Forms.ToolStripButton();
          this.btnAddNode = new System.Windows.Forms.ToolStripButton();
          this.btnRemoveSelectedNodes = new System.Windows.Forms.ToolStripButton();
+         this.btnToggleBias = new System.Windows.Forms.ToolStripButton();
          this.tabTraining = new System.Windows.Forms.TabPage();
          this.tabPredict = new System.Windows.Forms.TabPage();
          this.NNVisualizerControl = new NeuralNetwork.Visualizer.NeuralNetworkVisualizerControl();
@@ -53,7 +54,7 @@
          this.ComboQualityNNVisualizer = new System.Windows.Forms.ToolStripComboBox();
          this.btnZoomOutNNVisualizer = new System.Windows.Forms.ToolStripButton();
          this.btnZoomInNNVisualizer = new System.Windows.Forms.ToolStripButton();
-         this.btnToggleBias = new System.Windows.Forms.ToolStripButton();
+         this.trainingControl = new NeuralNetworkMaker.MainTabControls.Training.TrainingControl();
          this.mainMenu.SuspendLayout();
          ((System.ComponentModel.ISupportInitialize)(this.MainContainer)).BeginInit();
          this.MainContainer.Panel1.SuspendLayout();
@@ -62,6 +63,7 @@
          this.tabActions.SuspendLayout();
          this.tabDesign.SuspendLayout();
          this.toolbarDesign.SuspendLayout();
+         this.tabTraining.SuspendLayout();
          this.ToolbarNNVisualizer.SuspendLayout();
          this.SuspendLayout();
          // 
@@ -136,7 +138,7 @@
          this.MainContainer.Panel2.Controls.Add(this.NNVisualizerControl);
          this.MainContainer.Panel2.Controls.Add(this.ToolbarNNVisualizer);
          this.MainContainer.Size = new System.Drawing.Size(1901, 1005);
-         this.MainContainer.SplitterDistance = 443;
+         this.MainContainer.SplitterDistance = 442;
          this.MainContainer.SplitterWidth = 3;
          this.MainContainer.TabIndex = 1;
          // 
@@ -151,7 +153,7 @@
          this.tabActions.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
          this.tabActions.Name = "tabActions";
          this.tabActions.SelectedIndex = 0;
-         this.tabActions.Size = new System.Drawing.Size(441, 1003);
+         this.tabActions.Size = new System.Drawing.Size(440, 1003);
          this.tabActions.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
          this.tabActions.TabIndex = 0;
          // 
@@ -163,7 +165,7 @@
          this.tabDesign.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
          this.tabDesign.Name = "tabDesign";
          this.tabDesign.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-         this.tabDesign.Size = new System.Drawing.Size(433, 972);
+         this.tabDesign.Size = new System.Drawing.Size(432, 972);
          this.tabDesign.TabIndex = 0;
          this.tabDesign.Text = "Design";
          this.tabDesign.UseVisualStyleBackColor = true;
@@ -174,7 +176,7 @@
          this.PropertyGridDesign.Location = new System.Drawing.Point(3, 41);
          this.PropertyGridDesign.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
          this.PropertyGridDesign.Name = "PropertyGridDesign";
-         this.PropertyGridDesign.Size = new System.Drawing.Size(427, 929);
+         this.PropertyGridDesign.Size = new System.Drawing.Size(426, 929);
          this.PropertyGridDesign.TabIndex = 1;
          // 
          // toolbarDesign
@@ -189,7 +191,7 @@
          this.toolbarDesign.Location = new System.Drawing.Point(3, 2);
          this.toolbarDesign.Name = "toolbarDesign";
          this.toolbarDesign.Padding = new System.Windows.Forms.Padding(0);
-         this.toolbarDesign.Size = new System.Drawing.Size(427, 39);
+         this.toolbarDesign.Size = new System.Drawing.Size(426, 39);
          this.toolbarDesign.TabIndex = 0;
          // 
          // btnAddLayer
@@ -244,13 +246,27 @@
          this.btnRemoveSelectedNodes.ToolTipText = "Remove Node";
          this.btnRemoveSelectedNodes.Click += new System.EventHandler(this.btnRemoveSelectedNodes_Click);
          // 
+         // btnToggleBias
+         // 
+         this.btnToggleBias.CheckOnClick = true;
+         this.btnToggleBias.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+         this.btnToggleBias.Enabled = false;
+         this.btnToggleBias.Image = ((System.Drawing.Image)(resources.GetObject("btnToggleBias.Image")));
+         this.btnToggleBias.ImageTransparentColor = System.Drawing.Color.White;
+         this.btnToggleBias.Name = "btnToggleBias";
+         this.btnToggleBias.Size = new System.Drawing.Size(36, 36);
+         this.btnToggleBias.TextImageRelation = System.Windows.Forms.TextImageRelation.Overlay;
+         this.btnToggleBias.ToolTipText = "Add/Remove Bias";
+         this.btnToggleBias.Click += new System.EventHandler(this.btnToggleBias_Click);
+         // 
          // tabTraining
          // 
+         this.tabTraining.Controls.Add(this.trainingControl);
          this.tabTraining.Location = new System.Drawing.Point(4, 27);
          this.tabTraining.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
          this.tabTraining.Name = "tabTraining";
          this.tabTraining.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-         this.tabTraining.Size = new System.Drawing.Size(433, 970);
+         this.tabTraining.Size = new System.Drawing.Size(432, 972);
          this.tabTraining.TabIndex = 1;
          this.tabTraining.Text = "Training";
          this.tabTraining.UseVisualStyleBackColor = true;
@@ -261,7 +277,7 @@
          this.tabPredict.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
          this.tabPredict.Name = "tabPredict";
          this.tabPredict.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-         this.tabPredict.Size = new System.Drawing.Size(433, 970);
+         this.tabPredict.Size = new System.Drawing.Size(432, 972);
          this.tabPredict.TabIndex = 2;
          this.tabPredict.Text = "Predict";
          this.tabPredict.UseVisualStyleBackColor = true;
@@ -273,10 +289,10 @@
          this.NNVisualizerControl.Dock = System.Windows.Forms.DockStyle.Fill;
          this.NNVisualizerControl.InputLayer = null;
          this.NNVisualizerControl.Location = new System.Drawing.Point(0, 28);
-         this.NNVisualizerControl.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+         this.NNVisualizerControl.Margin = new System.Windows.Forms.Padding(5);
          this.NNVisualizerControl.Name = "NNVisualizerControl";
          this.NNVisualizerControl.Selectable = true;
-         this.NNVisualizerControl.Size = new System.Drawing.Size(1453, 975);
+         this.NNVisualizerControl.Size = new System.Drawing.Size(1454, 975);
          this.NNVisualizerControl.TabIndex = 2;
          this.NNVisualizerControl.Zoom = 1F;
          // 
@@ -290,7 +306,7 @@
             this.btnZoomInNNVisualizer});
          this.ToolbarNNVisualizer.Location = new System.Drawing.Point(0, 0);
          this.ToolbarNNVisualizer.Name = "ToolbarNNVisualizer";
-         this.ToolbarNNVisualizer.Size = new System.Drawing.Size(1453, 28);
+         this.ToolbarNNVisualizer.Size = new System.Drawing.Size(1454, 28);
          this.ToolbarNNVisualizer.TabIndex = 1;
          // 
          // btnPreferencesNNVisualizer
@@ -336,18 +352,16 @@
          this.btnZoomInNNVisualizer.ToolTipText = "Zoom In";
          this.btnZoomInNNVisualizer.Click += new System.EventHandler(this.btnZoomInNNVisualizer_Click);
          // 
-         // btnToggleBias
+         // trainingControl
          // 
-         this.btnToggleBias.CheckOnClick = true;
-         this.btnToggleBias.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-         this.btnToggleBias.Enabled = false;
-         this.btnToggleBias.Image = ((System.Drawing.Image)(resources.GetObject("btnToggleBias.Image")));
-         this.btnToggleBias.ImageTransparentColor = System.Drawing.Color.White;
-         this.btnToggleBias.Name = "btnToggleBias";
-         this.btnToggleBias.Size = new System.Drawing.Size(36, 36);
-         this.btnToggleBias.TextImageRelation = System.Windows.Forms.TextImageRelation.Overlay;
-         this.btnToggleBias.ToolTipText = "Add/Remove Bias";
-         this.btnToggleBias.Click += new System.EventHandler(this.btnToggleBias_Click);
+         this.trainingControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+         this.trainingControl.Location = new System.Drawing.Point(0, 0);
+         this.trainingControl.Margin = new System.Windows.Forms.Padding(0);
+         this.trainingControl.Name = "trainingControl";
+         this.trainingControl.Size = new System.Drawing.Size(432, 970);
+         this.trainingControl.TabIndex = 0;
          // 
          // MainForm
          // 
@@ -374,6 +388,7 @@
          this.tabDesign.PerformLayout();
          this.toolbarDesign.ResumeLayout(false);
          this.toolbarDesign.PerformLayout();
+         this.tabTraining.ResumeLayout(false);
          this.ToolbarNNVisualizer.ResumeLayout(false);
          this.ToolbarNNVisualizer.PerformLayout();
          this.ResumeLayout(false);
@@ -408,6 +423,7 @@
       private System.Windows.Forms.ToolStripButton btnZoomOutNNVisualizer;
       private System.Windows.Forms.ToolStripButton btnZoomInNNVisualizer;
       private System.Windows.Forms.ToolStripButton btnToggleBias;
+      private MainTabControls.Training.TrainingControl trainingControl;
    }
 }
 

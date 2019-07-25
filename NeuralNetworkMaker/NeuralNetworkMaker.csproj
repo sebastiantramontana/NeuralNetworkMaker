@@ -58,6 +58,21 @@
     <Compile Include="DesignController.cs" />
     <Compile Include="IDesignButtonsControlLogic.cs" />
     <Compile Include="IDesignController.cs" />
+    <Compile Include="MainTabControls\Training\ActivationFunctionExtensions.cs" />
+    <Compile Include="MainTabControls\Training\TrainingControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MainTabControls\Training\TrainingControl.Designer.cs">
+      <DependentUpon>TrainingControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainTabControls\Training\AlgorithmParams\AdaDelta.cs" />
+    <Compile Include="MainTabControls\Training\AlgorithmParams\AdaGrad.cs" />
+    <Compile Include="MainTabControls\Training\AlgorithmParams\Adam.cs" />
+    <Compile Include="MainTabControls\Training\AlgorithmParams\AdaMax.cs" />
+    <Compile Include="MainTabControls\Training\AlgorithmParams\IAlgorithmParams.cs" />
+    <Compile Include="MainTabControls\Training\AlgorithmParams\Momentum.cs" />
+    <Compile Include="MainTabControls\Training\AlgorithmParams\RMSProp.cs" />
+    <Compile Include="MainTabControls\Training\AlgorithmParams\StochasticGradientDescent.cs" />
     <Compile Include="Preferences\Controls\BrushPreferenceControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -148,6 +163,10 @@
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MainTabControls\Training\TrainingControl.resx">
+      <DependentUpon>TrainingControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Preferences\Controls\BrushPreferenceControl.resx">
       <DependentUpon>BrushPreferenceControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -225,5 +244,6 @@
     <Content Include="imgs\zoom_in.png" />
     <Content Include="imgs\zoom_out.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

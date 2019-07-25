@@ -7,6 +7,12 @@ namespace NeuralNetworkMaker.Preferences.Extensions
 {
    public static class Enums
    {
+      public static void Reload<TEnum>(this ComboBox comboBox, IEnumerable<TEnum> items) where TEnum : Enum
+      {
+         comboBox.Items.Clear();
+         comboBox.Items.AddRange(items.Cast<object>().ToArray());
+      }
+
       public static void Load<TEnum>(this ComboBox comboBox) where TEnum : Enum
       {
          comboBox.Items.Clear();

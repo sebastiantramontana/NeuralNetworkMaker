@@ -55,6 +55,8 @@ namespace NeuralNetworkMaker
 
          NNVisualizerControl.InputLayer = _inputLayer;
          NNVisualizerControl.Redraw();
+
+         trainingControl.VisualizerControl = NNVisualizerControl;
       }
 
       private void ConfigureNNVisualizer()

@@ -54,10 +54,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DesignButtonsControlLogic.cs" />
+    <Compile Include="DropDownButton.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DropDownButton.Designer.cs">
+      <DependentUpon>DropDownButton.cs</DependentUpon>
+    </Compile>
     <Compile Include="Extensions.cs" />
     <Compile Include="DesignController.cs" />
     <Compile Include="IDesignButtonsControlLogic.cs" />
     <Compile Include="IDesignController.cs" />
+    <Compile Include="ItemClickEventArgs.cs" />
     <Compile Include="MainTabControls\Training\ActivationFunctionExtensions.cs" />
     <Compile Include="MainTabControls\Training\TrainingControl.cs">
       <SubType>UserControl</SubType>
@@ -160,6 +167,9 @@
     <Compile Include="Selection\Resolvers\SelectionTypeResolverBase.cs" />
     <Compile Include="Selection\Resolvers\SelectionTypeResolverFactory.cs" />
     <Compile Include="Selection\Resolvers\ZeroSelectionTypeResolver.cs" />
+    <EmbeddedResource Include="DropDownButton.resx">
+      <DependentUpon>DropDownButton.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -238,12 +248,15 @@
   <ItemGroup>
     <Content Include="imgs\AddLayer.png" />
     <Content Include="imgs\AddNode.png" />
+    <None Include="imgs\DropDownArrow.png" />
     <Content Include="imgs\Preferences.png" />
     <Content Include="imgs\RemoveLayer.png" />
     <Content Include="imgs\RemoveNode.png" />
     <Content Include="imgs\zoom_in.png" />
     <Content Include="imgs\zoom_out.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="MainTabControls\Training\Dataset\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

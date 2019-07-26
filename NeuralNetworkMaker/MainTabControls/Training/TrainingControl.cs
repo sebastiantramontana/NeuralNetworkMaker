@@ -42,10 +42,17 @@ namespace NeuralNetworkMaker.MainTabControls.Training
 
       private void Initialize()
       {
+         LoadDatasetLoading();
          LoadInitializationWeights();
          LoadInitializationBiases();
          LoadCostFunction();
          LoadSettingsAlgorithm();
+      }
+
+      private void LoadDatasetLoading()
+      {
+         btnDatasetLoad.AddItem("CSV", "CSV...");
+         btnDatasetLoad.AddItem("Manually", "Manually...");
       }
 
       private void LoadSettingsAlgorithm()
@@ -88,6 +95,11 @@ namespace NeuralNetworkMaker.MainTabControls.Training
       {
          cboInitializationWeights.Load<WeightsInitializationMode>();
          cboInitializationWeights.SelectedItem = WeightsInitializationMode.LeCunUniform;
+      }
+
+      private void btnDatasetLoad_ItemClick(object sender, ItemClickEventArgs e)
+      {
+         MessageBox.Show(e.Key);
       }
    }
 }

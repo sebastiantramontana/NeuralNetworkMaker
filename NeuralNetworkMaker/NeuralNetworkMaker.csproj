@@ -66,6 +66,26 @@
     <Compile Include="IDesignController.cs" />
     <Compile Include="ItemClickEventArgs.cs" />
     <Compile Include="MainTabControls\Training\ActivationFunctionExtensions.cs" />
+    <Compile Include="MainTabControls\Training\Datasets\AttributeRawValues.cs" />
+    <Compile Include="MainTabControls\Training\Datasets\AttributeValues.cs" />
+    <Compile Include="MainTabControls\Training\Datasets\AttributeValuesSplitted.cs" />
+    <Compile Include="MainTabControls\Training\Datasets\DatasetGrid.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MainTabControls\Training\Datasets\DatasetGrid.Designer.cs">
+      <DependentUpon>DatasetGrid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainTabControls\Training\Datasets\Encoding\EncoderBase.cs" />
+    <Compile Include="MainTabControls\Training\Datasets\Encoding\Encoders.cs" />
+    <Compile Include="MainTabControls\Training\Datasets\Encoding\IEncoder.cs" />
+    <Compile Include="MainTabControls\Training\Datasets\Encoding\Binary.cs" />
+    <Compile Include="MainTabControls\Training\Datasets\Encoding\OneHot.cs" />
+    <Compile Include="MainTabControls\Training\Datasets\frmLoadCSV.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainTabControls\Training\Datasets\frmLoadCSV.Designer.cs">
+      <DependentUpon>frmLoadCSV.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainTabControls\Training\TrainingControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -173,6 +193,12 @@
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MainTabControls\Training\Datasets\DatasetGrid.resx">
+      <DependentUpon>DatasetGrid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainTabControls\Training\Datasets\frmLoadCSV.resx">
+      <DependentUpon>frmLoadCSV.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainTabControls\Training\TrainingControl.resx">
       <DependentUpon>TrainingControl.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -255,8 +281,6 @@
     <Content Include="imgs\zoom_in.png" />
     <Content Include="imgs\zoom_out.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="MainTabControls\Training\Dataset\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

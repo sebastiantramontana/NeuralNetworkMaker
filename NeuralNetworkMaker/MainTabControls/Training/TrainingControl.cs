@@ -1,5 +1,6 @@
 ﻿using NeuralNetwork.Visualizer;
 using NeuralNetworkMaker.MainTabControls.Training.AlgorithmParams;
+using NeuralNetworkMaker.MainTabControls.Training.Datasets;
 using NeuralNetworkMaker.Preferences.Extensions;
 using NeuralNetworkNET.APIs.Enums;
 using NeuralNetworkNET.SupervisedLearning.Algorithms;
@@ -99,7 +100,20 @@ namespace NeuralNetworkMaker.MainTabControls.Training
 
       private void btnDatasetLoad_ItemClick(object sender, ItemClickEventArgs e)
       {
-         MessageBox.Show(e.Key);
+         switch(e.Key)
+         {
+            case "CSV":
+               LoadCsv();
+               break;
+         }
+      }
+
+      private void LoadCsv()
+      {
+         using (var dialog = new frmLoadCSV())
+         {
+            dialog.ShowDialog(this);
+         }
       }
    }
 }

@@ -2,6 +2,7 @@
 using NeuralNetwork.Model.Layers;
 using NeuralNetwork.Model.Nodes;
 using NeuralNetwork.Visualizer.Drawing;
+using NeuralNetwork.Visualizer.Preferences.Text;
 using NeuralNetwork.Visualizer.Selection;
 using NeuralNetworkMaker.Preferences;
 using NeuralNetworkMaker.Selection.Properties;
@@ -67,6 +68,8 @@ namespace NeuralNetworkMaker
          NNVisualizerControl.Preferences.Layers.Title = null;
          NNVisualizerControl.Preferences.Layers.Border = null;
          NNVisualizerControl.Preferences.Layers.BorderSelected = null;
+         NNVisualizerControl.Preferences.InputFontLabel = InputFontLabel.Default;
+         NNVisualizerControl.Preferences.OutputFontLabel = OutputFontLabel.Default;
 
          NNVisualizerControl.SelectInputLayer += NNVisualizerControl_SelectInputLayer;
          NNVisualizerControl.SelectNeuronLayer += NNVisualizerControl_SelectNeuronLayer;

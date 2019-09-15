@@ -1,13 +1,14 @@
-﻿using NeuralNetwork.Model.Layers;
-using NeuralNetwork.Model.Nodes;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using NeuralNetwork.Model.Layers;
+using NeuralNetwork.Model.Nodes;
 
-namespace NeuralNetworkMaker
+namespace NeuralNetworkMaker.MainTabControls.Design
 {
    public class DesignController : IDesignController
    {
       private int _newLayerNumber = 0;
+      private int _newNodeNumber = 0;
 
       public void AddBias(IEnumerable<LayerBase> layers)
       {
@@ -40,7 +41,7 @@ namespace NeuralNetworkMaker
 
          for (int i = 0; i < nodesToCopy.Length; i++)
          {
-            var neuron = new Neuron(BuildNodeId(newLayer.Id, i));
+            var neuron = new Neuron(BuildNodeId(newLayer.Id));
             newLayer.AddNode(neuron);
          }
 
@@ -51,7 +52,7 @@ namespace NeuralNetworkMaker
       {
          foreach (var layer in layers)
          {
-            var id = BuildNodeId(layer.Id, layer.GetAllNodes().Count());
+            var id = BuildNodeId(layer.Id);
 
             if (layer is NeuronLayer neuronLayer)
             {
@@ -82,9 +83,9 @@ namespace NeuralNetworkMaker
          }
       }
 
-      private string BuildNodeId(string layerId, int nodeIndex)
+      private string BuildNodeId(string layerId)
       {
-         return $"{layerId}_{nodeIndex}";
+         return $"{layerId}_{_newNodeNumber++}";
       }
    }
 }

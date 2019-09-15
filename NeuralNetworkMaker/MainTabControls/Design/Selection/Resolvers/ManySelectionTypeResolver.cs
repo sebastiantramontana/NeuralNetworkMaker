@@ -4,7 +4,7 @@ using NeuralNetwork.Model.Nodes;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace NeuralNetworkMaker.Selection.Resolvers
+namespace NeuralNetworkMaker.MainTabControls.Design.Selection.Resolvers
 {
    internal class ManySelectionTypeResolver : SelectionTypeResolverBase
    {

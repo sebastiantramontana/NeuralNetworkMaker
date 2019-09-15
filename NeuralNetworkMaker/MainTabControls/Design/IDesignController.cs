@@ -1,9 +1,8 @@
-﻿using NeuralNetwork.Model.Layers;
+﻿using System.Collections.Generic;
+using NeuralNetwork.Model.Layers;
 using NeuralNetwork.Model.Nodes;
-using System;
-using System.Collections.Generic;
 
-namespace NeuralNetworkMaker
+namespace NeuralNetworkMaker.MainTabControls.Design
 {
    public interface IDesignController
    {

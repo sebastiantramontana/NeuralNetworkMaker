@@ -1,4 +1,4 @@
-﻿namespace NeuralNetworkMaker.Selection.Properties
+﻿namespace NeuralNetworkMaker.MainTabControls.Design.Selection.Properties
 {
    public abstract class ObjectPropertiesBase
    {

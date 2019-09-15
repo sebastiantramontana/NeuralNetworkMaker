@@ -1,6 +1,6 @@
 ﻿using NeuralNetwork.Model.Layers;
 
-namespace NeuralNetworkMaker.Selection.Resolvers
+namespace NeuralNetworkMaker.MainTabControls.Design.Selection.Resolvers
 {
    internal class SelectionTypeResolverFactory
    {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace NeuralNetworkMaker.Selection.Resolvers
+namespace NeuralNetworkMaker.MainTabControls.Design.Selection.Resolvers
 {
    internal class ZeroSelectionTypeResolver : SelectionTypeResolverBase
    {

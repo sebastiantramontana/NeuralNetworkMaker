@@ -1,12 +1,12 @@
-﻿using NeuralNetwork.Model;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using NeuralNetwork.Model;
 using NeuralNetwork.Model.Layers;
 using NeuralNetwork.Model.Nodes;
 using NeuralNetwork.Visualizer;
-using NeuralNetworkMaker.Selection;
-using NeuralNetworkMaker.Selection.Resolvers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using NeuralNetworkMaker.MainTabControls.Design.Selection;
+using NeuralNetworkMaker.MainTabControls.Design.Selection.Resolvers;
 
 namespace NeuralNetworkMaker
 {

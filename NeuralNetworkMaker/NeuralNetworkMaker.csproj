@@ -53,7 +53,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DesignButtonsControlLogic.cs" />
+    <Compile Include="MainTabControls\Design\DesignButtonsControlLogic.cs" />
     <Compile Include="DropDownButton.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -61,10 +61,16 @@
       <DependentUpon>DropDownButton.cs</DependentUpon>
     </Compile>
     <Compile Include="Extensions.cs" />
-    <Compile Include="DesignController.cs" />
-    <Compile Include="IDesignButtonsControlLogic.cs" />
-    <Compile Include="IDesignController.cs" />
+    <Compile Include="MainTabControls\Design\DesignController.cs" />
+    <Compile Include="MainTabControls\Design\IDesignButtonsControlLogic.cs" />
+    <Compile Include="MainTabControls\Design\IDesignController.cs" />
     <Compile Include="ItemClickEventArgs.cs" />
+    <Compile Include="MainTabControls\Design\DesignControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MainTabControls\Design\DesignControl.Designer.cs">
+      <DependentUpon>DesignControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainTabControls\Training\ActivationFunctionExtensions.cs" />
     <Compile Include="MainTabControls\Training\Datasets\AttributeValues.cs" />
     <Compile Include="MainTabControls\Training\Datasets\Dataset.cs" />
@@ -165,17 +171,17 @@
     </Compile>
     <Compile Include="Preferences\IFormatter.cs" />
     <Compile Include="SameObject.cs" />
-    <Compile Include="Selection\Properties\IPropertyObjectFactory.cs" />
-    <Compile Include="Selection\Properties\ManyEdgesProperties.cs" />
-    <Compile Include="Selection\Properties\ManyNodesProperties.cs" />
-    <Compile Include="Selection\Properties\NeuronLayerProperties.cs" />
-    <Compile Include="Selection\Properties\ManyNeuronLayersProperties.cs" />
-    <Compile Include="Selection\Properties\ObjectPropertiesBase.cs" />
-    <Compile Include="Selection\Properties\PropertyObjectFactory.cs" />
-    <Compile Include="Selection\Resolvers\ISelectionTypeResolver.cs" />
-    <Compile Include="Selection\Resolvers\ManySelectionTypeResolver.cs" />
-    <Compile Include="Selection\Resolvers\OneSelectionTypeResolver.cs" />
-    <Compile Include="Selection\SelectionType.cs" />
+    <Compile Include="MainTabControls\Design\Selection\Properties\IPropertyObjectFactory.cs" />
+    <Compile Include="MainTabControls\Design\Selection\Properties\ManyEdgesProperties.cs" />
+    <Compile Include="MainTabControls\Design\Selection\Properties\ManyNodesProperties.cs" />
+    <Compile Include="MainTabControls\Design\Selection\Properties\NeuronLayerProperties.cs" />
+    <Compile Include="MainTabControls\Design\Selection\Properties\ManyNeuronLayersProperties.cs" />
+    <Compile Include="MainTabControls\Design\Selection\Properties\ObjectPropertiesBase.cs" />
+    <Compile Include="MainTabControls\Design\Selection\Properties\PropertyObjectFactory.cs" />
+    <Compile Include="MainTabControls\Design\Selection\Resolvers\ISelectionTypeResolver.cs" />
+    <Compile Include="MainTabControls\Design\Selection\Resolvers\ManySelectionTypeResolver.cs" />
+    <Compile Include="MainTabControls\Design\Selection\Resolvers\OneSelectionTypeResolver.cs" />
+    <Compile Include="MainTabControls\Design\Selection\SelectionType.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -184,14 +190,18 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Selection\Resolvers\SelectionTypeResolverBase.cs" />
-    <Compile Include="Selection\Resolvers\SelectionTypeResolverFactory.cs" />
-    <Compile Include="Selection\Resolvers\ZeroSelectionTypeResolver.cs" />
+    <Compile Include="MainTabControls\Design\Selection\Resolvers\SelectionTypeResolverBase.cs" />
+    <Compile Include="MainTabControls\Design\Selection\Resolvers\SelectionTypeResolverFactory.cs" />
+    <Compile Include="MainTabControls\Design\Selection\Resolvers\ZeroSelectionTypeResolver.cs" />
     <EmbeddedResource Include="DropDownButton.resx">
       <DependentUpon>DropDownButton.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainTabControls\Design\DesignControl.resx">
+      <DependentUpon>DesignControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="MainTabControls\Training\Datasets\DatasetGrid.resx">
       <DependentUpon>DatasetGrid.cs</DependentUpon>

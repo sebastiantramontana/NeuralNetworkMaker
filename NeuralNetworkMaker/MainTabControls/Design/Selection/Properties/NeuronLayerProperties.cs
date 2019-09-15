@@ -1,7 +1,7 @@
 ﻿using NeuralNetwork.Model;
 using NeuralNetwork.Model.Layers;
 
-namespace NeuralNetworkMaker.Selection.Properties
+namespace NeuralNetworkMaker.MainTabControls.Design.Selection.Properties
 {
    public class NeuronLayerProperties : ObjectPropertiesBase
    {

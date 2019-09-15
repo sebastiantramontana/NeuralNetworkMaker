@@ -1,7 +1,7 @@
 ﻿using NeuralNetwork.Model.Nodes;
 using System.Collections.Generic;
 
-namespace NeuralNetworkMaker.Selection.Properties
+namespace NeuralNetworkMaker.MainTabControls.Design.Selection.Properties
 {
    public class ManyEdgesProperties : ObjectPropertiesBase
    {

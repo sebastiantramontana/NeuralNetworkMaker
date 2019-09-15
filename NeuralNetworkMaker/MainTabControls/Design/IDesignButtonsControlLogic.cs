@@ -1,7 +1,6 @@
-﻿using NeuralNetwork.Model;
-using NeuralNetworkMaker.Selection;
+﻿using NeuralNetworkMaker.MainTabControls.Design.Selection;
 
-namespace NeuralNetworkMaker
+namespace NeuralNetworkMaker.MainTabControls.Design
 {
    public interface IDesignButtonsControlLogic
    {

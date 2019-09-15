@@ -1,7 +1,7 @@
 ﻿using NeuralNetwork.Model;
 using System.Collections.Generic;
 
-namespace NeuralNetworkMaker.Selection.Resolvers
+namespace NeuralNetworkMaker.MainTabControls.Design.Selection.Resolvers
 {
    internal interface ISelectionTypeResolver
    {

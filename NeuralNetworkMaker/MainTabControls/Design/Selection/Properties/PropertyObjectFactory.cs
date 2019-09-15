@@ -3,7 +3,7 @@ using NeuralNetwork.Model.Nodes;
 using NeuralNetwork.Visualizer;
 using System.Linq;
 
-namespace NeuralNetworkMaker.Selection.Properties
+namespace NeuralNetworkMaker.MainTabControls.Design.Selection.Properties
 {
    public class PropertyObjectFactory : IPropertyObjectFactory
    {

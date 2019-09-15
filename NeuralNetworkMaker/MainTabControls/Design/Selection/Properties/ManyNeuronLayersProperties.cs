@@ -3,7 +3,7 @@ using NeuralNetwork.Model.Layers;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace NeuralNetworkMaker.Selection.Properties
+namespace NeuralNetworkMaker.MainTabControls.Design.Selection.Properties
 {
    public class ManyNeuronLayersProperties : ObjectPropertiesBase
    {

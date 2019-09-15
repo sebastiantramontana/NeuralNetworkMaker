@@ -1,13 +1,13 @@
-﻿using NeuralNetwork.Model.Layers;
-using NeuralNetwork.Model.Nodes;
-using NeuralNetwork.Visualizer;
-using NeuralNetworkMaker.Selection;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using NeuralNetwork.Model.Layers;
+using NeuralNetwork.Model.Nodes;
+using NeuralNetwork.Visualizer;
+using NeuralNetworkMaker.MainTabControls.Design.Selection;
 
-namespace NeuralNetworkMaker
+namespace NeuralNetworkMaker.MainTabControls.Design
 {
    public class DesignButtonsControlLogic : IDesignButtonsControlLogic
    {

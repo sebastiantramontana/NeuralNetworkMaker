@@ -1,4 +1,4 @@
-﻿namespace NeuralNetworkMaker.Selection
+﻿namespace NeuralNetworkMaker.MainTabControls.Design.Selection
 {
    public enum SelectionType
    {

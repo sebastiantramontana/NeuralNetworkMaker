@@ -6,7 +6,6 @@ using System.Windows.Forms;
 using System;
 using NeuralNetwork.Visualizer.Preferences;
 using NeuralNetwork.Visualizer.Preferences.Brushes;
-using System.Collections.Generic;
 
 namespace NeuralNetworkMaker.MainTabControls.Training.Datasets
 {
@@ -22,12 +21,12 @@ namespace NeuralNetworkMaker.MainTabControls.Training.Datasets
          (_inputColumnColor, _outputColumnColor) = GetDefaultPreferenceColors();
       }
 
-      public void LoadDataset(IEnumerable<AttributeRawValues> allAttributesValues)
+      public void LoadDataset(DataTable<string> rawDataTable)
       {
 
       }
 
-      public IEnumerable<AttributeValuesSplitted> GetSplittedDataset()
+      public Dataset GetDataset()
       {
          return null;
       }
@@ -192,8 +191,8 @@ namespace NeuralNetworkMaker.MainTabControls.Training.Datasets
 
       private void gridMain_SelectionChanged(object sender, EventArgs e)
       {
-         btnRemoveRow.Enabled = gridTraining.SelectedRows.Count > 0;
-         btnRemoveColumn.Enabled = gridTraining.SelectedColumns.Count > 0;
+         btnRemoveRows.Enabled = gridTraining.SelectedRows.Count > 0;
+         btnRemoveColumns.Enabled = gridTraining.SelectedColumns.Count > 0;
       }
    }
 }

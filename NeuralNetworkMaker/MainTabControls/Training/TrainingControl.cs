@@ -53,7 +53,7 @@ namespace NeuralNetworkMaker.MainTabControls.Training
       private void LoadDatasetLoading()
       {
          btnDatasetLoad.AddItem("CSV", "CSV...");
-         btnDatasetLoad.AddItem("Manually", "Manually...");
+         btnDatasetLoad.AddItem("SQLServer", "SQL Server...");
       }
 
       private void LoadSettingsAlgorithm()
@@ -71,7 +71,7 @@ namespace NeuralNetworkMaker.MainTabControls.Training
 
       private void LoadCostFunction()
       {
-         var costs = _visualizerControl.InputLayer?.GetAllowedCostFunctions();
+         var costs = _visualizerControl?.InputLayer?.GetAllowedCostFunctions();
 
          if (costs == null || costs.Count() == 0)
          {

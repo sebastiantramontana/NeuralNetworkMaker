@@ -4,6 +4,7 @@ using NeuralNetwork.Model.Nodes;
 using NeuralNetwork.Visualizer.Drawing;
 using NeuralNetwork.Visualizer.Preferences.Text;
 using NeuralNetwork.Visualizer.Selection;
+using NeuralNetworkMaker.MainTabControls.Training.Datasets;
 using NeuralNetworkMaker.Preferences;
 using NeuralNetworkMaker.Selection.Properties;
 using System;
@@ -176,6 +177,18 @@ namespace NeuralNetworkMaker
          ExecuteDesignAction(async () => { await ToggleBias(btnToggleBias.Checked); });
       }
 
+      private void tabActions_SelectedIndexChanged(object sender, EventArgs e)
+      {
+         if (tabActions.SelectedTab == tabTraining)
+         {
+            ShowDatasetGrid();
+         }
+         else
+         {
+            ShowNeuralNetwork();
+         }
+      }
+
       private void ExecuteDesignAction(Action action)
       {
          action.Invoke();
@@ -244,6 +257,25 @@ namespace NeuralNetworkMaker
          NNVisualizerControl.SuspendAutoRedraw();
          action(layers);
          await NNVisualizerControl.ResumeAutoRedraw();
+      }
+
+      private void ShowDatasetGrid()
+      {
+         SwitchLargePanelShowingControl(false);
+      }
+
+      private void ShowNeuralNetwork()
+      {
+         SwitchLargePanelShowingControl(true);
+      }
+
+      private void SwitchLargePanelShowingControl(bool showNeuralNetwork)
+      {
+         MainContainer.Panel2.SuspendLayout();
+         MainContainer.Panel2.Controls[ToolbarNNVisualizer.Name].Visible = showNeuralNetwork;
+         MainContainer.Panel2.Controls[NNVisualizerControl.Name].Visible = showNeuralNetwork;
+         MainContainer.Panel2.Controls[datasetGrid.Name].Visible = !showNeuralNetwork;
+         MainContainer.Panel2.ResumeLayout();
       }
    }
 }

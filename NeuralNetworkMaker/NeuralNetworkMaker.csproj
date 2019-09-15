@@ -66,15 +66,15 @@
     <Compile Include="IDesignController.cs" />
     <Compile Include="ItemClickEventArgs.cs" />
     <Compile Include="MainTabControls\Training\ActivationFunctionExtensions.cs" />
-    <Compile Include="MainTabControls\Training\Datasets\AttributeRawValues.cs" />
     <Compile Include="MainTabControls\Training\Datasets\AttributeValues.cs" />
-    <Compile Include="MainTabControls\Training\Datasets\AttributeValuesSplitted.cs" />
+    <Compile Include="MainTabControls\Training\Datasets\Dataset.cs" />
     <Compile Include="MainTabControls\Training\Datasets\DatasetGrid.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="MainTabControls\Training\Datasets\DatasetGrid.Designer.cs">
       <DependentUpon>DatasetGrid.cs</DependentUpon>
     </Compile>
+    <Compile Include="MainTabControls\Training\Datasets\DataTable.cs" />
     <Compile Include="MainTabControls\Training\Datasets\Encoding\EncoderBase.cs" />
     <Compile Include="MainTabControls\Training\Datasets\Encoding\Encoders.cs" />
     <Compile Include="MainTabControls\Training\Datasets\Encoding\IEncoder.cs" />

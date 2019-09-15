@@ -13,19 +13,29 @@ namespace NeuralNetworkMaker.MainTabControls.Training.Datasets
          InitializeComponent();
       }
 
+      public DataTable<string> RawData { get; private set; }
+
       private void btnFile_Click(object sender, EventArgs e)
       {
          SelectFile();
       }
 
-      private void btnLoad_Click(object sender, EventArgs e)
+      private void btnCancel_Click(object sender, EventArgs e)
       {
-         LoadCsv();
+         CloseForm(DialogResult.Cancel);
       }
 
-      private void chFirstRowHeader_CheckedChanged(object sender, EventArgs e)
+      private void btnOk_Click(object sender, EventArgs e)
       {
+         if (!LoadCsv())
+            return;
 
+         CloseForm(DialogResult.OK);
+      }
+
+      private void txtFile_TextChanged(object sender, EventArgs e)
+      {
+         EnableControls();
       }
 
       private void SelectFile()
@@ -47,28 +57,59 @@ namespace NeuralNetworkMaker.MainTabControls.Training.Datasets
 
             txtFile.Text = dialog.FileName;
          }
-      }
-
-      private void LoadCsv()
-      {
-         var linesValues = LoadCsvFile(txtFile.Text);
-
-         //gridCSV.SuspendLayout();
-
-         foreach (var lineValues in linesValues)
-         {
-            //MatchColumnsGrid(lineValues.Length);
-            //AddRowToGrid(lineValues);
-         }
-
-         //gridCSV.ResumeLayout(true);
 
          EnableControls();
       }
 
+      private bool LoadCsv()
+      {
+         var linesValues = LoadCsvFile(txtFile.Text);
+
+         if (linesValues.Count() == 0)
+            return false;
+
+         var headersAndValues = GetHeaders(linesValues);
+         linesValues = headersAndValues.LinesValues;
+
+         ValidateLinesValues(headersAndValues.Headers, linesValues);
+
+         this.RawData = new DataTable<string>(headersAndValues.Headers, linesValues);
+         return true;
+      }
+
+      private void ValidateLinesValues(IEnumerable<string> headers, IEnumerable<string[]> linesValues)
+      {
+         foreach (var lineValues in linesValues)
+         {
+            if (lineValues.Length != headers.Count())
+            {
+               throw new InvalidOperationException("The number of columns must be the same in all rows");
+            }
+         }
+      }
+
+      private (IEnumerable<string> Headers, IEnumerable<string[]> LinesValues) GetHeaders(IEnumerable<string[]> linesValues)
+      {
+         var firstLine = linesValues.First();
+
+         IEnumerable<string> headers;
+
+         if (chFirstRowHeader.Checked)
+         {
+            headers = firstLine;
+            linesValues = linesValues.Skip(1);
+         }
+         else
+         {
+            headers = firstLine.Select((l, i) => $"Col_{i}");
+         }
+
+         return (headers, linesValues);
+      }
+
       private void EnableControls()
       {
-         chFirstRowHeader.Enabled = btnOk.Enabled = true;
+         chFirstRowHeader.Enabled = btnOk.Enabled = !string.IsNullOrWhiteSpace(txtFile.Text);
       }
 
       private IEnumerable<string[]> LoadCsvFile(string filePath)
@@ -84,6 +125,12 @@ namespace NeuralNetworkMaker.MainTabControls.Training.Datasets
             MessageBox.Show($"Error to open the '{filePath}' file: {e.Message}", string.Empty, MessageBoxButtons.OK, MessageBoxIcon.Warning);
             return new string[][] { };
          }
+      }
+
+      private void CloseForm(DialogResult result)
+      {
+         this.DialogResult = result;
+         this.Close();
       }
    }
 }

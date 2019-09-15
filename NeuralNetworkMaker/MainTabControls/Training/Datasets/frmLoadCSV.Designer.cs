@@ -34,8 +34,6 @@
          this.chFirstRowHeader = new System.Windows.Forms.CheckBox();
          this.btnCancel = new System.Windows.Forms.Button();
          this.btnOk = new System.Windows.Forms.Button();
-         this.btnLoad = new System.Windows.Forms.Button();
-         this.datasetGrid1 = new NeuralNetworkMaker.MainTabControls.Training.Datasets.DatasetGrid();
          this.SuspendLayout();
          // 
          // label1
@@ -43,7 +41,7 @@
          this.label1.AutoSize = true;
          this.label1.Location = new System.Drawing.Point(12, 9);
          this.label1.Name = "label1";
-         this.label1.Size = new System.Drawing.Size(77, 13);
+         this.label1.Size = new System.Drawing.Size(100, 17);
          this.label1.TabIndex = 0;
          this.label1.Text = "Select CSV file";
          // 
@@ -53,14 +51,15 @@
             | System.Windows.Forms.AnchorStyles.Right)));
          this.txtFile.Location = new System.Drawing.Point(12, 29);
          this.txtFile.Name = "txtFile";
-         this.txtFile.Size = new System.Drawing.Size(1159, 20);
+         this.txtFile.Size = new System.Drawing.Size(543, 22);
          this.txtFile.TabIndex = 1;
+         this.txtFile.TextChanged += new System.EventHandler(this.txtFile_TextChanged);
          // 
          // btnFile
          // 
          this.btnFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
          this.btnFile.AutoSize = true;
-         this.btnFile.Location = new System.Drawing.Point(1177, 27);
+         this.btnFile.Location = new System.Drawing.Point(561, 27);
          this.btnFile.Name = "btnFile";
          this.btnFile.Size = new System.Drawing.Size(32, 27);
          this.btnFile.TabIndex = 2;
@@ -70,74 +69,55 @@
          // 
          // chFirstRowHeader
          // 
-         this.chFirstRowHeader.Anchor = System.Windows.Forms.AnchorStyles.Left;
          this.chFirstRowHeader.AutoSize = true;
          this.chFirstRowHeader.Enabled = false;
-         this.chFirstRowHeader.Location = new System.Drawing.Point(12, 55);
+         this.chFirstRowHeader.Location = new System.Drawing.Point(12, 53);
          this.chFirstRowHeader.Name = "chFirstRowHeader";
-         this.chFirstRowHeader.Size = new System.Drawing.Size(129, 17);
+         this.chFirstRowHeader.Size = new System.Drawing.Size(170, 21);
          this.chFirstRowHeader.TabIndex = 3;
          this.chFirstRowHeader.Text = "First row is the header";
          this.chFirstRowHeader.UseVisualStyleBackColor = true;
-         this.chFirstRowHeader.CheckedChanged += new System.EventHandler(this.chFirstRowHeader_CheckedChanged);
          // 
          // btnCancel
          // 
-         this.btnCancel.Anchor = System.Windows.Forms.AnchorStyles.None;
+         this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
          this.btnCancel.AutoSize = true;
          this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-         this.btnCancel.Location = new System.Drawing.Point(1215, 698);
+         this.btnCancel.Location = new System.Drawing.Point(518, 82);
          this.btnCancel.Name = "btnCancel";
          this.btnCancel.Size = new System.Drawing.Size(75, 27);
          this.btnCancel.TabIndex = 9;
          this.btnCancel.Text = "Cancel";
          this.btnCancel.UseVisualStyleBackColor = true;
+         this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
          // 
          // btnOk
          // 
-         this.btnOk.Anchor = System.Windows.Forms.AnchorStyles.None;
+         this.btnOk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
          this.btnOk.AutoSize = true;
          this.btnOk.DialogResult = System.Windows.Forms.DialogResult.OK;
          this.btnOk.Enabled = false;
-         this.btnOk.Location = new System.Drawing.Point(1134, 698);
+         this.btnOk.Location = new System.Drawing.Point(437, 82);
          this.btnOk.Name = "btnOk";
          this.btnOk.Size = new System.Drawing.Size(75, 27);
          this.btnOk.TabIndex = 10;
          this.btnOk.Text = "OK";
          this.btnOk.UseVisualStyleBackColor = true;
-         // 
-         // btnLoad
-         // 
-         this.btnLoad.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-         this.btnLoad.AutoSize = true;
-         this.btnLoad.Location = new System.Drawing.Point(1215, 29);
-         this.btnLoad.Name = "btnLoad";
-         this.btnLoad.Size = new System.Drawing.Size(75, 27);
-         this.btnLoad.TabIndex = 11;
-         this.btnLoad.Text = "Load";
-         this.btnLoad.UseVisualStyleBackColor = true;
-         this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
-         // 
-         // datasetGrid1
-         // 
-         this.datasetGrid1.Location = new System.Drawing.Point(12, 78);
-         this.datasetGrid1.Name = "datasetGrid1";
-         this.datasetGrid1.Size = new System.Drawing.Size(1278, 602);
-         this.datasetGrid1.TabIndex = 12;
+         this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
          // 
          // frmLoadCSV
          // 
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
-         this.ClientSize = new System.Drawing.Size(1302, 737);
-         this.Controls.Add(this.datasetGrid1);
-         this.Controls.Add(this.btnLoad);
+         this.ClientSize = new System.Drawing.Size(605, 121);
          this.Controls.Add(this.btnOk);
          this.Controls.Add(this.btnCancel);
          this.Controls.Add(this.chFirstRowHeader);
          this.Controls.Add(this.btnFile);
          this.Controls.Add(this.txtFile);
          this.Controls.Add(this.label1);
+         this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
          this.MaximizeBox = false;
+         this.MinimizeBox = false;
          this.Name = "frmLoadCSV";
          this.Text = "Load CSV";
          this.ResumeLayout(false);
@@ -153,7 +133,5 @@
       private System.Windows.Forms.CheckBox chFirstRowHeader;
       private System.Windows.Forms.Button btnCancel;
       private System.Windows.Forms.Button btnOk;
-      private System.Windows.Forms.Button btnLoad;
-      private DatasetGrid datasetGrid1;
    }
 }

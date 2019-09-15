@@ -34,9 +34,9 @@
          this.gridTraining = new System.Windows.Forms.DataGridView();
          this.panel2 = new System.Windows.Forms.Panel();
          this.btnMatchNeuralNetIO = new System.Windows.Forms.Button();
-         this.btnRemoveColumn = new System.Windows.Forms.Button();
+         this.btnRemoveColumns = new System.Windows.Forms.Button();
          this.btnAddColumn = new System.Windows.Forms.Button();
-         this.btnRemoveRow = new System.Windows.Forms.Button();
+         this.btnRemoveRows = new System.Windows.Forms.Button();
          this.btnAddRow = new System.Windows.Forms.Button();
          this.btnEncode = new System.Windows.Forms.Button();
          this.cboEncoders = new System.Windows.Forms.ComboBox();
@@ -47,8 +47,8 @@
          this.tabGrids = new System.Windows.Forms.TabControl();
          this.tabTraining = new System.Windows.Forms.TabPage();
          this.tabValidation = new System.Windows.Forms.TabPage();
-         this.tabTest = new System.Windows.Forms.TabPage();
          this.gridValidation = new System.Windows.Forms.DataGridView();
+         this.tabTest = new System.Windows.Forms.TabPage();
          this.gridTest = new System.Windows.Forms.DataGridView();
          ((System.ComponentModel.ISupportInitialize)(this.gridTraining)).BeginInit();
          this.panel2.SuspendLayout();
@@ -56,8 +56,8 @@
          this.tabGrids.SuspendLayout();
          this.tabTraining.SuspendLayout();
          this.tabValidation.SuspendLayout();
-         this.tabTest.SuspendLayout();
          ((System.ComponentModel.ISupportInitialize)(this.gridValidation)).BeginInit();
+         this.tabTest.SuspendLayout();
          ((System.ComponentModel.ISupportInitialize)(this.gridTest)).BeginInit();
          this.SuspendLayout();
          // 
@@ -90,9 +90,9 @@
          // panel2
          // 
          this.panel2.Controls.Add(this.btnMatchNeuralNetIO);
-         this.panel2.Controls.Add(this.btnRemoveColumn);
+         this.panel2.Controls.Add(this.btnRemoveColumns);
          this.panel2.Controls.Add(this.btnAddColumn);
-         this.panel2.Controls.Add(this.btnRemoveRow);
+         this.panel2.Controls.Add(this.btnRemoveRows);
          this.panel2.Controls.Add(this.btnAddRow);
          this.panel2.Controls.Add(this.btnEncode);
          this.panel2.Controls.Add(this.cboEncoders);
@@ -121,21 +121,21 @@
          this.toolTip.SetToolTip(this.btnMatchNeuralNetIO, "Match neural network\'s inputs and output by current dataset");
          this.btnMatchNeuralNetIO.UseVisualStyleBackColor = true;
          // 
-         // btnRemoveColumn
+         // btnRemoveColumns
          // 
-         this.btnRemoveColumn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-         this.btnRemoveColumn.AutoSize = true;
-         this.btnRemoveColumn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-         this.btnRemoveColumn.Enabled = false;
-         this.btnRemoveColumn.Image = ((System.Drawing.Image)(resources.GetObject("btnRemoveColumn.Image")));
-         this.btnRemoveColumn.Location = new System.Drawing.Point(1437, 9);
-         this.btnRemoveColumn.Margin = new System.Windows.Forms.Padding(4);
-         this.btnRemoveColumn.Name = "btnRemoveColumn";
-         this.btnRemoveColumn.Size = new System.Drawing.Size(30, 30);
-         this.btnRemoveColumn.TabIndex = 18;
-         this.toolTip.SetToolTip(this.btnRemoveColumn, "Remove column");
-         this.btnRemoveColumn.UseVisualStyleBackColor = true;
-         this.btnRemoveColumn.Click += new System.EventHandler(this.btnRemoveColumn_Click);
+         this.btnRemoveColumns.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+         this.btnRemoveColumns.AutoSize = true;
+         this.btnRemoveColumns.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+         this.btnRemoveColumns.Enabled = false;
+         this.btnRemoveColumns.Image = ((System.Drawing.Image)(resources.GetObject("btnRemoveColumns.Image")));
+         this.btnRemoveColumns.Location = new System.Drawing.Point(1437, 9);
+         this.btnRemoveColumns.Margin = new System.Windows.Forms.Padding(4);
+         this.btnRemoveColumns.Name = "btnRemoveColumns";
+         this.btnRemoveColumns.Size = new System.Drawing.Size(30, 30);
+         this.btnRemoveColumns.TabIndex = 18;
+         this.toolTip.SetToolTip(this.btnRemoveColumns, "Remove selected columns");
+         this.btnRemoveColumns.UseVisualStyleBackColor = true;
+         this.btnRemoveColumns.Click += new System.EventHandler(this.btnRemoveColumn_Click);
          // 
          // btnAddColumn
          // 
@@ -152,21 +152,21 @@
          this.btnAddColumn.UseVisualStyleBackColor = true;
          this.btnAddColumn.Click += new System.EventHandler(this.btnAddColumn_Click);
          // 
-         // btnRemoveRow
+         // btnRemoveRows
          // 
-         this.btnRemoveRow.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-         this.btnRemoveRow.AutoSize = true;
-         this.btnRemoveRow.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-         this.btnRemoveRow.Enabled = false;
-         this.btnRemoveRow.Image = ((System.Drawing.Image)(resources.GetObject("btnRemoveRow.Image")));
-         this.btnRemoveRow.Location = new System.Drawing.Point(1361, 9);
-         this.btnRemoveRow.Margin = new System.Windows.Forms.Padding(4);
-         this.btnRemoveRow.Name = "btnRemoveRow";
-         this.btnRemoveRow.Size = new System.Drawing.Size(30, 30);
-         this.btnRemoveRow.TabIndex = 16;
-         this.toolTip.SetToolTip(this.btnRemoveRow, "Remove selected row");
-         this.btnRemoveRow.UseVisualStyleBackColor = true;
-         this.btnRemoveRow.Click += new System.EventHandler(this.btnRemoveRow_Click);
+         this.btnRemoveRows.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+         this.btnRemoveRows.AutoSize = true;
+         this.btnRemoveRows.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+         this.btnRemoveRows.Enabled = false;
+         this.btnRemoveRows.Image = ((System.Drawing.Image)(resources.GetObject("btnRemoveRows.Image")));
+         this.btnRemoveRows.Location = new System.Drawing.Point(1361, 9);
+         this.btnRemoveRows.Margin = new System.Windows.Forms.Padding(4);
+         this.btnRemoveRows.Name = "btnRemoveRows";
+         this.btnRemoveRows.Size = new System.Drawing.Size(30, 30);
+         this.btnRemoveRows.TabIndex = 16;
+         this.toolTip.SetToolTip(this.btnRemoveRows, "Remove selected rows");
+         this.btnRemoveRows.UseVisualStyleBackColor = true;
+         this.btnRemoveRows.Click += new System.EventHandler(this.btnRemoveRow_Click);
          // 
          // btnAddRow
          // 
@@ -295,17 +295,6 @@
          this.tabValidation.Text = "Validation";
          this.tabValidation.UseVisualStyleBackColor = true;
          // 
-         // tabTest
-         // 
-         this.tabTest.Controls.Add(this.gridTest);
-         this.tabTest.Location = new System.Drawing.Point(4, 25);
-         this.tabTest.Name = "tabTest";
-         this.tabTest.Padding = new System.Windows.Forms.Padding(3);
-         this.tabTest.Size = new System.Drawing.Size(1459, 684);
-         this.tabTest.TabIndex = 2;
-         this.tabTest.Text = "Test";
-         this.tabTest.UseVisualStyleBackColor = true;
-         // 
          // gridValidation
          // 
          this.gridValidation.AllowUserToOrderColumns = true;
@@ -317,6 +306,17 @@
          this.gridValidation.RowTemplate.Height = 24;
          this.gridValidation.Size = new System.Drawing.Size(1453, 678);
          this.gridValidation.TabIndex = 14;
+         // 
+         // tabTest
+         // 
+         this.tabTest.Controls.Add(this.gridTest);
+         this.tabTest.Location = new System.Drawing.Point(4, 25);
+         this.tabTest.Name = "tabTest";
+         this.tabTest.Padding = new System.Windows.Forms.Padding(3);
+         this.tabTest.Size = new System.Drawing.Size(1459, 684);
+         this.tabTest.TabIndex = 2;
+         this.tabTest.Text = "Test";
+         this.tabTest.UseVisualStyleBackColor = true;
          // 
          // gridTest
          // 
@@ -346,8 +346,8 @@
          this.tabTraining.ResumeLayout(false);
          this.tabTraining.PerformLayout();
          this.tabValidation.ResumeLayout(false);
-         this.tabTest.ResumeLayout(false);
          ((System.ComponentModel.ISupportInitialize)(this.gridValidation)).EndInit();
+         this.tabTest.ResumeLayout(false);
          ((System.ComponentModel.ISupportInitialize)(this.gridTest)).EndInit();
          this.ResumeLayout(false);
 
@@ -365,9 +365,9 @@
       private System.Windows.Forms.Button btnEncode;
       private System.Windows.Forms.ComboBox cboEncoders;
       private System.Windows.Forms.CheckBox chIsCategorical;
-      private System.Windows.Forms.Button btnRemoveColumn;
+      private System.Windows.Forms.Button btnRemoveColumns;
       private System.Windows.Forms.Button btnAddColumn;
-      private System.Windows.Forms.Button btnRemoveRow;
+      private System.Windows.Forms.Button btnRemoveRows;
       private System.Windows.Forms.Button btnMatchNeuralNetIO;
       private System.Windows.Forms.TabControl tabGrids;
       private System.Windows.Forms.TabPage tabTraining;

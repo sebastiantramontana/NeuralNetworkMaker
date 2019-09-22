@@ -50,6 +50,16 @@
          this.gridValidation = new System.Windows.Forms.DataGridView();
          this.tabTest = new System.Windows.Forms.TabPage();
          this.gridTest = new System.Windows.Forms.DataGridView();
+         this.toolDataset = new System.Windows.Forms.ToolStrip();
+         this.toolMatchDatasetToNeuralNetIO = new System.Windows.Forms.ToolStripButton();
+         this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+         this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
+         this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
+         this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
+         this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+         this.toolMatchNeuralNetIOToDataset = new System.Windows.Forms.ToolStripButton();
+         this.toolStripSplitButton1 = new System.Windows.Forms.ToolStripTextBox();
+         this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
          ((System.ComponentModel.ISupportInitialize)(this.gridTraining)).BeginInit();
          this.panel2.SuspendLayout();
          ((System.ComponentModel.ISupportInitialize)(this.spinInputColumnsCount)).BeginInit();
@@ -59,6 +69,7 @@
          ((System.ComponentModel.ISupportInitialize)(this.gridValidation)).BeginInit();
          this.tabTest.SuspendLayout();
          ((System.ComponentModel.ISupportInitialize)(this.gridTest)).BeginInit();
+         this.toolDataset.SuspendLayout();
          this.SuspendLayout();
          // 
          // txtColumnNameEditor
@@ -67,7 +78,7 @@
          this.txtColumnNameEditor.Location = new System.Drawing.Point(144, 224);
          this.txtColumnNameEditor.Margin = new System.Windows.Forms.Padding(0);
          this.txtColumnNameEditor.Name = "txtColumnNameEditor";
-         this.txtColumnNameEditor.Size = new System.Drawing.Size(133, 15);
+         this.txtColumnNameEditor.Size = new System.Drawing.Size(133, 13);
          this.txtColumnNameEditor.TabIndex = 14;
          this.txtColumnNameEditor.Visible = false;
          this.txtColumnNameEditor.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtColumnNameEditor_KeyDown);
@@ -82,7 +93,7 @@
          this.gridTraining.Margin = new System.Windows.Forms.Padding(4);
          this.gridTraining.Name = "gridTraining";
          this.gridTraining.RowTemplate.Height = 24;
-         this.gridTraining.Size = new System.Drawing.Size(1453, 678);
+         this.gridTraining.Size = new System.Drawing.Size(1453, 650);
          this.gridTraining.TabIndex = 13;
          this.gridTraining.ColumnHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.gridMain_ColumnHeaderMouseDoubleClick);
          this.gridTraining.SelectionChanged += new System.EventHandler(this.gridMain_SelectionChanged);
@@ -204,7 +215,7 @@
          this.cboEncoders.Location = new System.Drawing.Point(367, 13);
          this.cboEncoders.Margin = new System.Windows.Forms.Padding(4);
          this.cboEncoders.Name = "cboEncoders";
-         this.cboEncoders.Size = new System.Drawing.Size(160, 24);
+         this.cboEncoders.Size = new System.Drawing.Size(160, 21);
          this.cboEncoders.TabIndex = 12;
          this.toolTip.SetToolTip(this.cboEncoders, "Select catergorical encoder");
          // 
@@ -213,10 +224,10 @@
          this.chIsCategorical.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
          this.chIsCategorical.AutoSize = true;
          this.chIsCategorical.Enabled = false;
-         this.chIsCategorical.Location = new System.Drawing.Point(239, 16);
+         this.chIsCategorical.Location = new System.Drawing.Point(239, 20);
          this.chIsCategorical.Margin = new System.Windows.Forms.Padding(4);
          this.chIsCategorical.Name = "chIsCategorical";
-         this.chIsCategorical.Size = new System.Drawing.Size(115, 21);
+         this.chIsCategorical.Size = new System.Drawing.Size(90, 17);
          this.chIsCategorical.TabIndex = 11;
          this.chIsCategorical.Text = "Is Categorical";
          this.toolTip.SetToolTip(this.chIsCategorical, "Column is categorical");
@@ -226,10 +237,10 @@
          // 
          this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
          this.label2.AutoSize = true;
-         this.label2.Location = new System.Drawing.Point(-3, 16);
+         this.label2.Location = new System.Drawing.Point(4, 16);
          this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
          this.label2.Name = "label2";
-         this.label2.Size = new System.Drawing.Size(95, 17);
+         this.label2.Size = new System.Drawing.Size(73, 13);
          this.label2.TabIndex = 10;
          this.label2.Text = "Input columns";
          // 
@@ -250,7 +261,7 @@
             0,
             0});
          this.spinInputColumnsCount.Name = "spinInputColumnsCount";
-         this.spinInputColumnsCount.Size = new System.Drawing.Size(89, 22);
+         this.spinInputColumnsCount.Size = new System.Drawing.Size(89, 20);
          this.spinInputColumnsCount.TabIndex = 9;
          this.toolTip.SetToolTip(this.spinInputColumnsCount, "(rest columns will be the output)");
          this.spinInputColumnsCount.Value = new decimal(new int[] {
@@ -266,20 +277,21 @@
          this.tabGrids.Controls.Add(this.tabValidation);
          this.tabGrids.Controls.Add(this.tabTest);
          this.tabGrids.Dock = System.Windows.Forms.DockStyle.Fill;
-         this.tabGrids.Location = new System.Drawing.Point(0, 0);
+         this.tabGrids.Location = new System.Drawing.Point(0, 31);
+         this.tabGrids.Multiline = true;
          this.tabGrids.Name = "tabGrids";
          this.tabGrids.SelectedIndex = 0;
-         this.tabGrids.Size = new System.Drawing.Size(1467, 713);
+         this.tabGrids.Size = new System.Drawing.Size(1467, 682);
          this.tabGrids.TabIndex = 17;
          // 
          // tabTraining
          // 
-         this.tabTraining.Controls.Add(this.txtColumnNameEditor);
          this.tabTraining.Controls.Add(this.gridTraining);
-         this.tabTraining.Location = new System.Drawing.Point(4, 25);
+         this.tabTraining.Controls.Add(this.txtColumnNameEditor);
+         this.tabTraining.Location = new System.Drawing.Point(4, 22);
          this.tabTraining.Name = "tabTraining";
          this.tabTraining.Padding = new System.Windows.Forms.Padding(3);
-         this.tabTraining.Size = new System.Drawing.Size(1459, 684);
+         this.tabTraining.Size = new System.Drawing.Size(1459, 656);
          this.tabTraining.TabIndex = 0;
          this.tabTraining.Text = "Training";
          this.tabTraining.UseVisualStyleBackColor = true;
@@ -287,10 +299,10 @@
          // tabValidation
          // 
          this.tabValidation.Controls.Add(this.gridValidation);
-         this.tabValidation.Location = new System.Drawing.Point(4, 25);
+         this.tabValidation.Location = new System.Drawing.Point(4, 22);
          this.tabValidation.Name = "tabValidation";
          this.tabValidation.Padding = new System.Windows.Forms.Padding(3);
-         this.tabValidation.Size = new System.Drawing.Size(1459, 684);
+         this.tabValidation.Size = new System.Drawing.Size(1459, 662);
          this.tabValidation.TabIndex = 1;
          this.tabValidation.Text = "Validation";
          this.tabValidation.UseVisualStyleBackColor = true;
@@ -304,16 +316,16 @@
          this.gridValidation.Margin = new System.Windows.Forms.Padding(4);
          this.gridValidation.Name = "gridValidation";
          this.gridValidation.RowTemplate.Height = 24;
-         this.gridValidation.Size = new System.Drawing.Size(1453, 678);
+         this.gridValidation.Size = new System.Drawing.Size(1453, 656);
          this.gridValidation.TabIndex = 14;
          // 
          // tabTest
          // 
          this.tabTest.Controls.Add(this.gridTest);
-         this.tabTest.Location = new System.Drawing.Point(4, 25);
+         this.tabTest.Location = new System.Drawing.Point(4, 22);
          this.tabTest.Name = "tabTest";
          this.tabTest.Padding = new System.Windows.Forms.Padding(3);
-         this.tabTest.Size = new System.Drawing.Size(1459, 684);
+         this.tabTest.Size = new System.Drawing.Size(1459, 662);
          this.tabTest.TabIndex = 2;
          this.tabTest.Text = "Test";
          this.tabTest.UseVisualStyleBackColor = true;
@@ -327,13 +339,111 @@
          this.gridTest.Margin = new System.Windows.Forms.Padding(4);
          this.gridTest.Name = "gridTest";
          this.gridTest.RowTemplate.Height = 24;
-         this.gridTest.Size = new System.Drawing.Size(1453, 678);
+         this.gridTest.Size = new System.Drawing.Size(1453, 656);
          this.gridTest.TabIndex = 15;
+         // 
+         // toolDataset
+         // 
+         this.toolDataset.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripButton2,
+            this.toolStripButton3,
+            this.toolStripButton4,
+            this.toolStripButton5,
+            this.toolStripSeparator1,
+            this.toolMatchNeuralNetIOToDataset,
+            this.toolMatchDatasetToNeuralNetIO,
+            this.toolStripSeparator2,
+            this.toolStripSplitButton1});
+         this.toolDataset.Location = new System.Drawing.Point(0, 0);
+         this.toolDataset.Margin = new System.Windows.Forms.Padding(0, 0, 0, 3);
+         this.toolDataset.Name = "toolDataset";
+         this.toolDataset.Size = new System.Drawing.Size(1467, 31);
+         this.toolDataset.TabIndex = 0;
+         this.toolDataset.Text = "toolStrip1";
+         // 
+         // toolMatchDatasetToNeuralNetIO
+         // 
+         this.toolMatchDatasetToNeuralNetIO.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+         this.toolMatchDatasetToNeuralNetIO.Image = ((System.Drawing.Image)(resources.GetObject("toolMatchDatasetToNeuralNetIO.Image")));
+         this.toolMatchDatasetToNeuralNetIO.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+         this.toolMatchDatasetToNeuralNetIO.ImageTransparentColor = System.Drawing.Color.Magenta;
+         this.toolMatchDatasetToNeuralNetIO.Name = "toolMatchDatasetToNeuralNetIO";
+         this.toolMatchDatasetToNeuralNetIO.Size = new System.Drawing.Size(28, 28);
+         this.toolMatchDatasetToNeuralNetIO.Click += new System.EventHandler(this.ToolMatchNeuralNetIO_Click);
+         // 
+         // toolStripButton2
+         // 
+         this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+         this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
+         this.toolStripButton2.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+         this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+         this.toolStripButton2.Name = "toolStripButton2";
+         this.toolStripButton2.Size = new System.Drawing.Size(28, 28);
+         this.toolStripButton2.Text = "toolStripButton2";
+         // 
+         // toolStripButton3
+         // 
+         this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+         this.toolStripButton3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton3.Image")));
+         this.toolStripButton3.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+         this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
+         this.toolStripButton3.Name = "toolStripButton3";
+         this.toolStripButton3.Size = new System.Drawing.Size(28, 28);
+         this.toolStripButton3.Text = "toolStripButton3";
+         // 
+         // toolStripButton4
+         // 
+         this.toolStripButton4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+         this.toolStripButton4.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton4.Image")));
+         this.toolStripButton4.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+         this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
+         this.toolStripButton4.Name = "toolStripButton4";
+         this.toolStripButton4.Size = new System.Drawing.Size(28, 28);
+         this.toolStripButton4.Text = "toolStripButton4";
+         // 
+         // toolStripButton5
+         // 
+         this.toolStripButton5.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+         this.toolStripButton5.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton5.Image")));
+         this.toolStripButton5.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+         this.toolStripButton5.ImageTransparentColor = System.Drawing.Color.Magenta;
+         this.toolStripButton5.Name = "toolStripButton5";
+         this.toolStripButton5.Size = new System.Drawing.Size(28, 28);
+         this.toolStripButton5.Text = "toolStripButton5";
+         // 
+         // toolStripSeparator1
+         // 
+         this.toolStripSeparator1.Name = "toolStripSeparator1";
+         this.toolStripSeparator1.Size = new System.Drawing.Size(6, 31);
+         // 
+         // toolMatchNeuralNetIOToDataset
+         // 
+         this.toolMatchNeuralNetIOToDataset.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+         this.toolMatchNeuralNetIOToDataset.Image = ((System.Drawing.Image)(resources.GetObject("toolMatchNeuralNetIOToDataset.Image")));
+         this.toolMatchNeuralNetIOToDataset.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+         this.toolMatchNeuralNetIOToDataset.ImageTransparentColor = System.Drawing.Color.Magenta;
+         this.toolMatchNeuralNetIOToDataset.Name = "toolMatchNeuralNetIOToDataset";
+         this.toolMatchNeuralNetIOToDataset.Size = new System.Drawing.Size(28, 28);
+         // 
+         // toolStripSplitButton1
+         // 
+         this.toolStripSplitButton1.AutoSize = false;
+         this.toolStripSplitButton1.AutoToolTip = true;
+         this.toolStripSplitButton1.Font = new System.Drawing.Font("Segoe UI", 9F);
+         this.toolStripSplitButton1.Name = "toolStripSplitButton1";
+         this.toolStripSplitButton1.Size = new System.Drawing.Size(40, 23);
+         this.toolStripSplitButton1.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+         // 
+         // toolStripSeparator2
+         // 
+         this.toolStripSeparator2.Name = "toolStripSeparator2";
+         this.toolStripSeparator2.Size = new System.Drawing.Size(6, 31);
          // 
          // DatasetGrid
          // 
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
          this.Controls.Add(this.tabGrids);
+         this.Controls.Add(this.toolDataset);
          this.Controls.Add(this.panel2);
          this.Margin = new System.Windows.Forms.Padding(4);
          this.Name = "DatasetGrid";
@@ -349,7 +459,10 @@
          ((System.ComponentModel.ISupportInitialize)(this.gridValidation)).EndInit();
          this.tabTest.ResumeLayout(false);
          ((System.ComponentModel.ISupportInitialize)(this.gridTest)).EndInit();
+         this.toolDataset.ResumeLayout(false);
+         this.toolDataset.PerformLayout();
          this.ResumeLayout(false);
+         this.PerformLayout();
 
       }
 
@@ -375,5 +488,15 @@
       private System.Windows.Forms.TabPage tabTest;
       private System.Windows.Forms.DataGridView gridValidation;
       private System.Windows.Forms.DataGridView gridTest;
+      private System.Windows.Forms.ToolStrip toolDataset;
+      private System.Windows.Forms.ToolStripButton toolMatchDatasetToNeuralNetIO;
+      private System.Windows.Forms.ToolStripButton toolStripButton2;
+      private System.Windows.Forms.ToolStripButton toolStripButton3;
+      private System.Windows.Forms.ToolStripButton toolStripButton4;
+      private System.Windows.Forms.ToolStripButton toolStripButton5;
+      private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+      private System.Windows.Forms.ToolStripButton toolMatchNeuralNetIOToDataset;
+      private System.Windows.Forms.ToolStripTextBox toolStripSplitButton1;
+      private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
    }
 }

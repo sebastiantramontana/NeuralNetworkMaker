@@ -6,6 +6,9 @@ using System.Windows.Forms;
 using System;
 using NeuralNetwork.Visualizer.Preferences;
 using NeuralNetwork.Visualizer.Preferences.Brushes;
+using NeuralNetwork.Model.Layers;
+using System.Collections.Generic;
+using NeuralNetwork.Model.Nodes;
 
 namespace NeuralNetworkMaker.MainTabControls.Training.Datasets
 {
@@ -21,6 +24,7 @@ namespace NeuralNetworkMaker.MainTabControls.Training.Datasets
          (_inputColumnColor, _outputColumnColor) = GetDefaultPreferenceColors();
       }
 
+      public InputLayer InputLayer { get; set; }
       public void LoadDataset(DataTable<string> rawDataTable)
       {
 
@@ -62,17 +66,33 @@ namespace NeuralNetworkMaker.MainTabControls.Training.Datasets
          }
       }
 
-      private void MatchColumnsGrid(int lineValuesCount)
+      private void MatchColumnGridsFromNeuralNetwork()
       {
-         if (gridTraining.ColumnCount >= lineValuesCount)
+         if (this.InputLayer == null)
             return;
 
-         var diff = lineValuesCount - gridTraining.ColumnCount;
-         var colNum = gridTraining.ColumnCount;
+         var inputs = this.InputLayer.Nodes;
+         var outputs = this.InputLayer.SearchOutputLayer().Nodes;
 
-         for (int i = 0; i < diff; i++)
+         MatchColumnsGridFromNeuralNetwork(gridTraining, inputs, outputs);
+         MatchColumnsGridFromNeuralNetwork(gridValidation, inputs, outputs);
+         MatchColumnsGridFromNeuralNetwork(gridTest, inputs, outputs);
+      }
+
+      private void MatchColumnsGridFromNeuralNetwork(DataGridView grid, IEnumerable<Input> inputs, IEnumerable<Neuron> outputs)
+      {
+         grid.Columns.Clear();
+
+         AddColumnsByNodes(inputs);
+         AddColumnsByNodes(outputs);
+
+         spinInputColumnsCount.Value = inputs.Count();
+      }
+      private void AddColumnsByNodes(IEnumerable<NodeBase> nodes)
+      {
+         foreach (var node in nodes)
          {
-            var colName = "C" + i;
+            var colName = node.Id;
             gridTraining.Columns.Add(colName, colName);
          }
       }
@@ -193,6 +213,11 @@ namespace NeuralNetworkMaker.MainTabControls.Training.Datasets
       {
          btnRemoveRows.Enabled = gridTraining.SelectedRows.Count > 0;
          btnRemoveColumns.Enabled = gridTraining.SelectedColumns.Count > 0;
+      }
+
+      private void ToolMatchNeuralNetIO_Click(object sender, EventArgs e)
+      {
+        
       }
    }
 }

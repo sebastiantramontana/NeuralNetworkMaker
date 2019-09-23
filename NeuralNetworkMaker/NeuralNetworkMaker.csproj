@@ -193,6 +193,9 @@
     <Compile Include="MainTabControls\Design\Selection\Resolvers\SelectionTypeResolverBase.cs" />
     <Compile Include="MainTabControls\Design\Selection\Resolvers\SelectionTypeResolverFactory.cs" />
     <Compile Include="MainTabControls\Design\Selection\Resolvers\ZeroSelectionTypeResolver.cs" />
+    <Compile Include="ToolStripNumericUpDown.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <EmbeddedResource Include="DropDownButton.resx">
       <DependentUpon>DropDownButton.cs</DependentUpon>
     </EmbeddedResource>

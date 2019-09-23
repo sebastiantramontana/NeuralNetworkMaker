@@ -16,6 +16,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+         System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ColorControl));
          this.btnEditColor = new System.Windows.Forms.Button();
          this.panColor = new System.Windows.Forms.Panel();
          this.btnTransparent = new System.Windows.Forms.Button();
@@ -46,7 +47,7 @@
          // btnTransparent
          // 
          this.btnTransparent.BackColor = System.Drawing.SystemColors.Control;
-         this.btnTransparent.BackgroundImage = global::NeuralNetworkMaker.Properties.Resources.transparent;
+         this.btnTransparent.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnTransparent.BackgroundImage")));
          this.btnTransparent.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
          this.btnTransparent.Location = new System.Drawing.Point(53, 0);
          this.btnTransparent.Margin = new System.Windows.Forms.Padding(0);

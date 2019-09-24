@@ -17,6 +17,9 @@ namespace NeuralNetworkMaker.MainTabControls.Training
          InitializeComponent();
       }
 
+      [Browsable(false)]
+      public DatasetGrid DatasetGridControl { get; set; }
+
       private NeuralNetworkVisualizerControl _visualizerControl;
       [Browsable(false)]
       public NeuralNetworkVisualizerControl VisualizerControl
@@ -100,7 +103,7 @@ namespace NeuralNetworkMaker.MainTabControls.Training
 
       private void btnDatasetLoad_ItemClick(object sender, ItemClickEventArgs e)
       {
-         switch(e.Key)
+         switch (e.Key)
          {
             case "CSV":
                LoadCsv();
@@ -112,7 +115,10 @@ namespace NeuralNetworkMaker.MainTabControls.Training
       {
          using (var dialog = new frmLoadCSV())
          {
-            dialog.ShowDialog(this);
+            if (dialog.ShowDialog(this) == DialogResult.Cancel)
+               return;
+
+            this.DatasetGridControl.LoadRawData(dialog.RawData);
          }
       }
    }

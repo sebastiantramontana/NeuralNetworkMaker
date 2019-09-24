@@ -32,7 +32,7 @@ namespace NeuralNetworkMaker.MainTabControls.Training.Datasets
 
       }
 
-      public void LoadDataset(DataTable<string> rawDataTable)
+      public void LoadRawData(DataTable<string> rawDataTable)
       {
          ResetGrids();
 

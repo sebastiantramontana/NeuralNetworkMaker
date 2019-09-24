@@ -32,3 +32,5 @@
 /.vs/NeuralNetworkMakerSolution/v16/Server/sqlite3/*.ide
 /NeuralNetworkMaker/bin/Debug/*.dll
 /NeuralNetworkMaker/obj/Debug/*.config
+/.vs/NeuralNetworkMakerSolution/v16/Server/sqlite3/*.ide-shm
+/.vs/NeuralNetworkMakerSolution/v16/Server/sqlite3/*.ide-wal

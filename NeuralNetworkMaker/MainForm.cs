@@ -17,7 +17,10 @@ namespace NeuralNetworkMaker
       public MainForm()
       {
          InitializeComponent();
+
          designControl.NNVisualizerControl = NNVisualizerControl;
+         trainingControl.VisualizerControl = NNVisualizerControl;
+         trainingControl.DatasetGridControl = datasetGrid;
 
          ConfigureNNVisualizer();
       }

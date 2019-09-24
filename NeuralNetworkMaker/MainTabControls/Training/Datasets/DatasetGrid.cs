@@ -9,25 +9,40 @@ using NeuralNetwork.Visualizer.Preferences.Brushes;
 using NeuralNetwork.Model.Layers;
 using System.Collections.Generic;
 using NeuralNetwork.Model.Nodes;
+using NeuralNetworkMaker.MainTabControls.Training.Datasets.ColumnsLoader;
 
 namespace NeuralNetworkMaker.MainTabControls.Training.Datasets
 {
    public partial class DatasetGrid : UserControl
    {
-      private readonly Color _inputColumnColor;
-      private readonly Color _outputColumnColor;
-
       public DatasetGrid()
       {
          InitializeComponent();
 
-         (_inputColumnColor, _outputColumnColor) = GetDefaultPreferenceColors();
+         tabTraining.Tag = gridTraining;
+         tabValidation.Tag = gridValidation;
+         tabTest.Tag = gridTest;
       }
 
+      [Browsable(false)]
       public InputLayer InputLayer { get; set; }
-      public void LoadDataset(DataTable<string> rawDataTable)
+
+      private void DatasetGrid_Load(object sender, EventArgs e)
       {
 
+      }
+
+      public void LoadDataset(DataTable<string> rawDataTable)
+      {
+         ResetGrids();
+
+         LoadColumns(rawDataTable);
+
+         var parts = rawDataTable.SplitRows(60, 20, 20);
+
+         LoadRows(gridTraining, parts.Training);
+         LoadRows(gridValidation, parts.Validation);
+         LoadRows(gridTest, parts.Test);
       }
 
       public Dataset GetDataset()
@@ -35,24 +50,68 @@ namespace NeuralNetworkMaker.MainTabControls.Training.Datasets
          return null;
       }
 
+      private void LoadColumns(DataTable<string> rawDataTable)
+      {
+         var columns = GetDatatsetColumns(rawDataTable);
+
+         SuspendLayout();
+
+         foreach (var column in columns)
+         {
+            AddColumn(column);
+         }
+
+         ResumeLayout();
+      }
+
+      private void ResetGrids()
+      {
+         SuspendLayout();
+
+         gridTraining.Columns.Clear();
+         gridValidation.Columns.Clear();
+         gridTest.Columns.Clear();
+
+         ResumeLayout();
+      }
+
+      private IEnumerable<string> GetDatatsetColumns(DataTable<string> rawDataTable)
+      {
+         var columnLoader = new DatasetColumnLoader(rawDataTable, new DatasetByRowColumnLoader(rawDataTable, new NeuralNetworkColumnLoader(this.InputLayer, new InvalidColumnLoader())));
+         return columnLoader.GetColumns();
+      }
+
+      private void LoadRows(DataGridView grid, IEnumerable<string[]> rawRows)
+      {
+         grid.SuspendLayout();
+
+         foreach (var row in rawRows)
+         {
+            AddRow(grid, row);
+         }
+
+         grid.ResumeLayout();
+      }
+
       private void ResetControls()
       {
-         spinInputColumnsCount.Maximum = gridTraining.ColumnCount - 1;
-         spinInputColumnsCount.Value = 1;
+         toolInputColumnsCount.Maximum = gridTraining.ColumnCount - 1;
+         toolInputColumnsCount.Value = 1;
          ChangeInputColumns();
       }
 
       private void EnableControls()
       {
-         spinInputColumnsCount.Enabled = true;
+         toolInputColumnsCount.Enabled = true;
       }
 
       private void ChangeInputColumns()
       {
-         var count = (int)spinInputColumnsCount.Value;
+         var count = (int)toolInputColumnsCount.Value;
+         var colors = GetDefaultPreferenceColors();
 
-         ChangeColumnHeadersStyle(0, count, _inputColumnColor);
-         ChangeColumnHeadersStyle(count, gridTraining.ColumnCount, _outputColumnColor);
+         ChangeColumnHeadersStyle(0, count, colors.InputColor);
+         ChangeColumnHeadersStyle(count, gridTraining.ColumnCount, colors.OutputColor);
       }
 
       private void ChangeColumnHeadersStyle(int from, int to, Color color)
@@ -86,7 +145,7 @@ namespace NeuralNetworkMaker.MainTabControls.Training.Datasets
          AddColumnsByNodes(inputs);
          AddColumnsByNodes(outputs);
 
-         spinInputColumnsCount.Value = inputs.Count();
+         toolInputColumnsCount.Value = inputs.Count();
       }
       private void AddColumnsByNodes(IEnumerable<NodeBase> nodes)
       {
@@ -95,17 +154,6 @@ namespace NeuralNetworkMaker.MainTabControls.Training.Datasets
             var colName = node.Id;
             gridTraining.Columns.Add(colName, colName);
          }
-      }
-
-      private void AddRowToGrid(string[] lineValues)
-      {
-         var row = new DataGridViewRow() { Visible = true };
-
-         row.Cells.AddRange(lineValues
-            .Select(v => new DataGridViewTextBoxCell() { Value = v })
-            .ToArray());
-
-         gridTraining.Rows.Add(row);
       }
 
       private (Color InputColor, Color OutputColor) GetDefaultPreferenceColors()
@@ -177,47 +225,80 @@ namespace NeuralNetworkMaker.MainTabControls.Training.Datasets
          txtColumnNameEditor.Visible = false;
       }
 
-      private void btnAddRow_Click(object sender, EventArgs e)
-      {
-         gridTraining.Rows.Add();
-      }
-
-      private void btnRemoveRow_Click(object sender, EventArgs e)
-      {
-         if (MessageBox.Show("Are you sure to remove the selected rows?", "Remove Rows", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.Cancel)
-            return;
-
-         foreach (var row in gridTraining.SelectedRows.Cast<DataGridViewRow>())
-            gridTraining.Rows.Remove(row);
-      }
-
-      private int columnCounter = 1;
-      private void btnAddColumn_Click(object sender, EventArgs e)
-      {
-         var name = $"C_{columnCounter}";
-         gridTraining.Columns.Add(name, name);
-
-         columnCounter++;
-      }
-
-      private void btnRemoveColumn_Click(object sender, EventArgs e)
-      {
-         if (MessageBox.Show("Are you sure to remove the selected columns?", "Remove Rows", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.Cancel)
-            return;
-
-         foreach (var column in gridTraining.SelectedColumns.Cast<DataGridViewColumn>())
-            gridTraining.Columns.Remove(column);
-      }
-
       private void gridMain_SelectionChanged(object sender, EventArgs e)
       {
-         btnRemoveRows.Enabled = gridTraining.SelectedRows.Count > 0;
-         btnRemoveColumns.Enabled = gridTraining.SelectedColumns.Count > 0;
+         toolRemoveRows.Enabled = gridTraining.SelectedRows.Count > 0;
+         toolRemoveColumns.Enabled = gridTraining.SelectedColumns.Count > 0;
       }
 
       private void ToolMatchNeuralNetIO_Click(object sender, EventArgs e)
       {
-        
+
+      }
+
+      private void AddRow(DataGridView grid, params object[] values)
+      {
+         grid.Rows.Add(values);
+      }
+
+      private void RemoveSelectedRows()
+      {
+         if (MessageBox.Show("Are you sure to remove the selected rows?", "Remove Rows", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.Cancel)
+            return;
+
+         var grid = tabGrids.SelectedTab.Tag as DataGridView;
+         var rows = grid.SelectedRows.Cast<DataGridViewRow>();
+
+         grid.SuspendLayout();
+
+         foreach (var row in rows)
+         {
+            grid.Rows.Remove(row);
+         }
+
+         grid.ResumeLayout();
+      }
+
+      private int columnCounter = 1;
+      private void AddColumn()
+      {
+         var name = $"C_{columnCounter++}";
+         AddColumn(name);
+      }
+
+      private void AddColumn(string name)
+      {
+         gridTraining.Columns.Add(name, name);
+         gridValidation.Columns.Add(name, name);
+         gridTest.Columns.Add(name, name);
+      }
+
+      private void RemoveSelectedColumns()
+      {
+         if (MessageBox.Show("Are you sure to remove the selected columns?", "Remove Columns", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.Cancel)
+            return;
+
+         var grid = tabGrids.SelectedTab.Tag as DataGridView;
+
+         var columnNames = grid.SelectedColumns
+            .OfType<DataGridViewColumn>()
+            .Select(c => c.Name);
+
+         RemoveSelectedColumns(gridTraining, columnNames);
+         RemoveSelectedColumns(gridValidation, columnNames);
+         RemoveSelectedColumns(gridTest, columnNames);
+      }
+
+      private void RemoveSelectedColumns(DataGridView grid, IEnumerable<string> columnNames)
+      {
+         grid.SuspendLayout();
+
+         foreach (var columnName in columnNames)
+         {
+            grid.Columns.Remove(columnName);
+         }
+
+         grid.ResumeLayout();
       }
    }
 }

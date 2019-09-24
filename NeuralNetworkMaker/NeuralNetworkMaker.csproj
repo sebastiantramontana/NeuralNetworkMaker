@@ -73,6 +73,12 @@
     </Compile>
     <Compile Include="MainTabControls\Training\ActivationFunctionExtensions.cs" />
     <Compile Include="MainTabControls\Training\Datasets\AttributeValues.cs" />
+    <Compile Include="MainTabControls\Training\Datasets\ColumnsLoader\ColumnLoaderBase.cs" />
+    <Compile Include="MainTabControls\Training\Datasets\ColumnsLoader\DatasetByRowColumnLoader.cs" />
+    <Compile Include="MainTabControls\Training\Datasets\ColumnsLoader\DatasetColumnLoader.cs" />
+    <Compile Include="MainTabControls\Training\Datasets\ColumnsLoader\IColumnLoader.cs" />
+    <Compile Include="MainTabControls\Training\Datasets\ColumnsLoader\InvalidColumnLoader.cs" />
+    <Compile Include="MainTabControls\Training\Datasets\ColumnsLoader\NeuralNetworkColumnLoader.cs" />
     <Compile Include="MainTabControls\Training\Datasets\Dataset.cs" />
     <Compile Include="MainTabControls\Training\Datasets\DatasetGrid.cs">
       <SubType>UserControl</SubType>

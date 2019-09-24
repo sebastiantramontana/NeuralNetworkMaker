@@ -49,6 +49,7 @@
          this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
          this.toolInputColumnsCount = new NeuralNetworkMaker.ToolStripNumericUpDown();
          this.toolEncoding = new System.Windows.Forms.ToolStripDropDownButton();
+         this.toolOpenFullScreen = new System.Windows.Forms.ToolStripButton();
          ((System.ComponentModel.ISupportInitialize)(this.gridTraining)).BeginInit();
          this.tabGrids.SuspendLayout();
          this.tabTraining.SuspendLayout();
@@ -158,6 +159,7 @@
          // 
          // toolDataset
          // 
+         this.toolDataset.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
          this.toolDataset.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolAddRow,
             this.toolRemoveRows,
@@ -169,7 +171,8 @@
             this.toolMatchDatasetToNeuralNetIO,
             this.toolStripSeparator2,
             this.toolInputColumnsCount,
-            this.toolEncoding});
+            this.toolEncoding,
+            this.toolOpenFullScreen});
          this.toolDataset.Location = new System.Drawing.Point(0, 0);
          this.toolDataset.Margin = new System.Windows.Forms.Padding(0, 0, 0, 3);
          this.toolDataset.Name = "toolDataset";
@@ -217,7 +220,7 @@
          // 
          this.toolMoveRows.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
          this.toolMoveRows.Image = ((System.Drawing.Image)(resources.GetObject("toolMoveRows.Image")));
-         this.toolMoveRows.ImageTransparentColor = System.Drawing.Color.Magenta;
+         this.toolMoveRows.ImageTransparentColor = System.Drawing.Color.White;
          this.toolMoveRows.Name = "toolMoveRows";
          this.toolMoveRows.Size = new System.Drawing.Size(29, 23);
          this.toolMoveRows.ToolTipText = "Move selected rows to other grid";
@@ -231,7 +234,7 @@
          // 
          this.toolMatchNeuralNetIOToDataset.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
          this.toolMatchNeuralNetIOToDataset.Image = ((System.Drawing.Image)(resources.GetObject("toolMatchNeuralNetIOToDataset.Image")));
-         this.toolMatchNeuralNetIOToDataset.ImageTransparentColor = System.Drawing.Color.Magenta;
+         this.toolMatchNeuralNetIOToDataset.ImageTransparentColor = System.Drawing.Color.White;
          this.toolMatchNeuralNetIOToDataset.Name = "toolMatchNeuralNetIOToDataset";
          this.toolMatchNeuralNetIOToDataset.Size = new System.Drawing.Size(23, 23);
          this.toolMatchNeuralNetIOToDataset.ToolTipText = "Match neural network I/O to dataset columns";
@@ -240,7 +243,7 @@
          // 
          this.toolMatchDatasetToNeuralNetIO.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
          this.toolMatchDatasetToNeuralNetIO.Image = ((System.Drawing.Image)(resources.GetObject("toolMatchDatasetToNeuralNetIO.Image")));
-         this.toolMatchDatasetToNeuralNetIO.ImageTransparentColor = System.Drawing.Color.Magenta;
+         this.toolMatchDatasetToNeuralNetIO.ImageTransparentColor = System.Drawing.Color.White;
          this.toolMatchDatasetToNeuralNetIO.Name = "toolMatchDatasetToNeuralNetIO";
          this.toolMatchDatasetToNeuralNetIO.Size = new System.Drawing.Size(23, 23);
          this.toolMatchDatasetToNeuralNetIO.ToolTipText = "Match dataset columns to neural network I/O ";
@@ -254,19 +257,39 @@
          // toolInputColumnsCount
          // 
          this.toolInputColumnsCount.Enabled = false;
+         this.toolInputColumnsCount.Maximum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
          this.toolInputColumnsCount.Name = "toolInputColumnsCount";
          this.toolInputColumnsCount.Size = new System.Drawing.Size(41, 23);
          this.toolInputColumnsCount.Text = "1";
          this.toolInputColumnsCount.ToolTipText = "Input columns (rest columns are the outputs)";
+         this.toolInputColumnsCount.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
          // 
          // toolEncoding
          // 
          this.toolEncoding.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
          this.toolEncoding.Image = ((System.Drawing.Image)(resources.GetObject("toolEncoding.Image")));
-         this.toolEncoding.ImageTransparentColor = System.Drawing.Color.Magenta;
+         this.toolEncoding.ImageTransparentColor = System.Drawing.Color.White;
          this.toolEncoding.Name = "toolEncoding";
          this.toolEncoding.Size = new System.Drawing.Size(29, 23);
          this.toolEncoding.ToolTipText = "Encode selected categorical columns";
+         // 
+         // toolOpenFullScreen
+         // 
+         this.toolOpenFullScreen.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+         this.toolOpenFullScreen.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+         this.toolOpenFullScreen.Image = ((System.Drawing.Image)(resources.GetObject("toolOpenFullScreen.Image")));
+         this.toolOpenFullScreen.ImageTransparentColor = System.Drawing.Color.White;
+         this.toolOpenFullScreen.Name = "toolOpenFullScreen";
+         this.toolOpenFullScreen.Size = new System.Drawing.Size(23, 23);
+         this.toolOpenFullScreen.ToolTipText = "Open in fullscreen";
          // 
          // DatasetGrid
          // 
@@ -276,6 +299,7 @@
          this.Margin = new System.Windows.Forms.Padding(4);
          this.Name = "DatasetGrid";
          this.Size = new System.Drawing.Size(1467, 752);
+         this.Load += new System.EventHandler(this.DatasetGrid_Load);
          ((System.ComponentModel.ISupportInitialize)(this.gridTraining)).EndInit();
          this.tabGrids.ResumeLayout(false);
          this.tabTraining.ResumeLayout(false);
@@ -313,5 +337,6 @@
       private NeuralNetworkMaker.ToolStripNumericUpDown toolInputColumnsCount;
       private System.Windows.Forms.ToolStripDropDownButton toolEncoding;
       private System.Windows.Forms.ToolStripDropDownButton toolMoveRows;
+      private System.Windows.Forms.ToolStripButton toolOpenFullScreen;
    }
 }

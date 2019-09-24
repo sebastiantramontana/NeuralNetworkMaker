@@ -13,6 +13,18 @@ namespace NeuralNetworkMaker
 
       public NumericUpDown NumericUpDownControl => this.Control as NumericUpDown;
 
+      public decimal Value
+      {
+         get => this.NumericUpDownControl.Value;
+         set => this.NumericUpDownControl.Value = value;
+      }
+
+      public decimal Maximum
+      {
+         get => this.NumericUpDownControl.Maximum;
+         set => this.NumericUpDownControl.Maximum = value;
+      }
+
       protected override void OnSubscribeControlEvents(Control c)
       {
          base.OnSubscribeControlEvents(c);

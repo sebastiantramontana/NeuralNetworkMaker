@@ -38,17 +38,17 @@
          this.tabTest = new System.Windows.Forms.TabPage();
          this.gridTest = new System.Windows.Forms.DataGridView();
          this.toolDataset = new System.Windows.Forms.ToolStrip();
-         this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
-         this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
-         this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
-         this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
+         this.toolAddRow = new System.Windows.Forms.ToolStripButton();
+         this.toolRemoveRows = new System.Windows.Forms.ToolStripButton();
+         this.toolAddColumn = new System.Windows.Forms.ToolStripButton();
+         this.toolRemoveColumns = new System.Windows.Forms.ToolStripButton();
+         this.toolMoveRows = new System.Windows.Forms.ToolStripDropDownButton();
          this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
          this.toolMatchNeuralNetIOToDataset = new System.Windows.Forms.ToolStripButton();
          this.toolMatchDatasetToNeuralNetIO = new System.Windows.Forms.ToolStripButton();
          this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
          this.toolInputColumnsCount = new NeuralNetworkMaker.ToolStripNumericUpDown();
-         this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
-         this.toolStripDropDownButton2 = new System.Windows.Forms.ToolStripDropDownButton();
+         this.toolEncoding = new System.Windows.Forms.ToolStripDropDownButton();
          ((System.ComponentModel.ISupportInitialize)(this.gridTraining)).BeginInit();
          this.tabGrids.SuspendLayout();
          this.tabTraining.SuspendLayout();
@@ -116,7 +116,7 @@
          this.tabValidation.Location = new System.Drawing.Point(4, 22);
          this.tabValidation.Name = "tabValidation";
          this.tabValidation.Padding = new System.Windows.Forms.Padding(3);
-         this.tabValidation.Size = new System.Drawing.Size(1459, 662);
+         this.tabValidation.Size = new System.Drawing.Size(1459, 700);
          this.tabValidation.TabIndex = 1;
          this.tabValidation.Text = "Validation";
          this.tabValidation.UseVisualStyleBackColor = true;
@@ -130,7 +130,7 @@
          this.gridValidation.Margin = new System.Windows.Forms.Padding(4);
          this.gridValidation.Name = "gridValidation";
          this.gridValidation.RowTemplate.Height = 24;
-         this.gridValidation.Size = new System.Drawing.Size(1453, 656);
+         this.gridValidation.Size = new System.Drawing.Size(1453, 694);
          this.gridValidation.TabIndex = 14;
          // 
          // tabTest
@@ -139,7 +139,7 @@
          this.tabTest.Location = new System.Drawing.Point(4, 22);
          this.tabTest.Name = "tabTest";
          this.tabTest.Padding = new System.Windows.Forms.Padding(3);
-         this.tabTest.Size = new System.Drawing.Size(1459, 662);
+         this.tabTest.Size = new System.Drawing.Size(1459, 700);
          this.tabTest.TabIndex = 2;
          this.tabTest.Text = "Test";
          this.tabTest.UseVisualStyleBackColor = true;
@@ -153,65 +153,74 @@
          this.gridTest.Margin = new System.Windows.Forms.Padding(4);
          this.gridTest.Name = "gridTest";
          this.gridTest.RowTemplate.Height = 24;
-         this.gridTest.Size = new System.Drawing.Size(1453, 656);
+         this.gridTest.Size = new System.Drawing.Size(1453, 694);
          this.gridTest.TabIndex = 15;
          // 
          // toolDataset
          // 
          this.toolDataset.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton2,
-            this.toolStripButton3,
-            this.toolStripButton4,
-            this.toolStripButton5,
-            this.toolStripDropDownButton2,
+            this.toolAddRow,
+            this.toolRemoveRows,
+            this.toolAddColumn,
+            this.toolRemoveColumns,
+            this.toolMoveRows,
             this.toolStripSeparator1,
             this.toolMatchNeuralNetIOToDataset,
             this.toolMatchDatasetToNeuralNetIO,
             this.toolStripSeparator2,
             this.toolInputColumnsCount,
-            this.toolStripDropDownButton1});
+            this.toolEncoding});
          this.toolDataset.Location = new System.Drawing.Point(0, 0);
          this.toolDataset.Margin = new System.Windows.Forms.Padding(0, 0, 0, 3);
          this.toolDataset.Name = "toolDataset";
          this.toolDataset.Size = new System.Drawing.Size(1467, 26);
          this.toolDataset.TabIndex = 0;
          // 
-         // toolStripButton2
+         // toolAddRow
          // 
-         this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-         this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
-         this.toolStripButton2.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-         this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-         this.toolStripButton2.Name = "toolStripButton2";
-         this.toolStripButton2.Size = new System.Drawing.Size(23, 23);
-         this.toolStripButton2.Text = "toolStripButton2";
+         this.toolAddRow.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+         this.toolAddRow.Image = ((System.Drawing.Image)(resources.GetObject("toolAddRow.Image")));
+         this.toolAddRow.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+         this.toolAddRow.ImageTransparentColor = System.Drawing.Color.Magenta;
+         this.toolAddRow.Name = "toolAddRow";
+         this.toolAddRow.Size = new System.Drawing.Size(23, 23);
+         this.toolAddRow.ToolTipText = "Add new blank row";
          // 
-         // toolStripButton3
+         // toolRemoveRows
          // 
-         this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-         this.toolStripButton3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton3.Image")));
-         this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
-         this.toolStripButton3.Name = "toolStripButton3";
-         this.toolStripButton3.Size = new System.Drawing.Size(23, 23);
-         this.toolStripButton3.Text = "toolStripButton3";
+         this.toolRemoveRows.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+         this.toolRemoveRows.Image = ((System.Drawing.Image)(resources.GetObject("toolRemoveRows.Image")));
+         this.toolRemoveRows.ImageTransparentColor = System.Drawing.Color.Magenta;
+         this.toolRemoveRows.Name = "toolRemoveRows";
+         this.toolRemoveRows.Size = new System.Drawing.Size(23, 23);
+         this.toolRemoveRows.ToolTipText = "Remove selected rows";
          // 
-         // toolStripButton4
+         // toolAddColumn
          // 
-         this.toolStripButton4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-         this.toolStripButton4.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton4.Image")));
-         this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
-         this.toolStripButton4.Name = "toolStripButton4";
-         this.toolStripButton4.Size = new System.Drawing.Size(23, 23);
-         this.toolStripButton4.Text = "toolStripButton4";
+         this.toolAddColumn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+         this.toolAddColumn.Image = ((System.Drawing.Image)(resources.GetObject("toolAddColumn.Image")));
+         this.toolAddColumn.ImageTransparentColor = System.Drawing.Color.Magenta;
+         this.toolAddColumn.Name = "toolAddColumn";
+         this.toolAddColumn.Size = new System.Drawing.Size(23, 23);
+         this.toolAddColumn.ToolTipText = "Add new column";
          // 
-         // toolStripButton5
+         // toolRemoveColumns
          // 
-         this.toolStripButton5.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-         this.toolStripButton5.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton5.Image")));
-         this.toolStripButton5.ImageTransparentColor = System.Drawing.Color.Magenta;
-         this.toolStripButton5.Name = "toolStripButton5";
-         this.toolStripButton5.Size = new System.Drawing.Size(23, 23);
-         this.toolStripButton5.Text = "toolStripButton5";
+         this.toolRemoveColumns.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+         this.toolRemoveColumns.Image = ((System.Drawing.Image)(resources.GetObject("toolRemoveColumns.Image")));
+         this.toolRemoveColumns.ImageTransparentColor = System.Drawing.Color.Magenta;
+         this.toolRemoveColumns.Name = "toolRemoveColumns";
+         this.toolRemoveColumns.Size = new System.Drawing.Size(23, 23);
+         this.toolRemoveColumns.ToolTipText = "Remove selected columns";
+         // 
+         // toolMoveRows
+         // 
+         this.toolMoveRows.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+         this.toolMoveRows.Image = ((System.Drawing.Image)(resources.GetObject("toolMoveRows.Image")));
+         this.toolMoveRows.ImageTransparentColor = System.Drawing.Color.Magenta;
+         this.toolMoveRows.Name = "toolMoveRows";
+         this.toolMoveRows.Size = new System.Drawing.Size(29, 23);
+         this.toolMoveRows.ToolTipText = "Move selected rows to other grid";
          // 
          // toolStripSeparator1
          // 
@@ -225,6 +234,7 @@
          this.toolMatchNeuralNetIOToDataset.ImageTransparentColor = System.Drawing.Color.Magenta;
          this.toolMatchNeuralNetIOToDataset.Name = "toolMatchNeuralNetIOToDataset";
          this.toolMatchNeuralNetIOToDataset.Size = new System.Drawing.Size(23, 23);
+         this.toolMatchNeuralNetIOToDataset.ToolTipText = "Match neural network I/O to dataset columns";
          // 
          // toolMatchDatasetToNeuralNetIO
          // 
@@ -233,6 +243,7 @@
          this.toolMatchDatasetToNeuralNetIO.ImageTransparentColor = System.Drawing.Color.Magenta;
          this.toolMatchDatasetToNeuralNetIO.Name = "toolMatchDatasetToNeuralNetIO";
          this.toolMatchDatasetToNeuralNetIO.Size = new System.Drawing.Size(23, 23);
+         this.toolMatchDatasetToNeuralNetIO.ToolTipText = "Match dataset columns to neural network I/O ";
          this.toolMatchDatasetToNeuralNetIO.Click += new System.EventHandler(this.ToolMatchNeuralNetIO_Click);
          // 
          // toolStripSeparator2
@@ -246,25 +257,16 @@
          this.toolInputColumnsCount.Name = "toolInputColumnsCount";
          this.toolInputColumnsCount.Size = new System.Drawing.Size(41, 23);
          this.toolInputColumnsCount.Text = "1";
-         this.toolInputColumnsCount.ToolTipText = "Input columns (rest columns will be the output)";
+         this.toolInputColumnsCount.ToolTipText = "Input columns (rest columns are the outputs)";
          // 
-         // toolStripDropDownButton1
+         // toolEncoding
          // 
-         this.toolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-         this.toolStripDropDownButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton1.Image")));
-         this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-         this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
-         this.toolStripDropDownButton1.Size = new System.Drawing.Size(29, 23);
-         this.toolStripDropDownButton1.ToolTipText = "Select catergorical encoder";
-         // 
-         // toolStripDropDownButton2
-         // 
-         this.toolStripDropDownButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-         this.toolStripDropDownButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton2.Image")));
-         this.toolStripDropDownButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-         this.toolStripDropDownButton2.Name = "toolStripDropDownButton2";
-         this.toolStripDropDownButton2.Size = new System.Drawing.Size(29, 23);
-         this.toolStripDropDownButton2.Text = "toolStripDropDownButton2";
+         this.toolEncoding.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+         this.toolEncoding.Image = ((System.Drawing.Image)(resources.GetObject("toolEncoding.Image")));
+         this.toolEncoding.ImageTransparentColor = System.Drawing.Color.Magenta;
+         this.toolEncoding.Name = "toolEncoding";
+         this.toolEncoding.Size = new System.Drawing.Size(29, 23);
+         this.toolEncoding.ToolTipText = "Encode selected categorical columns";
          // 
          // DatasetGrid
          // 
@@ -301,15 +303,15 @@
       private System.Windows.Forms.DataGridView gridTest;
       private System.Windows.Forms.ToolStrip toolDataset;
       private System.Windows.Forms.ToolStripButton toolMatchDatasetToNeuralNetIO;
-      private System.Windows.Forms.ToolStripButton toolStripButton2;
-      private System.Windows.Forms.ToolStripButton toolStripButton3;
-      private System.Windows.Forms.ToolStripButton toolStripButton4;
-      private System.Windows.Forms.ToolStripButton toolStripButton5;
+      private System.Windows.Forms.ToolStripButton toolAddRow;
+      private System.Windows.Forms.ToolStripButton toolRemoveRows;
+      private System.Windows.Forms.ToolStripButton toolAddColumn;
+      private System.Windows.Forms.ToolStripButton toolRemoveColumns;
       private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
       private System.Windows.Forms.ToolStripButton toolMatchNeuralNetIOToDataset;
       private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
       private NeuralNetworkMaker.ToolStripNumericUpDown toolInputColumnsCount;
-      private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton1;
-      private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton2;
+      private System.Windows.Forms.ToolStripDropDownButton toolEncoding;
+      private System.Windows.Forms.ToolStripDropDownButton toolMoveRows;
    }
 }

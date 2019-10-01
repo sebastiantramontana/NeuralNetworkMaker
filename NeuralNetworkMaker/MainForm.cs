@@ -127,6 +127,11 @@ namespace NeuralNetworkMaker
          NNVisualizerControl.Zoom *= 0.9f;
       }
 
+      private void btnExportAsImageNNVisualizer_Click(object sender, EventArgs e)
+      {
+         ExportNNVisualizerAsImage();
+      }
+
       private void btnPreferencesNNVisualizer_Click(object sender, EventArgs e)
       {
          using (var frm = new frmPreferences(NNVisualizerControl))
@@ -164,6 +169,49 @@ namespace NeuralNetworkMaker
          MainContainer.Panel2.Controls[NNVisualizerControl.Name].Visible = showNeuralNetwork;
          MainContainer.Panel2.Controls[datasetGrid.Name].Visible = !showNeuralNetwork;
          MainContainer.Panel2.ResumeLayout();
+      }
+
+      private void ExportNNVisualizerAsImage()
+      {
+         string fileName = ShowSaveDialog("PNG files (*.png)|*.png", "PNG files(*.png)|*.png|JPG files (*.jpg)|*.jpg", "Export Neural Network as Image");
+
+         if (string.IsNullOrWhiteSpace(fileName))
+            return;
+
+         var image = NNVisualizerControl.Image;
+
+         try
+         {
+            image.Save(fileName);
+         }
+         catch (Exception ex)
+         {
+            MessageBox.Show($"Image couldn't be saved!{Environment.NewLine}{ex.Message}", string.Empty, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            return;
+         }
+
+         MessageBox.Show("Image saved succesfully!", string.Empty, MessageBoxButtons.OK, MessageBoxIcon.Information);
+      }
+
+      private string ShowSaveDialog(string defaultExt, string filter, string title)
+      {
+         using (var dialog = new SaveFileDialog()
+         {
+            AddExtension = true,
+            CheckFileExists = false,
+            CheckPathExists = true,
+            CreatePrompt = false,
+            FilterIndex = 0,
+            DefaultExt = defaultExt,
+            Filter = filter,
+            OverwritePrompt = true,
+            RestoreDirectory = true,
+            ValidateNames = true,
+            Title = title
+         })
+         {
+            return (dialog.ShowDialog(this) == DialogResult.Cancel) ? string.Empty : dialog.FileName;
+         }
       }
    }
 }

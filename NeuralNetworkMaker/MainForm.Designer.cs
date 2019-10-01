@@ -39,7 +39,9 @@
          this.MainContainer = new System.Windows.Forms.SplitContainer();
          this.tabActions = new System.Windows.Forms.TabControl();
          this.tabDesign = new System.Windows.Forms.TabPage();
+         this.designControl = new NeuralNetworkMaker.MainTabControls.Design.DesignControl();
          this.tabTraining = new System.Windows.Forms.TabPage();
+         this.trainingControl = new NeuralNetworkMaker.MainTabControls.Training.TrainingControl();
          this.tabPredict = new System.Windows.Forms.TabPage();
          this.NNVisualizerControl = new NeuralNetwork.Visualizer.NeuralNetworkVisualizerControl();
          this.ToolbarNNVisualizer = new System.Windows.Forms.ToolStrip();
@@ -47,9 +49,8 @@
          this.ComboQualityNNVisualizer = new System.Windows.Forms.ToolStripComboBox();
          this.btnZoomOutNNVisualizer = new System.Windows.Forms.ToolStripButton();
          this.btnZoomInNNVisualizer = new System.Windows.Forms.ToolStripButton();
-         this.trainingControl = new NeuralNetworkMaker.MainTabControls.Training.TrainingControl();
          this.datasetGrid = new NeuralNetworkMaker.MainTabControls.Training.Datasets.DatasetGrid();
-         this.designControl = new NeuralNetworkMaker.MainTabControls.Design.DesignControl();
+         this.btnExportAsImageNNVisualizer = new System.Windows.Forms.ToolStripButton();
          this.mainMenu.SuspendLayout();
          ((System.ComponentModel.ISupportInitialize)(this.MainContainer)).BeginInit();
          this.MainContainer.Panel1.SuspendLayout();
@@ -133,7 +134,7 @@
          this.MainContainer.Panel2.Controls.Add(this.ToolbarNNVisualizer);
          this.MainContainer.Panel2.Controls.Add(this.datasetGrid);
          this.MainContainer.Size = new System.Drawing.Size(1028, 585);
-         this.MainContainer.SplitterDistance = 239;
+         this.MainContainer.SplitterDistance = 238;
          this.MainContainer.SplitterWidth = 2;
          this.MainContainer.TabIndex = 1;
          // 
@@ -145,10 +146,10 @@
          this.tabActions.Dock = System.Windows.Forms.DockStyle.Fill;
          this.tabActions.ItemSize = new System.Drawing.Size(100, 23);
          this.tabActions.Location = new System.Drawing.Point(0, 0);
-         this.tabActions.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+         this.tabActions.Margin = new System.Windows.Forms.Padding(2);
          this.tabActions.Name = "tabActions";
          this.tabActions.SelectedIndex = 0;
-         this.tabActions.Size = new System.Drawing.Size(237, 583);
+         this.tabActions.Size = new System.Drawing.Size(236, 583);
          this.tabActions.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
          this.tabActions.TabIndex = 0;
          this.tabActions.SelectedIndexChanged += new System.EventHandler(this.tabActions_SelectedIndexChanged);
@@ -157,32 +158,55 @@
          // 
          this.tabDesign.Controls.Add(this.designControl);
          this.tabDesign.Location = new System.Drawing.Point(4, 27);
-         this.tabDesign.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+         this.tabDesign.Margin = new System.Windows.Forms.Padding(2);
          this.tabDesign.Name = "tabDesign";
-         this.tabDesign.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-         this.tabDesign.Size = new System.Drawing.Size(229, 552);
+         this.tabDesign.Padding = new System.Windows.Forms.Padding(2);
+         this.tabDesign.Size = new System.Drawing.Size(228, 552);
          this.tabDesign.TabIndex = 0;
          this.tabDesign.Text = "Design";
          this.tabDesign.UseVisualStyleBackColor = true;
+         // 
+         // designControl
+         // 
+         this.designControl.Dock = System.Windows.Forms.DockStyle.Fill;
+         this.designControl.Location = new System.Drawing.Point(2, 2);
+         this.designControl.Margin = new System.Windows.Forms.Padding(4);
+         this.designControl.Name = "designControl";
+         this.designControl.NNVisualizerControl = null;
+         this.designControl.Size = new System.Drawing.Size(224, 548);
+         this.designControl.TabIndex = 0;
          // 
          // tabTraining
          // 
          this.tabTraining.Controls.Add(this.trainingControl);
          this.tabTraining.Location = new System.Drawing.Point(4, 27);
-         this.tabTraining.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+         this.tabTraining.Margin = new System.Windows.Forms.Padding(2);
          this.tabTraining.Name = "tabTraining";
-         this.tabTraining.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+         this.tabTraining.Padding = new System.Windows.Forms.Padding(2);
          this.tabTraining.Size = new System.Drawing.Size(229, 552);
          this.tabTraining.TabIndex = 1;
          this.tabTraining.Text = "Training";
          this.tabTraining.UseVisualStyleBackColor = true;
          // 
+         // trainingControl
+         // 
+         this.trainingControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+         this.trainingControl.DatasetGridControl = null;
+         this.trainingControl.Location = new System.Drawing.Point(0, 0);
+         this.trainingControl.Margin = new System.Windows.Forms.Padding(0);
+         this.trainingControl.Name = "trainingControl";
+         this.trainingControl.Size = new System.Drawing.Size(231, 556);
+         this.trainingControl.TabIndex = 0;
+         this.trainingControl.VisualizerControl = null;
+         // 
          // tabPredict
          // 
          this.tabPredict.Location = new System.Drawing.Point(4, 27);
-         this.tabPredict.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+         this.tabPredict.Margin = new System.Windows.Forms.Padding(2);
          this.tabPredict.Name = "tabPredict";
-         this.tabPredict.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+         this.tabPredict.Padding = new System.Windows.Forms.Padding(2);
          this.tabPredict.Size = new System.Drawing.Size(229, 552);
          this.tabPredict.TabIndex = 2;
          this.tabPredict.Text = "Predict";
@@ -195,10 +219,10 @@
          this.NNVisualizerControl.Dock = System.Windows.Forms.DockStyle.Fill;
          this.NNVisualizerControl.InputLayer = null;
          this.NNVisualizerControl.Location = new System.Drawing.Point(0, 27);
-         this.NNVisualizerControl.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+         this.NNVisualizerControl.Margin = new System.Windows.Forms.Padding(4);
          this.NNVisualizerControl.Name = "NNVisualizerControl";
          this.NNVisualizerControl.Selectable = true;
-         this.NNVisualizerControl.Size = new System.Drawing.Size(785, 556);
+         this.NNVisualizerControl.Size = new System.Drawing.Size(786, 556);
          this.NNVisualizerControl.TabIndex = 2;
          this.NNVisualizerControl.Zoom = 1F;
          // 
@@ -206,13 +230,14 @@
          // 
          this.ToolbarNNVisualizer.ImageScalingSize = new System.Drawing.Size(20, 20);
          this.ToolbarNNVisualizer.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnZoomInNNVisualizer,
             this.btnPreferencesNNVisualizer,
             this.ComboQualityNNVisualizer,
             this.btnZoomOutNNVisualizer,
-            this.btnZoomInNNVisualizer});
+            this.btnExportAsImageNNVisualizer});
          this.ToolbarNNVisualizer.Location = new System.Drawing.Point(0, 0);
          this.ToolbarNNVisualizer.Name = "ToolbarNNVisualizer";
-         this.ToolbarNNVisualizer.Size = new System.Drawing.Size(785, 27);
+         this.ToolbarNNVisualizer.Size = new System.Drawing.Size(786, 27);
          this.ToolbarNNVisualizer.TabIndex = 1;
          // 
          // btnPreferencesNNVisualizer
@@ -236,7 +261,6 @@
          // 
          // btnZoomOutNNVisualizer
          // 
-         this.btnZoomOutNNVisualizer.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
          this.btnZoomOutNNVisualizer.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
          this.btnZoomOutNNVisualizer.Image = ((System.Drawing.Image)(resources.GetObject("btnZoomOutNNVisualizer.Image")));
          this.btnZoomOutNNVisualizer.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -248,7 +272,6 @@
          // 
          // btnZoomInNNVisualizer
          // 
-         this.btnZoomInNNVisualizer.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
          this.btnZoomInNNVisualizer.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
          this.btnZoomInNNVisualizer.Image = ((System.Drawing.Image)(resources.GetObject("btnZoomInNNVisualizer.Image")));
          this.btnZoomInNNVisualizer.ImageTransparentColor = System.Drawing.Color.White;
@@ -258,37 +281,26 @@
          this.btnZoomInNNVisualizer.ToolTipText = "Zoom In";
          this.btnZoomInNNVisualizer.Click += new System.EventHandler(this.btnZoomInNNVisualizer_Click);
          // 
-         // trainingControl
-         // 
-         this.trainingControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-         this.trainingControl.Location = new System.Drawing.Point(0, 0);
-         this.trainingControl.Margin = new System.Windows.Forms.Padding(0);
-         this.trainingControl.Name = "trainingControl";
-         this.trainingControl.Size = new System.Drawing.Size(231, 556);
-         this.trainingControl.TabIndex = 0;
-         this.trainingControl.VisualizerControl = null;
-         // 
          // datasetGrid
          // 
          this.datasetGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+         this.datasetGrid.InputLayer = null;
          this.datasetGrid.Location = new System.Drawing.Point(0, 0);
          this.datasetGrid.Margin = new System.Windows.Forms.Padding(4);
          this.datasetGrid.Name = "datasetGrid";
-         this.datasetGrid.Size = new System.Drawing.Size(785, 583);
+         this.datasetGrid.Size = new System.Drawing.Size(786, 583);
          this.datasetGrid.TabIndex = 3;
          this.datasetGrid.Visible = false;
          // 
-         // designControl
+         // btnExportAsImageNNVisualizer
          // 
-         this.designControl.Dock = System.Windows.Forms.DockStyle.Fill;
-         this.designControl.Location = new System.Drawing.Point(2, 2);
-         this.designControl.Margin = new System.Windows.Forms.Padding(4);
-         this.designControl.Name = "designControl";
-         this.designControl.NNVisualizerControl = null;
-         this.designControl.Size = new System.Drawing.Size(225, 548);
-         this.designControl.TabIndex = 0;
+         this.btnExportAsImageNNVisualizer.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+         this.btnExportAsImageNNVisualizer.Image = ((System.Drawing.Image)(resources.GetObject("btnExportAsImageNNVisualizer.Image")));
+         this.btnExportAsImageNNVisualizer.ImageTransparentColor = System.Drawing.Color.Magenta;
+         this.btnExportAsImageNNVisualizer.Name = "btnExportAsImageNNVisualizer";
+         this.btnExportAsImageNNVisualizer.Size = new System.Drawing.Size(24, 24);
+         this.btnExportAsImageNNVisualizer.Text = "toolStripButton1";
+         this.btnExportAsImageNNVisualizer.Click += new System.EventHandler(this.btnExportAsImageNNVisualizer_Click);
          // 
          // MainForm
          // 
@@ -298,7 +310,7 @@
          this.Controls.Add(this.MainContainer);
          this.Controls.Add(this.mainMenu);
          this.MainMenuStrip = this.mainMenu;
-         this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+         this.Margin = new System.Windows.Forms.Padding(2);
          this.Name = "MainForm";
          this.Text = "Neural Network Maker";
          this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -343,6 +355,7 @@
       private MainTabControls.Training.TrainingControl trainingControl;
       private MainTabControls.Training.Datasets.DatasetGrid datasetGrid;
       private MainTabControls.Design.DesignControl designControl;
+      private System.Windows.Forms.ToolStripButton btnExportAsImageNNVisualizer;
    }
 }
 

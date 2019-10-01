@@ -34,3 +34,16 @@
 /NeuralNetworkMaker/obj/Debug/*.config
 /.vs/NeuralNetworkMakerSolution/v16/Server/sqlite3/*.ide-shm
 /.vs/NeuralNetworkMakerSolution/v16/Server/sqlite3/*.ide-wal
+/NeuralNetworkMaker/bin/Release/*.dll
+/NeuralNetworkMaker/bin/Release/*.xml
+/NeuralNetworkMaker/bin/Release/*.config
+/NeuralNetworkMaker/bin/Release/*.exe
+/NeuralNetworkMaker/bin/Release/*.pdb
+/NeuralNetworkMaker/obj/Release/*.resources
+/NeuralNetworkMaker/obj/Release/*.CopyComplete
+/NeuralNetworkMaker/obj/Release/*.cache
+/NeuralNetworkMaker/obj/Release/*.txt
+/NeuralNetworkMaker/obj/Release/*.exe
+/NeuralNetworkMaker/obj/Release/*.config
+/NeuralNetworkMaker/obj/Release/*.pdb
+/NeuralNetworkMaker/obj/Release/TempPE/*.dll

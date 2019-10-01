@@ -10,6 +10,7 @@ using NeuralNetwork.Model.Layers;
 using System.Collections.Generic;
 using NeuralNetwork.Model.Nodes;
 using NeuralNetworkMaker.MainTabControls.Training.Datasets.ColumnsLoader;
+using System.Reflection;
 
 namespace NeuralNetworkMaker.MainTabControls.Training.Datasets
 {
@@ -22,6 +23,8 @@ namespace NeuralNetworkMaker.MainTabControls.Training.Datasets
          tabTraining.Tag = gridTraining;
          tabValidation.Tag = gridValidation;
          tabTest.Tag = gridTest;
+
+         SetSetDoubleBufferGrids();
       }
 
       [Browsable(false)]
@@ -35,14 +38,15 @@ namespace NeuralNetworkMaker.MainTabControls.Training.Datasets
       public void LoadRawData(DataTable<string> rawDataTable)
       {
          ResetGrids();
+         toolLoadingData.Value = 0;
 
          LoadColumns(rawDataTable);
 
          var parts = rawDataTable.SplitRows(60, 20, 20);
 
-         LoadRows(gridTraining, parts.Training);
-         LoadRows(gridValidation, parts.Validation);
-         LoadRows(gridTest, parts.Test);
+         LoadRowsByChuncks(parts.Training, 6, gridTraining);
+         LoadRowsByChuncks(parts.Validation, 2, gridValidation);
+         LoadRowsByChuncks(parts.Test, 2, gridTest);
       }
 
       public Dataset GetDataset()
@@ -54,25 +58,17 @@ namespace NeuralNetworkMaker.MainTabControls.Training.Datasets
       {
          var columns = GetDatatsetColumns(rawDataTable);
 
-         SuspendLayout();
-
          foreach (var column in columns)
          {
             AddColumn(column);
          }
-
-         ResumeLayout();
       }
 
       private void ResetGrids()
       {
-         SuspendLayout();
-
          gridTraining.Columns.Clear();
          gridValidation.Columns.Clear();
          gridTest.Columns.Clear();
-
-         ResumeLayout();
       }
 
       private IEnumerable<string> GetDatatsetColumns(DataTable<string> rawDataTable)
@@ -81,16 +77,25 @@ namespace NeuralNetworkMaker.MainTabControls.Training.Datasets
          return columnLoader.GetColumns();
       }
 
+      //TODO: Ver un mejor nombre o un refactor para la barra de progreso
+      private void LoadRowsByChuncks(IEnumerable<string[]> data, int chunks, DataGridView grid)
+      {
+         int count = (int)Math.Ceiling(data.Count() / (double)chunks);
+
+         for (int i = 0; i < chunks; i++)
+         {
+            var chunk = data.Skip(count * i).Take(count);
+            LoadRows(grid, chunk);
+
+            toolLoadingData.PerformStep();
+         }
+      }
       private void LoadRows(DataGridView grid, IEnumerable<string[]> rawRows)
       {
-         grid.SuspendLayout();
-
          foreach (var row in rawRows)
          {
             AddRow(grid, row);
          }
-
-         grid.ResumeLayout();
       }
 
       private void ResetControls()
@@ -249,14 +254,10 @@ namespace NeuralNetworkMaker.MainTabControls.Training.Datasets
          var grid = tabGrids.SelectedTab.Tag as DataGridView;
          var rows = grid.SelectedRows.Cast<DataGridViewRow>();
 
-         grid.SuspendLayout();
-
          foreach (var row in rows)
          {
             grid.Rows.Remove(row);
          }
-
-         grid.ResumeLayout();
       }
 
       private int columnCounter = 1;
@@ -291,14 +292,24 @@ namespace NeuralNetworkMaker.MainTabControls.Training.Datasets
 
       private void RemoveSelectedColumns(DataGridView grid, IEnumerable<string> columnNames)
       {
-         grid.SuspendLayout();
-
          foreach (var columnName in columnNames)
          {
             grid.Columns.Remove(columnName);
          }
+      }
 
-         grid.ResumeLayout();
+      private void SetSetDoubleBufferGrids()
+      {
+         SetDoubleBufferGrid(gridTraining);
+         SetDoubleBufferGrid(gridValidation);
+         SetDoubleBufferGrid(gridTest);
+
+         void SetDoubleBufferGrid(DataGridView grid)
+         {
+            typeof(DataGridView)
+               .GetProperty("DoubleBuffered", BindingFlags.NonPublic | BindingFlags.Instance)
+               .SetValue(gridTraining, true, null);
+         }
       }
    }
 }

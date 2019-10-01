@@ -50,6 +50,7 @@
          this.toolInputColumnsCount = new NeuralNetworkMaker.ToolStripNumericUpDown();
          this.toolEncoding = new System.Windows.Forms.ToolStripDropDownButton();
          this.toolOpenFullScreen = new System.Windows.Forms.ToolStripButton();
+         this.toolLoadingData = new System.Windows.Forms.ToolStripProgressBar();
          ((System.ComponentModel.ISupportInitialize)(this.gridTraining)).BeginInit();
          this.tabGrids.SuspendLayout();
          this.tabTraining.SuspendLayout();
@@ -172,7 +173,8 @@
             this.toolStripSeparator2,
             this.toolInputColumnsCount,
             this.toolEncoding,
-            this.toolOpenFullScreen});
+            this.toolOpenFullScreen,
+            this.toolLoadingData});
          this.toolDataset.Location = new System.Drawing.Point(0, 0);
          this.toolDataset.Margin = new System.Windows.Forms.Padding(0, 0, 0, 3);
          this.toolDataset.Name = "toolDataset";
@@ -291,6 +293,12 @@
          this.toolOpenFullScreen.Size = new System.Drawing.Size(23, 23);
          this.toolOpenFullScreen.ToolTipText = "Open in fullscreen";
          // 
+         // toolLoadingData
+         // 
+         this.toolLoadingData.Name = "toolLoadingData";
+         this.toolLoadingData.Size = new System.Drawing.Size(100, 23);
+         this.toolLoadingData.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+         // 
          // DatasetGrid
          // 
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
@@ -338,5 +346,6 @@
       private System.Windows.Forms.ToolStripDropDownButton toolEncoding;
       private System.Windows.Forms.ToolStripDropDownButton toolMoveRows;
       private System.Windows.Forms.ToolStripButton toolOpenFullScreen;
+      private System.Windows.Forms.ToolStripProgressBar toolLoadingData;
    }
 }

@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using NeuralNetwork.Model.Nodes;
 using NeuralNetworkMaker.MainTabControls.Training.Datasets.ColumnsLoader;
 using System.Reflection;
+using System.Threading.Tasks;
 
 namespace NeuralNetworkMaker.MainTabControls.Training.Datasets
 {
@@ -35,18 +36,24 @@ namespace NeuralNetworkMaker.MainTabControls.Training.Datasets
 
       }
 
-      public void LoadRawData(DataTable<string> rawDataTable)
+      public async Task LoadRawDataAsync(DataTable<string> rawDataTable)
       {
+         SwitchEnableControls(false);
+
          ResetGrids();
+
          toolLoadingData.Value = 0;
+         toolLoadingData.Step = 1;
 
          LoadColumns(rawDataTable);
 
          var parts = rawDataTable.SplitRows(60, 20, 20);
 
-         LoadRowsByChuncks(parts.Training, 6, gridTraining);
-         LoadRowsByChuncks(parts.Validation, 2, gridValidation);
-         LoadRowsByChuncks(parts.Test, 2, gridTest);
+         await LoadRowsByChuncks(parts.Training, 60, gridTraining);
+         await LoadRowsByChuncks(parts.Validation, 20, gridValidation);
+         await LoadRowsByChuncks(parts.Test, 20, gridTest);
+
+         SwitchEnableControls(true);
       }
 
       public Dataset GetDataset()
@@ -54,6 +61,13 @@ namespace NeuralNetworkMaker.MainTabControls.Training.Datasets
          return null;
       }
 
+      private void SwitchEnableControls(bool enable)
+      {
+         toolDataset.Enabled = 
+         gridTraining.Enabled = 
+         gridValidation.Enabled = 
+         gridTest.Enabled = enable;
+      }
       private void LoadColumns(DataTable<string> rawDataTable)
       {
          var columns = GetDatatsetColumns(rawDataTable);
@@ -66,11 +80,16 @@ namespace NeuralNetworkMaker.MainTabControls.Training.Datasets
 
       private void ResetGrids()
       {
-         gridTraining.Columns.Clear();
-         gridValidation.Columns.Clear();
-         gridTest.Columns.Clear();
+         ClearColumns(gridTraining);
+         ClearColumns(gridValidation);
+         ClearColumns(gridTest);
       }
 
+      private void ClearColumns(DataGridView dataGridView)
+      {
+         dataGridView.Columns.Clear();
+         dataGridView.Refresh();
+      }
       private IEnumerable<string> GetDatatsetColumns(DataTable<string> rawDataTable)
       {
          var columnLoader = new DatasetColumnLoader(rawDataTable, new DatasetByRowColumnLoader(rawDataTable, new NeuralNetworkColumnLoader(this.InputLayer, new InvalidColumnLoader())));
@@ -78,7 +97,7 @@ namespace NeuralNetworkMaker.MainTabControls.Training.Datasets
       }
 
       //TODO: Ver un mejor nombre o un refactor para la barra de progreso
-      private void LoadRowsByChuncks(IEnumerable<string[]> data, int chunks, DataGridView grid)
+      private async Task LoadRowsByChuncks(IEnumerable<string[]> data, int chunks, DataGridView grid)
       {
          int count = (int)Math.Ceiling(data.Count() / (double)chunks);
 
@@ -87,7 +106,7 @@ namespace NeuralNetworkMaker.MainTabControls.Training.Datasets
             var chunk = data.Skip(count * i).Take(count);
             LoadRows(grid, chunk);
 
-            toolLoadingData.PerformStep();
+            await Task.Run(() => { this.Invoke(new Action(() => { toolLoadingData.PerformStep(); })); });
          }
       }
       private void LoadRows(DataGridView grid, IEnumerable<string[]> rawRows)
@@ -300,15 +319,16 @@ namespace NeuralNetworkMaker.MainTabControls.Training.Datasets
 
       private void SetSetDoubleBufferGrids()
       {
-         SetDoubleBufferGrid(gridTraining);
-         SetDoubleBufferGrid(gridValidation);
-         SetDoubleBufferGrid(gridTest);
+         SetDoubleBufferControl(gridTraining);
+         SetDoubleBufferControl(gridValidation);
+         SetDoubleBufferControl(gridTest);
+         SetDoubleBufferControl(toolLoadingData.Control);
 
-         void SetDoubleBufferGrid(DataGridView grid)
+         void SetDoubleBufferControl(Control control)
          {
-            typeof(DataGridView)
+            typeof(Control)
                .GetProperty("DoubleBuffered", BindingFlags.NonPublic | BindingFlags.Instance)
-               .SetValue(gridTraining, true, null);
+               .SetValue(control, true, null);
          }
       }
    }

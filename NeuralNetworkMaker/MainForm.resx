@@ -170,15 +170,15 @@
   <data name="btnExportAsImageNNVisualizer.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHsSURBVDhP1dTLSxtRFAbwWbcL659RERdCF11KFiFk4ivR
-        mmohUByZgAlJaBM6hVBT6KqKXbiy1AeFUINRfCTx0TSxikpaWywGBN0J0kWENJlJsvmcMxnUluCYdNMe
-        +Jg7d+75zeoe5v+qNqf/zkPeV19Nujhvndp+WX0ez22bdyjtCLz+6X41clpNqMfmDaTJUDmGMTt87Jup
-        YDaTyaCWUC8ZKscwFqfQ9fbDXJ4+juxnIXz5daPQWeqhXjJU7nfQ+CmPxoiIu8vlNEVFNMdENFzZsySP
-        cC+WgSGe0wZbkyLYpARDQoIuLsrvEto2JLTEJdxfo+RQPBMwno6BTeRvBprWD2FcfI+erTJGobX5c0FZ
-        u1PHsG6eKWc1wcFUDsbgAHQTetiTK3jyrQjf9xJe/CjBv1+Ca68Ij7z3eKcAPlXQBnuXxhSMop/uxLOv
-        JzIkwRoVwG/MKnAZz8o/KmqDbLD/AqR0hFzgElNgw+0whc14mjrA871jDKw54N7drh6kGIImBaRYlnjY
-        435wq3b5+bI2UDephzHUeoE+WOxVQP7jkDb4KPoO3QvDSjrDAkwznJKOOQ/6VodhjbjQE3GDT4zDuTlf
-        Gfzbqzc6+cfVKw+HQO3DwRc4YDn/LZW7LBpFlUbUdak4vv7hYphzLJfkm58J29kAAAAASUVORK5CYII=
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHmSURBVDhP1dTLSxtRFAbwWbcL659RkS4EFy4lixAy8ZVo
+        jVoQxJEJNCEJ1dApBNOCG0mpi64s9YEYUYyl2iT1kSY+0BK1xaIg1F2huIgQk5kkm69zJoOPEhyjGz3w
+        MXfu3POb1T3M/ap6h/dRG+8pLyXNXF+Z2n5eHW73w85e34HdN3jsGvD/LSXUQ71kqBzDmO0edmhsMpVM
+        JnGTUC8ZKscwFofQ/GEqmKGPb/dSELZPrxU6Sz3US4bKXQaN3zKoDIl4/KWQJ2ERVRERFRf2LPHfqI4k
+        YYimtcG6uAg2LsEQk6CLivK7hPpVCbVRCTVLlDRyJwKGDyJgY5nrgablQxjnJ9C6UcAotDavZZW1K3EE
+        6/qJclYTfJ5IwxjogW5ED1v8K178yMHzM4/+X3l49/Jw7ubglve6trLgE1ltsH3hvYJR9ONNeLnzR4Yk
+        WMMC+NVZBS7gKflHOW2QDXSfgZTGGSe42BjYYANMQTN6E/t4tXuEniU7XN83SwcphoBJASmWBR62qBfc
+        ok1+vrkZqBvVwzhTd4Y+nW9XQH7Fpw0+C39Ey2e/kqagANM0p6Rxzo2ORT+sISdaQy7wsWE41j8VB297
+        9d6N/nf1bj0cPK/3Wc77QOXOi0ZRsRF1VYqOrztcDPMPKh/kStOI8eEAAAAASUVORK5CYII=
 </value>
   </data>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">

@@ -6,6 +6,7 @@ using NeuralNetworkNET.APIs.Enums;
 using NeuralNetworkNET.SupervisedLearning.Algorithms;
 using System.ComponentModel;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace NeuralNetworkMaker.MainTabControls.Training
@@ -101,24 +102,26 @@ namespace NeuralNetworkMaker.MainTabControls.Training
          cboInitializationWeights.SelectedItem = WeightsInitializationMode.LeCunUniform;
       }
 
-      private void btnDatasetLoad_ItemClick(object sender, ItemClickEventArgs e)
+      private async void btnDatasetLoad_ItemClick(object sender, ItemClickEventArgs e)
       {
          switch (e.Key)
          {
             case "CSV":
-               LoadCsv();
+               await LoadCsv();
                break;
          }
       }
 
-      private void LoadCsv()
+      private async Task LoadCsv()
       {
          using (var dialog = new frmLoadCSV())
          {
             if (dialog.ShowDialog(this) == DialogResult.Cancel)
                return;
 
-            this.DatasetGridControl.LoadRawData(dialog.RawData);
+            this.Enabled = false;
+            await this.DatasetGridControl.LoadRawDataAsync(dialog.RawData);
+            this.Enabled = true;
          }
       }
    }

@@ -45,12 +45,12 @@
          this.tabPredict = new System.Windows.Forms.TabPage();
          this.NNVisualizerControl = new NeuralNetwork.Visualizer.NeuralNetworkVisualizerControl();
          this.ToolbarNNVisualizer = new System.Windows.Forms.ToolStrip();
+         this.btnZoomInNNVisualizer = new System.Windows.Forms.ToolStripButton();
          this.btnPreferencesNNVisualizer = new System.Windows.Forms.ToolStripButton();
          this.ComboQualityNNVisualizer = new System.Windows.Forms.ToolStripComboBox();
          this.btnZoomOutNNVisualizer = new System.Windows.Forms.ToolStripButton();
-         this.btnZoomInNNVisualizer = new System.Windows.Forms.ToolStripButton();
-         this.datasetGrid = new NeuralNetworkMaker.MainTabControls.Training.Datasets.DatasetGrid();
          this.btnExportAsImageNNVisualizer = new System.Windows.Forms.ToolStripButton();
+         this.datasetGrid = new NeuralNetworkMaker.MainTabControls.Training.Datasets.DatasetGrid();
          this.mainMenu.SuspendLayout();
          ((System.ComponentModel.ISupportInitialize)(this.MainContainer)).BeginInit();
          this.MainContainer.Panel1.SuspendLayout();
@@ -183,7 +183,7 @@
          this.tabTraining.Margin = new System.Windows.Forms.Padding(2);
          this.tabTraining.Name = "tabTraining";
          this.tabTraining.Padding = new System.Windows.Forms.Padding(2);
-         this.tabTraining.Size = new System.Drawing.Size(229, 552);
+         this.tabTraining.Size = new System.Drawing.Size(228, 552);
          this.tabTraining.TabIndex = 1;
          this.tabTraining.Text = "Training";
          this.tabTraining.UseVisualStyleBackColor = true;
@@ -197,7 +197,7 @@
          this.trainingControl.Location = new System.Drawing.Point(0, 0);
          this.trainingControl.Margin = new System.Windows.Forms.Padding(0);
          this.trainingControl.Name = "trainingControl";
-         this.trainingControl.Size = new System.Drawing.Size(231, 556);
+         this.trainingControl.Size = new System.Drawing.Size(230, 556);
          this.trainingControl.TabIndex = 0;
          this.trainingControl.VisualizerControl = null;
          // 
@@ -207,7 +207,7 @@
          this.tabPredict.Margin = new System.Windows.Forms.Padding(2);
          this.tabPredict.Name = "tabPredict";
          this.tabPredict.Padding = new System.Windows.Forms.Padding(2);
-         this.tabPredict.Size = new System.Drawing.Size(229, 552);
+         this.tabPredict.Size = new System.Drawing.Size(228, 552);
          this.tabPredict.TabIndex = 2;
          this.tabPredict.Text = "Predict";
          this.tabPredict.UseVisualStyleBackColor = true;
@@ -240,6 +240,17 @@
          this.ToolbarNNVisualizer.Size = new System.Drawing.Size(786, 27);
          this.ToolbarNNVisualizer.TabIndex = 1;
          // 
+         // btnZoomInNNVisualizer
+         // 
+         this.btnZoomInNNVisualizer.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+         this.btnZoomInNNVisualizer.Image = ((System.Drawing.Image)(resources.GetObject("btnZoomInNNVisualizer.Image")));
+         this.btnZoomInNNVisualizer.ImageTransparentColor = System.Drawing.Color.White;
+         this.btnZoomInNNVisualizer.Name = "btnZoomInNNVisualizer";
+         this.btnZoomInNNVisualizer.Size = new System.Drawing.Size(24, 24);
+         this.btnZoomInNNVisualizer.TextImageRelation = System.Windows.Forms.TextImageRelation.Overlay;
+         this.btnZoomInNNVisualizer.ToolTipText = "Zoom In";
+         this.btnZoomInNNVisualizer.Click += new System.EventHandler(this.btnZoomInNNVisualizer_Click);
+         // 
          // btnPreferencesNNVisualizer
          // 
          this.btnPreferencesNNVisualizer.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
@@ -270,16 +281,15 @@
          this.btnZoomOutNNVisualizer.ToolTipText = "Zoom Out";
          this.btnZoomOutNNVisualizer.Click += new System.EventHandler(this.btnZoomOutNNVisualizer_Click);
          // 
-         // btnZoomInNNVisualizer
+         // btnExportAsImageNNVisualizer
          // 
-         this.btnZoomInNNVisualizer.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-         this.btnZoomInNNVisualizer.Image = ((System.Drawing.Image)(resources.GetObject("btnZoomInNNVisualizer.Image")));
-         this.btnZoomInNNVisualizer.ImageTransparentColor = System.Drawing.Color.White;
-         this.btnZoomInNNVisualizer.Name = "btnZoomInNNVisualizer";
-         this.btnZoomInNNVisualizer.Size = new System.Drawing.Size(24, 24);
-         this.btnZoomInNNVisualizer.TextImageRelation = System.Windows.Forms.TextImageRelation.Overlay;
-         this.btnZoomInNNVisualizer.ToolTipText = "Zoom In";
-         this.btnZoomInNNVisualizer.Click += new System.EventHandler(this.btnZoomInNNVisualizer_Click);
+         this.btnExportAsImageNNVisualizer.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+         this.btnExportAsImageNNVisualizer.Image = ((System.Drawing.Image)(resources.GetObject("btnExportAsImageNNVisualizer.Image")));
+         this.btnExportAsImageNNVisualizer.ImageTransparentColor = System.Drawing.Color.Magenta;
+         this.btnExportAsImageNNVisualizer.Name = "btnExportAsImageNNVisualizer";
+         this.btnExportAsImageNNVisualizer.Size = new System.Drawing.Size(24, 24);
+         this.btnExportAsImageNNVisualizer.Text = "Export Image";
+         this.btnExportAsImageNNVisualizer.Click += new System.EventHandler(this.btnExportAsImageNNVisualizer_Click);
          // 
          // datasetGrid
          // 
@@ -291,16 +301,6 @@
          this.datasetGrid.Size = new System.Drawing.Size(786, 583);
          this.datasetGrid.TabIndex = 3;
          this.datasetGrid.Visible = false;
-         // 
-         // btnExportAsImageNNVisualizer
-         // 
-         this.btnExportAsImageNNVisualizer.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-         this.btnExportAsImageNNVisualizer.Image = ((System.Drawing.Image)(resources.GetObject("btnExportAsImageNNVisualizer.Image")));
-         this.btnExportAsImageNNVisualizer.ImageTransparentColor = System.Drawing.Color.Magenta;
-         this.btnExportAsImageNNVisualizer.Name = "btnExportAsImageNNVisualizer";
-         this.btnExportAsImageNNVisualizer.Size = new System.Drawing.Size(24, 24);
-         this.btnExportAsImageNNVisualizer.Text = "toolStripButton1";
-         this.btnExportAsImageNNVisualizer.Click += new System.EventHandler(this.btnExportAsImageNNVisualizer_Click);
          // 
          // MainForm
          // 

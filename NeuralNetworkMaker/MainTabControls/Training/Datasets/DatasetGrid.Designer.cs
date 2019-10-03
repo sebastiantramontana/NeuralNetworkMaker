@@ -81,6 +81,7 @@
          this.gridTraining.Location = new System.Drawing.Point(3, 3);
          this.gridTraining.Margin = new System.Windows.Forms.Padding(4);
          this.gridTraining.Name = "gridTraining";
+         this.gridTraining.RowHeadersWidth = 20;
          this.gridTraining.RowTemplate.Height = 24;
          this.gridTraining.Size = new System.Drawing.Size(1453, 694);
          this.gridTraining.TabIndex = 13;
@@ -135,6 +136,7 @@
          this.gridValidation.RowTemplate.Height = 24;
          this.gridValidation.Size = new System.Drawing.Size(1453, 694);
          this.gridValidation.TabIndex = 14;
+         this.gridValidation.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.Grid_CellValueChanged);
          // 
          // tabTest
          // 
@@ -158,6 +160,7 @@
          this.gridTest.RowTemplate.Height = 24;
          this.gridTest.Size = new System.Drawing.Size(1453, 694);
          this.gridTest.TabIndex = 15;
+         this.gridTest.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.Grid_CellValueChanged);
          // 
          // toolDataset
          // 

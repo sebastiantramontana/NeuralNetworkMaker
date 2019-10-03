@@ -84,6 +84,7 @@
          this.gridTraining.RowTemplate.Height = 24;
          this.gridTraining.Size = new System.Drawing.Size(1453, 694);
          this.gridTraining.TabIndex = 13;
+         this.gridTraining.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.Grid_CellValueChanged);
          this.gridTraining.ColumnHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.gridMain_ColumnHeaderMouseDoubleClick);
          this.gridTraining.SelectionChanged += new System.EventHandler(this.gridMain_SelectionChanged);
          // 
@@ -277,11 +278,13 @@
          // toolEncoding
          // 
          this.toolEncoding.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+         this.toolEncoding.Enabled = false;
          this.toolEncoding.Image = ((System.Drawing.Image)(resources.GetObject("toolEncoding.Image")));
          this.toolEncoding.ImageTransparentColor = System.Drawing.Color.White;
          this.toolEncoding.Name = "toolEncoding";
          this.toolEncoding.Size = new System.Drawing.Size(29, 23);
-         this.toolEncoding.ToolTipText = "Encode selected categorical columns";
+         this.toolEncoding.ToolTipText = "No categorical columns to encode";
+         this.toolEncoding.EnabledChanged += new System.EventHandler(this.toolEncoding_EnabledChanged);
          // 
          // toolOpenFullScreen
          // 

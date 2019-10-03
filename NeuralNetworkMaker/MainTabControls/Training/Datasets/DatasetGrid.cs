@@ -21,10 +21,7 @@ namespace NeuralNetworkMaker.MainTabControls.Training.Datasets
       {
          InitializeComponent();
 
-         tabTraining.Tag = gridTraining;
-         tabValidation.Tag = gridValidation;
-         tabTest.Tag = gridTest;
-
+         InitializeTabs();
          SetSetDoubleBufferGrids();
       }
 
@@ -61,13 +58,21 @@ namespace NeuralNetworkMaker.MainTabControls.Training.Datasets
          return null;
       }
 
+      private void InitializeTabs()
+      {
+         tabTraining.Tag = gridTraining;
+         tabValidation.Tag = gridValidation;
+         tabTest.Tag = gridTest;
+      }
+
       private void SwitchEnableControls(bool enable)
       {
-         toolDataset.Enabled = 
-         gridTraining.Enabled = 
-         gridValidation.Enabled = 
+         toolDataset.Enabled =
+         gridTraining.Enabled =
+         gridValidation.Enabled =
          gridTest.Enabled = enable;
       }
+
       private void LoadColumns(DataTable<string> rawDataTable)
       {
          var columns = GetDatatsetColumns(rawDataTable);
@@ -90,6 +95,7 @@ namespace NeuralNetworkMaker.MainTabControls.Training.Datasets
          dataGridView.Columns.Clear();
          dataGridView.Refresh();
       }
+
       private IEnumerable<string> GetDatatsetColumns(DataTable<string> rawDataTable)
       {
          var columnLoader = new DatasetColumnLoader(rawDataTable, new DatasetByRowColumnLoader(rawDataTable, new NeuralNetworkColumnLoader(this.InputLayer, new InvalidColumnLoader())));
@@ -262,7 +268,10 @@ namespace NeuralNetworkMaker.MainTabControls.Training.Datasets
 
       private void AddRow(DataGridView grid, params object[] values)
       {
-         grid.Rows.Add(values);
+         int rowIndex = grid.Rows.Add(values);
+
+         for (int columnIndex = 0; columnIndex < grid.Columns.Count; columnIndex++)
+            FormatCell(grid, rowIndex, columnIndex);
       }
 
       private void RemoveSelectedRows()
@@ -329,6 +338,49 @@ namespace NeuralNetworkMaker.MainTabControls.Training.Datasets
             typeof(Control)
                .GetProperty("DoubleBuffered", BindingFlags.NonPublic | BindingFlags.Instance)
                .SetValue(control, true, null);
+         }
+      }
+
+      private void toolEncoding_EnabledChanged(object sender, EventArgs e)
+      {
+         toolEncoding.ToolTipText = toolEncoding.Enabled
+            ? "Some columns look categorical and seem to need encoding!"
+            : "No categorical columns to encode";
+      }
+
+      private void Grid_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+      {
+         var grid = sender as DataGridView;
+         FormatCell(grid, e.RowIndex, e.ColumnIndex);
+      }
+
+      private void FormatCell(DataGridView grid, int rowIndex, int columnIndex)
+      {
+         var row = grid.Rows[rowIndex];
+
+         if (row.IsNewRow)
+            return;
+
+         var cell = row.Cells[columnIndex];
+         var cellContent = cell.Value?.ToString();
+
+         if (string.IsNullOrWhiteSpace(cellContent))
+         {
+            cell.Style.BackColor = Color.LightPink;
+            return;
+         }
+
+         var isNumeric = double.TryParse(cellContent, out _);
+
+         if (isNumeric)
+         {
+            cell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+            cell.Style.BackColor = Color.White;
+         }
+         else
+         {
+            cell.Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            cell.Style.BackColor = Color.LightYellow;
          }
       }
    }

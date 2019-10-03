@@ -97,7 +97,7 @@ namespace NeuralNetworkMaker.MainTabControls.Training.Datasets
          if (e.Action == CollectionChangeAction.Refresh)
             return;
 
-         var row = e.Element as DataGridViewRow;
+        
          
       }
 

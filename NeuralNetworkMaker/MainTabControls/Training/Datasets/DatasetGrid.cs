@@ -46,12 +46,16 @@ namespace NeuralNetworkMaker.MainTabControls.Training.Datasets
 
          var parts = rawDataTable.SplitRows(60, 20, 20);
 
+         UnsubscribeRowsCollectionChanged();
+
          await LoadRowsByChuncks(parts.Training, 60, gridTraining);
          await LoadRowsByChuncks(parts.Validation, 20, gridValidation);
          await LoadRowsByChuncks(parts.Test, 20, gridTest);
 
+         SubscribeRowsCollectionChanged();
+
          SwitchEnableControls(true);
-         ShowRowsCount();
+         ShowLoadedRowsCount();
       }
 
       public Dataset GetDataset()
@@ -66,11 +70,35 @@ namespace NeuralNetworkMaker.MainTabControls.Training.Datasets
          tabTest.Tag = gridTest;
       }
 
-      private void ShowRowsCount()
-      {
+
+      private void ShowLoadedRowsCount()
+      { 
          ShowRowsInTab(tabTraining, "Training");
          ShowRowsInTab(tabValidation, "Validation");
          ShowRowsInTab(tabTest, "Test");
+      }
+
+      private void UnsubscribeRowsCollectionChanged()
+      {
+         gridTraining.Rows.CollectionChanged -= Rows_CollectionChanged;
+         gridValidation.Rows.CollectionChanged -= Rows_CollectionChanged;
+         gridTest.Rows.CollectionChanged -= Rows_CollectionChanged;
+      }
+
+      private void SubscribeRowsCollectionChanged()
+      {
+         gridTraining.Rows.CollectionChanged += Rows_CollectionChanged;
+         gridValidation.Rows.CollectionChanged += Rows_CollectionChanged;
+         gridTest.Rows.CollectionChanged += Rows_CollectionChanged;
+      }
+
+      private void Rows_CollectionChanged(object sender, CollectionChangeEventArgs e)
+      {
+         if (e.Action == CollectionChangeAction.Refresh)
+            return;
+
+         var row = e.Element as DataGridViewRow;
+         
       }
 
       private void ShowRowsInTab(TabPage tabPage, string title)
@@ -106,8 +134,6 @@ namespace NeuralNetworkMaker.MainTabControls.Training.Datasets
          ClearColumns(gridTraining);
          ClearColumns(gridValidation);
          ClearColumns(gridTest);
-
-         ShowRowsCount();
       }
 
       private void ClearColumns(DataGridView dataGridView)

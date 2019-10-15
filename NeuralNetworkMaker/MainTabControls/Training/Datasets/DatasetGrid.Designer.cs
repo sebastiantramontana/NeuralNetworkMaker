@@ -51,6 +51,7 @@
          this.toolEncoding = new System.Windows.Forms.ToolStripDropDownButton();
          this.toolOpenFullScreen = new System.Windows.Forms.ToolStripButton();
          this.toolLoadingData = new System.Windows.Forms.ToolStripProgressBar();
+         this.toolChangeSeletedColumnName = new System.Windows.Forms.ToolStripButton();
          ((System.ComponentModel.ISupportInitialize)(this.gridTraining)).BeginInit();
          this.tabGrids.SuspendLayout();
          this.tabTraining.SuspendLayout();
@@ -170,6 +171,7 @@
             this.toolRemoveRows,
             this.toolAddColumn,
             this.toolRemoveColumns,
+            this.toolChangeSeletedColumnName,
             this.toolMoveRows,
             this.toolStripSeparator1,
             this.toolMatchNeuralNetIOToDataset,
@@ -194,6 +196,7 @@
          this.toolAddRow.Name = "toolAddRow";
          this.toolAddRow.Size = new System.Drawing.Size(23, 23);
          this.toolAddRow.ToolTipText = "Add new blank row";
+         this.toolAddRow.Click += new System.EventHandler(this.toolAddRow_Click);
          // 
          // toolRemoveRows
          // 
@@ -305,6 +308,15 @@
          this.toolLoadingData.Size = new System.Drawing.Size(100, 23);
          this.toolLoadingData.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
          // 
+         // toolChangeSeletedColumnName
+         // 
+         this.toolChangeSeletedColumnName.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+         this.toolChangeSeletedColumnName.Image = ((System.Drawing.Image)(resources.GetObject("toolChangeSeletedColumnName.Image")));
+         this.toolChangeSeletedColumnName.ImageTransparentColor = System.Drawing.Color.Magenta;
+         this.toolChangeSeletedColumnName.Name = "toolChangeSeletedColumnName";
+         this.toolChangeSeletedColumnName.Size = new System.Drawing.Size(23, 23);
+         this.toolChangeSeletedColumnName.ToolTipText = "Change name of selected column";
+         // 
          // DatasetGrid
          // 
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
@@ -353,5 +365,6 @@
       private System.Windows.Forms.ToolStripDropDownButton toolMoveRows;
       private System.Windows.Forms.ToolStripButton toolOpenFullScreen;
       private System.Windows.Forms.ToolStripProgressBar toolLoadingData;
+      private System.Windows.Forms.ToolStripButton toolChangeSeletedColumnName;
    }
 }

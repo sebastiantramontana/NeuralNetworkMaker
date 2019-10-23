@@ -7,6 +7,7 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using NeuralNetwork.Infrastructure.Winform;
 using NeuralNetwork.Model.Layers;
 using NeuralNetwork.Model.Nodes;
 using NeuralNetwork.Visualizer.Preferences;
@@ -17,9 +18,12 @@ namespace NeuralNetworkMaker.MainTabControls.Training.Datasets
 {
    public partial class DatasetGrid : UserControl
    {
+      private readonly IInvoker _invoker;
       public DatasetGrid()
       {
          InitializeComponent();
+
+         _invoker = new Invoker(this);
 
          InitializeTabs();
          SetSetDoubleBufferControls();
@@ -82,7 +86,7 @@ namespace NeuralNetworkMaker.MainTabControls.Training.Datasets
 
       private void UnsubscribeRowsCollectionChanged()
       {
-         SafeInvoke(() =>
+         _invoker.SafeInvoke(() =>
          {
             gridTraining.Rows.CollectionChanged -= Rows_CollectionChanged;
             gridValidation.Rows.CollectionChanged -= Rows_CollectionChanged;
@@ -92,7 +96,7 @@ namespace NeuralNetworkMaker.MainTabControls.Training.Datasets
 
       private void SubscribeRowsCollectionChanged()
       {
-         SafeInvoke(() =>
+         _invoker.SafeInvoke(() =>
          {
             gridTraining.Rows.CollectionChanged += Rows_CollectionChanged;
             gridValidation.Rows.CollectionChanged += Rows_CollectionChanged;
@@ -117,11 +121,11 @@ namespace NeuralNetworkMaker.MainTabControls.Training.Datasets
          if (grid.Rows.Count > 0)
             text += $" ({grid.Rows.Count - 1})";
 
-         SafeInvoke(() => { tabPage.Text = text; });
+         _invoker.SafeInvoke(() => { tabPage.Text = text; });
       }
       private void SwitchEnableControls(bool enable)
       {
-         SafeInvoke(() =>
+         _invoker.SafeInvoke(() =>
          {
             toolDataset.Enabled =
             gridTraining.Enabled =
@@ -142,7 +146,7 @@ namespace NeuralNetworkMaker.MainTabControls.Training.Datasets
 
       private void ResetLoadingProgressBar()
       {
-         SafeInvoke(() =>
+         _invoker.SafeInvoke(() =>
          {
             toolLoadingData.Value = 0;
             toolLoadingData.Step = 1;
@@ -150,7 +154,7 @@ namespace NeuralNetworkMaker.MainTabControls.Training.Datasets
       }
       private void ResetGrids()
       {
-         SafeInvoke(() =>
+         _invoker.SafeInvoke(() =>
          {
             ClearColumns(gridTraining);
             ClearColumns(gridValidation);
@@ -180,11 +184,11 @@ namespace NeuralNetworkMaker.MainTabControls.Training.Datasets
          for (int i = 0; i < chunks; i++)
          {
             var chunk = data.Skip(count * i).Take(count);
-            SafeInvoke(() => { LoadRows(grid, chunk); });
+            _invoker.SafeInvoke(() => { LoadRows(grid, chunk); });
 
             await Task.Run(() =>
             {
-               SafeInvoke(() => { toolLoadingData.PerformStep(); });
+               _invoker.SafeInvoke(() => { toolLoadingData.PerformStep(); });
             })
             .ConfigureAwait(false);
          }
@@ -371,7 +375,7 @@ namespace NeuralNetworkMaker.MainTabControls.Training.Datasets
 
       private void AddColumn(string name)
       {
-         SafeInvoke(() =>
+         _invoker.SafeInvoke(() =>
          {
             gridTraining.Columns.Add(name, name);
             gridValidation.Columns.Add(name, name);
@@ -464,25 +468,6 @@ namespace NeuralNetworkMaker.MainTabControls.Training.Datasets
       private void toolAddRow_Click(object sender, EventArgs e)
       {
 
-      }
-
-      //TODO: COPIED FROM NEURALNETWORK.VISUALIZER: MAKE COMMON LIB!!!
-      private void SafeInvoke(Action action)
-      {
-         if (this.InvokeRequired)
-         {
-            this.Invoke(action);
-         }
-         else
-         {
-            action();
-         }
-      }
-
-      //TODO: COPIED FROM NEURALNETWORK.VISUALIZER: MAKE COMMON LIB!!!
-      private T SafeInvoke<T>(Func<T> action)
-      {
-         return (this.InvokeRequired ? (T)this.Invoke(action) : action());
       }
    }
 }

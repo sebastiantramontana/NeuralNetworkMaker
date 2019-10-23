@@ -275,3 +275,4 @@
 /Packages/Microsoft.NetFramework.Analyzers.2.9.6/editorconfig/SecurityRulesEnabled/*.editorconfig
 /Packages/Microsoft.NetFramework.Analyzers.2.9.6/rulesets/*.ruleset
 /Packages/Microsoft.NetFramework.Analyzers.2.9.6/tools/*.ps1
+/NeuralNetworkMaker/bin/Debug/*.pdb

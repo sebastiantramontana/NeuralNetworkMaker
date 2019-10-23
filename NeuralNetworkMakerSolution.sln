@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.645
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29409.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NeuralNetworkMaker", "NeuralNetworkMaker\NeuralNetworkMaker.csproj", "{B634E980-F3FD-4CCE-9097-18D4CD158FC6}"
 EndProject
@@ -10,6 +10,10 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NeuralNetwork.Model", "..\NeuralNetwork.Model\NeuralNetwork.Model\NeuralNetwork.Model.csproj", "{189D29BB-E551-4FB2-92A9-B0173B522298}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NeuralNetwork.NET", "..\NeuralNetworkNet\NeuralNetwork.NET\NeuralNetwork.NET.csproj", "{5E5761BB-A36C-4751-BE41-1D96A99DA780}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NeuralNetwork.Infraestructure.Winform", "..\NeuralNetwork.Infrastructure\NeuralNetwork.Infraestructure.Winform\NeuralNetwork.Infraestructure.Winform.csproj", "{E9715583-00F7-46B1-AB2E-F25CA51B1C69}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NeuralNetwork.Infrastructure", "..\NeuralNetwork.Infrastructure\NeuralNetwork.Infrastructure\NeuralNetwork.Infrastructure.csproj", "{AC6D29FB-B8B1-44A2-9F03-F82F8CA9E266}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +37,14 @@ Global
 		{5E5761BB-A36C-4751-BE41-1D96A99DA780}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5E5761BB-A36C-4751-BE41-1D96A99DA780}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5E5761BB-A36C-4751-BE41-1D96A99DA780}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E9715583-00F7-46B1-AB2E-F25CA51B1C69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E9715583-00F7-46B1-AB2E-F25CA51B1C69}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E9715583-00F7-46B1-AB2E-F25CA51B1C69}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E9715583-00F7-46B1-AB2E-F25CA51B1C69}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC6D29FB-B8B1-44A2-9F03-F82F8CA9E266}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC6D29FB-B8B1-44A2-9F03-F82F8CA9E266}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC6D29FB-B8B1-44A2-9F03-F82F8CA9E266}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC6D29FB-B8B1-44A2-9F03-F82F8CA9E266}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

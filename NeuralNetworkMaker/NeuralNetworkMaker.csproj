@@ -286,6 +286,14 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\NeuralNetwork.Infrastructure\NeuralNetwork.Infraestructure.Winform\NeuralNetwork.Infraestructure.Winform.csproj">
+      <Project>{E9715583-00F7-46B1-AB2E-F25CA51B1C69}</Project>
+      <Name>NeuralNetwork.Infraestructure.Winform</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\NeuralNetwork.Infrastructure\NeuralNetwork.Infrastructure\NeuralNetwork.Infrastructure.csproj">
+      <Project>{AC6D29FB-B8B1-44A2-9F03-F82F8CA9E266}</Project>
+      <Name>NeuralNetwork.Infrastructure</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\NeuralNetwork.Model\NeuralNetwork.Model\NeuralNetwork.Model.csproj">
       <Project>{189d29bb-e551-4fb2-92a9-b0173b522298}</Project>
       <Name>NeuralNetwork.Model</Name>

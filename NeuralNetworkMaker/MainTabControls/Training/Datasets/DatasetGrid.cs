@@ -44,6 +44,7 @@ namespace NeuralNetworkMaker.MainTabControls.Training.Datasets
             throw new ArgumentNullException($"{nameof(rawDataTable)} is null");
          }
 
+         SwitchVisibleGrids(false);
          SwitchEnableControls(false);
 
          ResetGrids();
@@ -55,14 +56,16 @@ namespace NeuralNetworkMaker.MainTabControls.Training.Datasets
 
          UnsubscribeRowsCollectionChanged();
 
-         await LoadRowsByChuncks(parts.Training, 60, gridTraining).ConfigureAwait(false);
-         await LoadRowsByChuncks(parts.Validation, 20, gridValidation).ConfigureAwait(false);
-         await LoadRowsByChuncks(parts.Test, 20, gridTest).ConfigureAwait(false);
+         await LoadRowsByChuncks(parts.Training, 60, gridTraining);
+         await LoadRowsByChuncks(parts.Validation, 20, gridValidation);
+         await LoadRowsByChuncks(parts.Test, 20, gridTest);
 
          SubscribeRowsCollectionChanged();
 
          SwitchEnableControls(true);
          ShowTabsLegends();
+
+         SwitchVisibleGrids(true);
       }
 
       public Dataset GetDataset()
@@ -77,6 +80,12 @@ namespace NeuralNetworkMaker.MainTabControls.Training.Datasets
          tabTest.Tag = gridTest;
       }
 
+      private void SwitchVisibleGrids(bool show)
+      {
+         gridTraining.Visible =
+         gridValidation.Visible =
+         gridTest.Visible = show;
+      }
       private void ShowTabsLegends()
       {
          ShowRowsInTab(tabTraining, "Training");
@@ -86,22 +95,16 @@ namespace NeuralNetworkMaker.MainTabControls.Training.Datasets
 
       private void UnsubscribeRowsCollectionChanged()
       {
-         _invoker.SafeInvoke(() =>
-         {
-            gridTraining.Rows.CollectionChanged -= Rows_CollectionChanged;
-            gridValidation.Rows.CollectionChanged -= Rows_CollectionChanged;
-            gridTest.Rows.CollectionChanged -= Rows_CollectionChanged;
-         });
+         gridTraining.Rows.CollectionChanged -= Rows_CollectionChanged;
+         gridValidation.Rows.CollectionChanged -= Rows_CollectionChanged;
+         gridTest.Rows.CollectionChanged -= Rows_CollectionChanged;
       }
 
       private void SubscribeRowsCollectionChanged()
       {
-         _invoker.SafeInvoke(() =>
-         {
-            gridTraining.Rows.CollectionChanged += Rows_CollectionChanged;
-            gridValidation.Rows.CollectionChanged += Rows_CollectionChanged;
-            gridTest.Rows.CollectionChanged += Rows_CollectionChanged;
-         });
+         gridTraining.Rows.CollectionChanged += Rows_CollectionChanged;
+         gridValidation.Rows.CollectionChanged += Rows_CollectionChanged;
+         gridTest.Rows.CollectionChanged += Rows_CollectionChanged;
       }
 
       private void Rows_CollectionChanged(object sender, CollectionChangeEventArgs e)
@@ -121,17 +124,11 @@ namespace NeuralNetworkMaker.MainTabControls.Training.Datasets
          if (grid.Rows.Count > 0)
             text += $" ({grid.Rows.Count - 1})";
 
-         _invoker.SafeInvoke(() => { tabPage.Text = text; });
+         tabPage.Text = text;
       }
       private void SwitchEnableControls(bool enable)
       {
-         _invoker.SafeInvoke(() =>
-         {
-            toolDataset.Enabled =
-            gridTraining.Enabled =
-            gridValidation.Enabled =
-            gridTest.Enabled = enable;
-         });
+         toolDataset.Enabled = enable;
       }
 
       private void LoadColumns(DataTable<string> rawDataTable)
@@ -146,20 +143,14 @@ namespace NeuralNetworkMaker.MainTabControls.Training.Datasets
 
       private void ResetLoadingProgressBar()
       {
-         _invoker.SafeInvoke(() =>
-         {
-            toolLoadingData.Value = 0;
-            toolLoadingData.Step = 1;
-         });
+         toolLoadingData.Value = 0;
+         toolLoadingData.Step = 1;
       }
       private void ResetGrids()
       {
-         _invoker.SafeInvoke(() =>
-         {
-            ClearColumns(gridTraining);
-            ClearColumns(gridValidation);
-            ClearColumns(gridTest);
-         });
+         ClearColumns(gridTraining);
+         ClearColumns(gridValidation);
+         ClearColumns(gridTest);
 
          ShowTabsLegends();
       }
@@ -184,13 +175,15 @@ namespace NeuralNetworkMaker.MainTabControls.Training.Datasets
          for (int i = 0; i < chunks; i++)
          {
             var chunk = data.Skip(count * i).Take(count);
-            _invoker.SafeInvoke(() => { LoadRows(grid, chunk); });
+            LoadRows(grid, chunk);
 
             await Task.Run(() =>
             {
-               _invoker.SafeInvoke(() => { toolLoadingData.PerformStep(); });
-            })
-            .ConfigureAwait(false);
+               _invoker.SafeInvoke(() =>
+               {
+                  toolLoadingData.PerformStep();
+               });
+            });
          }
       }
       private void LoadRows(DataGridView grid, IEnumerable<string[]> rawRows)
@@ -375,12 +368,9 @@ namespace NeuralNetworkMaker.MainTabControls.Training.Datasets
 
       private void AddColumn(string name)
       {
-         _invoker.SafeInvoke(() =>
-         {
-            gridTraining.Columns.Add(name, name);
-            gridValidation.Columns.Add(name, name);
-            gridTest.Columns.Add(name, name);
-         });
+         gridTraining.Columns.Add(name, name);
+         gridValidation.Columns.Add(name, name);
+         gridTest.Columns.Add(name, name);
       }
 
       private void RemoveSelectedColumns()

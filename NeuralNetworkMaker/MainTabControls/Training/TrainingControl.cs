@@ -120,7 +120,9 @@ namespace NeuralNetworkMaker.MainTabControls.Training
                return;
 
             this.Enabled = false;
+
             await this.DatasetGridControl.LoadRawDataAsync(dialog.RawData);
+
             this.Enabled = true;
          }
       }

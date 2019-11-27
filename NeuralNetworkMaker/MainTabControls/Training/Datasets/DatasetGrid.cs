@@ -277,14 +277,15 @@ namespace NeuralNetworkMaker.MainTabControls.Training.Datasets
       }
 
       private int _editingColumn = -1;
-      private void gridMain_ColumnHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+      private void grid_ColumnHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
       {
          _editingColumn = e.ColumnIndex;
+         var grid = sender as DataGridView;
 
-         var rect = gridTraining.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, true);
+         var rect = grid.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, true);
 
-         txtColumnNameEditor.Location = new Point(rect.Location.X + gridTraining.Location.X + 2,
-                                       rect.Location.Y + gridTraining.Location.Y + 3);
+         txtColumnNameEditor.Location = new Point(rect.Location.X + grid.Location.X + 2,
+                                       rect.Location.Y + grid.Location.Y + 3);
 
          var size = Size.Subtract(rect.Size, new Size(4, 4));
 
@@ -293,9 +294,10 @@ namespace NeuralNetworkMaker.MainTabControls.Training.Datasets
          txtColumnNameEditor.MinimumSize = size;
          txtColumnNameEditor.Size = size;
          txtColumnNameEditor.Multiline = false;
-
-         txtColumnNameEditor.Text = gridTraining.Columns[e.ColumnIndex].HeaderText;
+         txtColumnNameEditor.Text = grid.Columns[e.ColumnIndex].HeaderText;
          txtColumnNameEditor.Visible = true;
+
+         txtColumnNameEditor.BringToFront();
          txtColumnNameEditor.Focus();
       }
 
@@ -322,7 +324,10 @@ namespace NeuralNetworkMaker.MainTabControls.Training.Datasets
             return;
          }
 
-         gridTraining.Columns[+_editingColumn].HeaderText = txtColumnNameEditor.Text;
+         gridTraining.Columns[_editingColumn].HeaderText = txtColumnNameEditor.Text;
+         gridValidation.Columns[_editingColumn].HeaderText = txtColumnNameEditor.Text;
+         gridTest.Columns[_editingColumn].HeaderText = txtColumnNameEditor.Text;
+
          txtColumnNameEditor.Visible = false;
       }
 
@@ -427,6 +432,9 @@ namespace NeuralNetworkMaker.MainTabControls.Training.Datasets
 
       private void FormatCell(DataGridView grid, int rowIndex, int columnIndex)
       {
+         if (rowIndex < 0)
+            return;
+
          var row = grid.Rows[rowIndex];
 
          if (row.IsNewRow)

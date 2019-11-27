@@ -60,6 +60,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="MainTabControls\Design\DesignButtonsControlLogic.cs" />
     <Compile Include="DropDownButton.cs">
       <SubType>UserControl</SubType>

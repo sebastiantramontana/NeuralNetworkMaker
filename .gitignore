@@ -276,3 +276,6 @@
 /Packages/Microsoft.NetFramework.Analyzers.2.9.6/rulesets/*.ruleset
 /Packages/Microsoft.NetFramework.Analyzers.2.9.6/tools/*.ps1
 /NeuralNetworkMaker/bin/Debug/*.pdb
+/NeuralNetworkMaker/obj/Release/*.cs
+/NeuralNetworkMaker/obj/Release/*.force
+/NeuralNetworkMaker/*.user

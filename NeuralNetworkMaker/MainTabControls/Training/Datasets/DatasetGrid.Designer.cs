@@ -87,7 +87,7 @@
          this.gridTraining.Size = new System.Drawing.Size(1453, 694);
          this.gridTraining.TabIndex = 13;
          this.gridTraining.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.Grid_CellValueChanged);
-         this.gridTraining.ColumnHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.gridMain_ColumnHeaderMouseDoubleClick);
+         this.gridTraining.ColumnHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.grid_ColumnHeaderMouseDoubleClick);
          this.gridTraining.SelectionChanged += new System.EventHandler(this.gridMain_SelectionChanged);
          // 
          // tabGrids

@@ -1,5 +1,5 @@
 ﻿using NeuralNetwork.Visualizer.Preferences.Formatting;
-using NeuralNetworkMaker.Preferences.Extensions;
+using NeuralNetworkMaker.Preferences.Exts;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -48,8 +48,8 @@ namespace NeuralNetworkMaker.Preferences.Controls
 
       private void Initialize()
       {
-         cboWhenCases.Load(new[] { ByValueSignCases.Undefined });
-         cboWhenCases.SelectedItem = ByValueSignCases.WhenPositive;
+         cboWhenCases.Load(new[] { ByValueSignCase.Undefined });
+         cboWhenCases.SelectedItem = ByValueSignCase.WhenPositive;
 
          penWhenCase.Pen = _byValueSignPenFormatter.WhenPositive();
       }
@@ -59,23 +59,23 @@ namespace NeuralNetworkMaker.Preferences.Controls
          if (!_isInitialized)
             return;
 
-         var byValueSignCases = (ByValueSignCases)cboWhenCases.SelectedItem;
+         var byValueSignCases = (ByValueSignCase)cboWhenCases.SelectedItem;
          Pen pen;
 
          switch (byValueSignCases)
          {
-            case ByValueSignCases.Undefined:
-               throw new InvalidOperationException($"Internal Error: Selected Item is {ByValueSignCases.Undefined}");
-            case ByValueSignCases.WhenPositive:
+            case ByValueSignCase.Undefined:
+               throw new InvalidOperationException($"Internal Error: Selected Item is {ByValueSignCase.Undefined}");
+            case ByValueSignCase.WhenPositive:
                pen = _byValueSignPenFormatter.WhenPositive();
                break;
-            case ByValueSignCases.WhenZero:
+            case ByValueSignCase.WhenZero:
                pen = _byValueSignPenFormatter.WhenZero();
                break;
-            case ByValueSignCases.WhenNegative:
+            case ByValueSignCase.WhenNegative:
                pen = _byValueSignPenFormatter.WhenNegative();
                break;
-            case ByValueSignCases.WhenNull:
+            case ByValueSignCase.WhenNull:
                pen = _byValueSignPenFormatter.WhenNull();
                break;
             default:
@@ -94,7 +94,7 @@ namespace NeuralNetworkMaker.Preferences.Controls
             return;
          }
 
-         var whenCase = (ByValueSignCases)cboWhenCases.SelectedItem;
+         var whenCase = (ByValueSignCase)cboWhenCases.SelectedItem;
 
          var whenPositive = _byValueSignPenFormatter.WhenPositive();
          var whenZero = _byValueSignPenFormatter.WhenZero();
@@ -103,18 +103,18 @@ namespace NeuralNetworkMaker.Preferences.Controls
 
          switch (whenCase)
          {
-            case ByValueSignCases.Undefined:
-               throw new InvalidOperationException($"Internal Error: Selected Item is {ByValueSignCases.Undefined}");
-            case ByValueSignCases.WhenPositive:
+            case ByValueSignCase.Undefined:
+               throw new InvalidOperationException($"Internal Error: Selected Item is {ByValueSignCase.Undefined}");
+            case ByValueSignCase.WhenPositive:
                whenPositive = penWhenCase.Pen;
                break;
-            case ByValueSignCases.WhenZero:
+            case ByValueSignCase.WhenZero:
                whenZero = penWhenCase.Pen;
                break;
-            case ByValueSignCases.WhenNegative:
+            case ByValueSignCase.WhenNegative:
                whenNegative = penWhenCase.Pen;
                break;
-            case ByValueSignCases.WhenNull:
+            case ByValueSignCase.WhenNull:
                whenNull = penWhenCase.Pen;
                break;
             default:

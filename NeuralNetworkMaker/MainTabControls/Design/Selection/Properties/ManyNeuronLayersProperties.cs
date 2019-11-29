@@ -27,7 +27,7 @@ namespace NeuralNetworkMaker.MainTabControls.Design.Selection.Properties
             else
             {
                var sameActFunc = _layers.SelectMany(l => l.Nodes).GetSameForAll(n => n.ActivationFunction);
-               return sameActFunc.IsTheSame ? sameActFunc.Object : (ActivationFunction?)null;
+               return sameActFunc.IsTheSame ? sameActFunc.Value : (ActivationFunction?)null;
             }
          }
          set

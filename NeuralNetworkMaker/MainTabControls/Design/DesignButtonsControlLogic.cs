@@ -152,7 +152,7 @@ namespace NeuralNetworkMaker.MainTabControls.Design
          _removeSelectedLayersControl.Enabled = _removeSelectedNodesControl.Enabled = false;
       }
 
-      private bool LayerCanRemoveNodes(LayerBase layer, int nodesToRemove)
+      private static bool LayerCanRemoveNodes(LayerBase layer, int nodesToRemove)
       {
          return (layer.GetAllNodes().Count() - ((layer.Bias != null) ? 1 : 0) - nodesToRemove) > 0;
       }

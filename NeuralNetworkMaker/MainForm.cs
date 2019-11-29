@@ -1,12 +1,12 @@
-﻿using System;
-using System.Windows.Forms;
-using NeuralNetwork.Model;
+﻿using NeuralNetwork.Model;
 using NeuralNetwork.Model.Layers;
 using NeuralNetwork.Model.Nodes;
 using NeuralNetwork.Visualizer.Drawing;
 using NeuralNetwork.Visualizer.Preferences.Text;
 using NeuralNetwork.Visualizer.Selection;
 using NeuralNetworkMaker.Preferences;
+using System;
+using System.Windows.Forms;
 
 namespace NeuralNetworkMaker
 {
@@ -74,32 +74,32 @@ namespace NeuralNetworkMaker
 
       private void NNVisualizerControl_SelectEdge(object sender, SelectionEventArgs<Edge> e)
       {
-         designControl.SelectElement(e);
+         designControl.SelectElement<Edge>();
       }
 
       private void NNVisualizerControl_SelectNeuron(object sender, SelectionEventArgs<Neuron> e)
       {
-         designControl.SelectElement(e);
+         designControl.SelectElement<Neuron>();
       }
 
       private void NNVisualizerControl_SelectBias(object sender, SelectionEventArgs<Bias> e)
       {
-         designControl.SelectElement(e);
+         designControl.SelectElement<Bias>();
       }
 
       private void NNVisualizerControl_SelectInput(object sender, SelectionEventArgs<Input> e)
       {
-         designControl.SelectElement(e);
+         designControl.SelectElement<Input>();
       }
 
       private void NNVisualizerControl_SelectNeuronLayer(object sender, SelectionEventArgs<NeuronLayer> e)
       {
-         designControl.SelectElement(e);
+         designControl.SelectElement<NeuronLayer>();
       }
 
       private void NNVisualizerControl_SelectInputLayer(object sender, SelectionEventArgs<InputLayer> e)
       {
-         designControl.SelectElement(e);
+         designControl.SelectElement<InputLayer>();
       }
 
       private void LoadComboQualityNNVisualizer()
@@ -134,10 +134,8 @@ namespace NeuralNetworkMaker
 
       private void btnPreferencesNNVisualizer_Click(object sender, EventArgs e)
       {
-         using (var frm = new frmPreferences(NNVisualizerControl))
-         {
-            frm.ShowDialog();
-         }
+         using var frm = new frmPreferences(NNVisualizerControl);
+         frm.ShowDialog();
       }
 
       private void tabActions_SelectedIndexChanged(object sender, EventArgs e)
@@ -195,7 +193,7 @@ namespace NeuralNetworkMaker
 
       private string ShowSaveDialog(string defaultExt, string filter, string title)
       {
-         using (var dialog = new SaveFileDialog()
+         using var dialog = new SaveFileDialog()
          {
             AddExtension = true,
             CheckFileExists = false,
@@ -208,10 +206,9 @@ namespace NeuralNetworkMaker
             RestoreDirectory = true,
             ValidateNames = true,
             Title = title
-         })
-         {
-            return (dialog.ShowDialog(this) == DialogResult.Cancel) ? string.Empty : dialog.FileName;
-         }
+         };
+
+         return (dialog.ShowDialog(this) == DialogResult.Cancel) ? string.Empty : dialog.FileName;
       }
    }
 }

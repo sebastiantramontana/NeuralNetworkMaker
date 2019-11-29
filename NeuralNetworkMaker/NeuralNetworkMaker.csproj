@@ -61,6 +61,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CoreExtensions.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="MainTabControls\Design\DesignButtonsControlLogic.cs" />
     <Compile Include="DropDownButton.cs">
@@ -69,7 +70,7 @@
     <Compile Include="DropDownButton.Designer.cs">
       <DependentUpon>DropDownButton.cs</DependentUpon>
     </Compile>
-    <Compile Include="Extensions.cs" />
+    <Compile Include="MainTabControls\Design\SelectionExtensions.cs" />
     <Compile Include="MainTabControls\Design\DesignController.cs" />
     <Compile Include="MainTabControls\Design\IDesignButtonsControlLogic.cs" />
     <Compile Include="MainTabControls\Design\IDesignController.cs" />

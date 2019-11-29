@@ -1,4 +1,4 @@
-﻿using NeuralNetworkMaker.Preferences.Extensions;
+﻿using NeuralNetworkMaker.Preferences.Exts;
 using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
@@ -107,17 +107,15 @@ namespace NeuralNetworkMaker.Preferences.Controls
 
          e.Graphics.SmoothingMode = SmoothingMode.HighQuality;
 
-         using (var pen = _pen.Clone() as Pen)
-         {
-            var prop = (propertyExp.Body as MemberExpression).Member as PropertyInfo;
-            prop.SetValue(pen, item);
+         using var pen = _pen.Clone() as Pen;
+         var prop = (propertyExp.Body as MemberExpression).Member as PropertyInfo;
+         prop.SetValue(pen, item);
 
-            configurePenAction?.Invoke(pen);
+         configurePenAction?.Invoke(pen);
 
-            var y = e.Bounds.Y + e.Bounds.Height / 2;
+         var y = e.Bounds.Y + e.Bounds.Height / 2;
 
-            e.Graphics.DrawLine(pen, new Point(e.Bounds.Left + 8, y), new Point(e.Bounds.Width - 10, y));
-         }
+         e.Graphics.DrawLine(pen, new Point(e.Bounds.Left + 8, y), new Point(e.Bounds.Width - 10, y));
       }
 
       private void colPenColor_ColorChanged(object sender, EventArgs e)
@@ -172,6 +170,21 @@ namespace NeuralNetworkMaker.Preferences.Controls
       {
          var y = (panPreview.Height - _pen.Width) / 2;
          e.Graphics.DrawLine(_pen, 10, y, panPreview.Width - 20, y);
+      }
+
+      /// <summary> 
+      /// Clean up any resources being used.
+      /// </summary>
+      /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+      protected override void Dispose(bool disposing)
+      {
+         if (disposing && (components != null))
+         {
+            _pen?.Dispose();
+            components.Dispose();
+         }
+
+         base.Dispose(disposing);
       }
    }
 }

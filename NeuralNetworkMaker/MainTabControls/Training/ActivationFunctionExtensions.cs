@@ -16,7 +16,7 @@ namespace NeuralNetworkMaker.MainTabControls.Training
 
          if (inputLayer == null)
          {
-            costFunctions = new CostFunctionType[] { };
+            costFunctions = Array.Empty<CostFunctionType>();
          }
          else
          {
@@ -25,11 +25,11 @@ namespace NeuralNetworkMaker.MainTabControls.Training
 
             if (actFunc.IsTheSame)
             {
-               costFunctions = actFunc.Object.GetAllowedCostFunctions();
+               costFunctions = actFunc.Value.GetAllowedCostFunctions();
             }
             else if (outputLayer.Nodes.Any(n => n.ActivationFunction == ActivationFunction.None))
             {
-               costFunctions = new CostFunctionType[] { };
+               costFunctions = Array.Empty<CostFunctionType>();
             }
             else
             {
@@ -40,6 +40,7 @@ namespace NeuralNetworkMaker.MainTabControls.Training
          return costFunctions;
       }
 
+      /*
       private static ActivationFunction Map(this ActivationType activationType)
       {
          switch (activationType)
@@ -66,6 +67,7 @@ namespace NeuralNetworkMaker.MainTabControls.Training
 
          throw new NotImplementedException($"Activation function not implemented: {activationType}");
       }
+      */
 
       private static IEnumerable<CostFunctionType> GetAllowedCostFunctions(this ActivationFunction activationFunction)
       {
@@ -73,7 +75,7 @@ namespace NeuralNetworkMaker.MainTabControls.Training
          {
             case ActivationFunction.None:
             case ActivationFunction.BinaryStep:
-               return new CostFunctionType[] { };
+               return Array.Empty<CostFunctionType>();
 
             case ActivationFunction.Linear:
             case ActivationFunction.Relu:

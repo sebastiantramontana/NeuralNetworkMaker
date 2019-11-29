@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace NeuralNetworkMaker.Preferences.Controls
 {
-   public enum ByValueSignCases
+   public enum ByValueSignCase
    {
       Undefined,
       WhenPositive,

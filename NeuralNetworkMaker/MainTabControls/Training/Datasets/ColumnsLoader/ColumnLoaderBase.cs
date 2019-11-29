@@ -20,7 +20,7 @@ namespace NeuralNetworkMaker.MainTabControls.Training.Datasets.ColumnsLoader
       {
          IEnumerable<string> columns = _getColumnsFunc();
 
-         if (columns == null || columns.Count() == 0)
+         if (columns == null || !columns.Any())
          {
             columns = _nextColumnLoader?.GetColumns();
          }

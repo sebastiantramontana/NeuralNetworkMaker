@@ -18,7 +18,7 @@ namespace NeuralNetworkMaker.MainTabControls.Design.Selection.Properties
          get
          {
             var sameActFunc = _edges.GetSameForAll(e => e.Weight);
-            return sameActFunc.IsTheSame ? sameActFunc.Object : null;
+            return sameActFunc.IsTheSame ? sameActFunc.Value : null;
          }
          set
          {

@@ -2,13 +2,13 @@
 {
    public class SameObject<T>
    {
-      public SameObject(bool isTheSame, T @object)
+      public SameObject(bool isTheSame, T value)
       {
          this.IsTheSame = isTheSame;
-         this.Object = @object;
+         this.Value = value;
       }
 
       public bool IsTheSame { get; }
-      public T Object { get; }
+      public T Value { get; }
    }
 }

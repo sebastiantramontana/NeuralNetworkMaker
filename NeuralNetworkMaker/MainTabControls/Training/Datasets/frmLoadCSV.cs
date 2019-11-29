@@ -65,7 +65,7 @@ namespace NeuralNetworkMaker.MainTabControls.Training.Datasets
       {
          var linesValues = LoadCsvFile(txtFile.Text);
 
-         if (linesValues.Count() == 0)
+         if (!linesValues.Any())
             return false;
 
          var headersAndValues = GetHeaders(linesValues);
@@ -77,7 +77,7 @@ namespace NeuralNetworkMaker.MainTabControls.Training.Datasets
          return true;
       }
 
-      private void ValidateLinesValues(IEnumerable<string> headers, IEnumerable<string[]> linesValues)
+      private static void ValidateLinesValues(IEnumerable<string> headers, IEnumerable<string[]> linesValues)
       {
          foreach (var lineValues in linesValues)
          {
@@ -112,7 +112,7 @@ namespace NeuralNetworkMaker.MainTabControls.Training.Datasets
          chFirstRowHeader.Enabled = btnOk.Enabled = !string.IsNullOrWhiteSpace(txtFile.Text);
       }
 
-      private IEnumerable<string[]> LoadCsvFile(string filePath)
+      private static IEnumerable<string[]> LoadCsvFile(string filePath)
       {
          try
          {
@@ -123,7 +123,7 @@ namespace NeuralNetworkMaker.MainTabControls.Training.Datasets
          catch (Exception e)
          {
             MessageBox.Show($"Error to open the '{filePath}' file: {e.Message}", string.Empty, MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            return new string[][] { };
+            return Array.Empty<string[]>();
          }
       }
 

@@ -1,5 +1,5 @@
 ﻿using NeuralNetwork.Visualizer.Preferences.Brushes;
-using NeuralNetworkMaker.Preferences.Extensions;
+using NeuralNetworkMaker.Preferences.Exts;
 using System;
 using System.Drawing;
 using System.Windows.Forms;

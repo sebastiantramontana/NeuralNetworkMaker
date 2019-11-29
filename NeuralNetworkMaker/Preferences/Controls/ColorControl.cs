@@ -1,4 +1,4 @@
-﻿using NeuralNetworkMaker.Preferences.Extensions;
+﻿using NeuralNetworkMaker.Preferences.Exts;
 using System;
 using System.ComponentModel;
 using System.Drawing;
@@ -66,17 +66,16 @@ namespace NeuralNetworkMaker.Preferences.Controls
       {
          var color = Color.FromArgb(255, this.SelectedColor);
 
-         using (var dlg = new ColorDialog()
+         using var dlg = new ColorDialog()
          {
             AllowFullOpen = true,
             AnyColor = true,
             Color = color,
             FullOpen = true,
             SolidColorOnly = true
-         })
-         {
-            return (dlg.ShowDialog(this) == DialogResult.Cancel) ? Color.Empty : dlg.Color;
-         }
+         };
+
+         return (dlg.ShowDialog(this) == DialogResult.Cancel) ? Color.Empty : dlg.Color;
       }
 
       private void UpdatePreview()

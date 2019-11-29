@@ -1,7 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using NeuralNetwork.Model.Layers;
+﻿using NeuralNetwork.Model.Layers;
 using NeuralNetwork.Model.Nodes;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace NeuralNetworkMaker.MainTabControls.Design
 {
@@ -12,6 +13,9 @@ namespace NeuralNetworkMaker.MainTabControls.Design
 
       public void AddBias(IEnumerable<LayerBase> layers)
       {
+         if (layers is null)
+            throw new ArgumentNullException(nameof(layers));
+
          foreach (var layer in layers)
          {
             if (layer.Next != null && layer.Bias == null)
@@ -23,6 +27,10 @@ namespace NeuralNetworkMaker.MainTabControls.Design
 
       public void RemoveBias(IEnumerable<LayerBase> layers)
       {
+
+         if (layers is null)
+            throw new ArgumentNullException(nameof(layers));
+
          foreach (var layer in layers)
          {
             layer.Bias = null;
@@ -50,6 +58,10 @@ namespace NeuralNetworkMaker.MainTabControls.Design
 
       public void AddNodes(IEnumerable<LayerBase> layers)
       {
+
+         if (layers is null)
+            throw new ArgumentNullException(nameof(layers));
+
          foreach (var layer in layers)
          {
             var id = BuildNodeId(layer.Id);
@@ -68,6 +80,9 @@ namespace NeuralNetworkMaker.MainTabControls.Design
 
       public void RemoveLayers(IEnumerable<NeuronLayer> layersToRemove)
       {
+         if (layersToRemove is null)
+            throw new ArgumentNullException(nameof(layersToRemove));
+
          foreach (var layer in layersToRemove)
          {
             layer.Disconnect();
@@ -76,6 +91,9 @@ namespace NeuralNetworkMaker.MainTabControls.Design
 
       public void RemoveNodes(IEnumerable<NodeBase> nodes)
       {
+         if (nodes is null)
+            throw new ArgumentNullException(nameof(nodes));
+
          foreach (var node in nodes)
          {
             var layer = node.Layer;

@@ -1,7 +1,7 @@
 ﻿using NeuralNetwork.Visualizer;
 using NeuralNetworkMaker.MainTabControls.Training.AlgorithmParams;
 using NeuralNetworkMaker.MainTabControls.Training.Datasets;
-using NeuralNetworkMaker.Preferences.Extensions;
+using NeuralNetworkMaker.Preferences.Exts;
 using NeuralNetworkNET.APIs.Enums;
 using NeuralNetworkNET.SupervisedLearning.Algorithms;
 using System.ComponentModel;
@@ -77,7 +77,7 @@ namespace NeuralNetworkMaker.MainTabControls.Training
       {
          var costs = _visualizerControl?.InputLayer?.GetAllowedCostFunctions();
 
-         if (costs == null || costs.Count() == 0)
+         if (costs == null || !costs.Any())
          {
             cboSettingsCostFunction.Items.Clear();
             cboSettingsCostFunction.Enabled = false;
@@ -114,17 +114,16 @@ namespace NeuralNetworkMaker.MainTabControls.Training
 
       private async Task LoadCsv()
       {
-         using (var dialog = new frmLoadCSV())
-         {
-            if (dialog.ShowDialog(this) == DialogResult.Cancel)
-               return;
+         using var dialog = new frmLoadCSV();
 
-            this.Enabled = false;
+         if (dialog.ShowDialog(this) == DialogResult.Cancel)
+            return;
 
-            await this.DatasetGridControl.LoadRawDataAsync(dialog.RawData);
+         this.Enabled = false;
 
-            this.Enabled = true;
-         }
+         await this.DatasetGridControl.LoadRawDataAsync(dialog.RawData);
+
+         this.Enabled = true;
       }
    }
 }

@@ -13,7 +13,7 @@ namespace NeuralNetworkMaker.MainTabControls.Design.Selection.Resolvers
 
       public override SelectionType Resolve(IEnumerable<Element> selectedElements)
       {
-         if (selectedElements == null || selectedElements.Count() == 0)
+         if (selectedElements == null || !selectedElements.Any())
          {
             return SelectionType.None;
          }

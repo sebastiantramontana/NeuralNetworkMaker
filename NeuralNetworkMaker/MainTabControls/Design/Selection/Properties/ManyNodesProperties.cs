@@ -20,7 +20,7 @@ namespace NeuralNetworkMaker.MainTabControls.Design.Selection.Properties
          get
          {
             var values = _nodes.GetSameForAll(n => n.OutputValue);
-            return values.IsTheSame ? values.Object : null;
+            return values.IsTheSame ? values.Value : null;
          }
          set
          {
@@ -45,7 +45,7 @@ namespace NeuralNetworkMaker.MainTabControls.Design.Selection.Properties
             else
             {
                var actFuncs = _nodes.OfType<Neuron>().GetSameForAll(n => n.ActivationFunction);
-               return actFuncs.IsTheSame ? actFuncs.Object : (ActivationFunction?)null;
+               return actFuncs.IsTheSame ? actFuncs.Value : (ActivationFunction?)null;
             }
          }
          set

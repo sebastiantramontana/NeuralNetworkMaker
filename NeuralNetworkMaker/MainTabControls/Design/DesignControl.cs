@@ -25,12 +25,12 @@ namespace NeuralNetworkMaker.MainTabControls.Design
 
       private void DesignControl_Load(object sender, EventArgs e)
       {
-         if (NNVisualizerControl == null)
+         if (this.NNVisualizerControl == null)
             return;
 
          _designController = new DesignController();
-         _designButtonsControlLogic = new DesignButtonsControlLogic(NNVisualizerControl, btnAddLayer, btnRemoveSelectedLayers, btnAddNode, btnRemoveSelectedNodes, btnToggleBias);
-         _propertyObjectFactory = new PropertyObjectFactory(NNVisualizerControl);
+         _designButtonsControlLogic = new DesignButtonsControlLogic(this.NNVisualizerControl, btnAddLayer, btnRemoveSelectedLayers, btnAddNode, btnRemoveSelectedNodes, btnToggleBias);
+         _propertyObjectFactory = new PropertyObjectFactory(this.NNVisualizerControl);
       }
 
       private NeuralNetworkVisualizerControl _visualizerControl;
@@ -47,10 +47,10 @@ namespace NeuralNetworkMaker.MainTabControls.Design
          }
       }
 
-      public void SelectElement<TElement>(SelectionEventArgs<TElement> e)
+      public void SelectElement<TElement>()
         where TElement : Element
       {
-         var selectionType = NNVisualizerControl.GetSelectionType();
+         var selectionType = this.NNVisualizerControl.GetSelectionType();
 
          _designButtonsControlLogic.EnableDesign(selectionType);
          PropertyGridDesign.SelectedObject = _propertyObjectFactory.GetObject(selectionType);
@@ -90,70 +90,70 @@ namespace NeuralNetworkMaker.MainTabControls.Design
       {
          action.Invoke();
 
-         var selectionType = NNVisualizerControl.GetSelectionType();
+         var selectionType = this.NNVisualizerControl.GetSelectionType();
          _designButtonsControlLogic.EnableDesign(selectionType);
          PropertyGridDesign.SelectedObject = _propertyObjectFactory.GetObject(selectionType);
       }
 
       private async Task InsertLayer()
       {
-         var lastElement = NNVisualizerControl.SelectedElements.LastOrDefault();
+         var lastElement = this.NNVisualizerControl.SelectedElements.LastOrDefault();
          var layer = lastElement?.GetLayerContainer();
 
-         NNVisualizerControl.SuspendAutoRedraw();
+         this.NNVisualizerControl.SuspendAutoRedraw();
          _designController.AddLayer(layer);
-         await NNVisualizerControl.ResumeAutoRedraw();
+         await this.NNVisualizerControl.ResumeAutoRedraw();
       }
 
       private async Task RemoveSelectedLayers()
       {
-         var layersToRemove = NNVisualizerControl
+         var layersToRemove = this.NNVisualizerControl
                               .SelectedElements
                               .Select(e => e.GetLayerContainer())
                               .OfType<NeuronLayer>()
                               .Distinct();
 
-         NNVisualizerControl.SuspendAutoRedraw();
+         this.NNVisualizerControl.SuspendAutoRedraw();
          _designController.RemoveLayers(layersToRemove);
-         await NNVisualizerControl.ResumeAutoRedraw();
+         await this.NNVisualizerControl.ResumeAutoRedraw();
       }
 
       private async Task AddNodes()
       {
-         var layers = NNVisualizerControl
+         var layers = this.NNVisualizerControl
                         .SelectedElements
                         .Select(e => e.GetLayerContainer())
                         .Distinct();
 
-         NNVisualizerControl.SuspendAutoRedraw();
+         this.NNVisualizerControl.SuspendAutoRedraw();
          _designController.AddNodes(layers);
-         await NNVisualizerControl.ResumeAutoRedraw();
+         await this.NNVisualizerControl.ResumeAutoRedraw();
       }
 
       private async Task RemoveSelectedNodes()
       {
-         var nodesToRemove = NNVisualizerControl
+         var nodesToRemove = this.NNVisualizerControl
                         .SelectedElements
                         .OfType<NodeBase>()
                         .Distinct();
 
-         NNVisualizerControl.SuspendAutoRedraw();
+         this.NNVisualizerControl.SuspendAutoRedraw();
          _designController.RemoveNodes(nodesToRemove);
-         await NNVisualizerControl.ResumeAutoRedraw();
+         await this.NNVisualizerControl.ResumeAutoRedraw();
       }
 
       private async Task ToggleBias(bool isAdd)
       {
-         var layers = NNVisualizerControl
+         var layers = this.NNVisualizerControl
                         .SelectedElements
                         .Select(e => e.GetLayerContainer())
                         .Distinct();
 
          Action<IEnumerable<LayerBase>> action = ((isAdd) ? new Action<IEnumerable<LayerBase>>(_designController.AddBias) : _designController.RemoveBias);
 
-         NNVisualizerControl.SuspendAutoRedraw();
+         this.NNVisualizerControl.SuspendAutoRedraw();
          action(layers);
-         await NNVisualizerControl.ResumeAutoRedraw();
+         await this.NNVisualizerControl.ResumeAutoRedraw();
       }
    }
 }

@@ -68,7 +68,7 @@ namespace NeuralNetworkMaker.MainTabControls.Training.Datasets
          SwitchVisibleGrids(true);
       }
 
-      public Dataset GetDataset()
+      public static Dataset GetDataset()
       {
          return null;
       }
@@ -116,7 +116,7 @@ namespace NeuralNetworkMaker.MainTabControls.Training.Datasets
 
       }
 
-      private void ShowRowsInTab(TabPage tabPage, string title)
+      private static void ShowRowsInTab(TabPage tabPage, string title)
       {
          var grid = tabPage.Tag as DataGridView;
          var text = $"{title}";
@@ -155,7 +155,7 @@ namespace NeuralNetworkMaker.MainTabControls.Training.Datasets
          ShowTabsLegends();
       }
 
-      private void ClearColumns(DataGridView dataGridView)
+      private static void ClearColumns(DataGridView dataGridView)
       {
          dataGridView.Columns.Clear();
          dataGridView.Refresh();
@@ -186,7 +186,7 @@ namespace NeuralNetworkMaker.MainTabControls.Training.Datasets
             });
          }
       }
-      private void LoadRows(DataGridView grid, IEnumerable<string[]> rawRows)
+      private static void LoadRows(DataGridView grid, IEnumerable<string[]> rawRows)
       {
          foreach (var row in rawRows)
          {
@@ -257,18 +257,17 @@ namespace NeuralNetworkMaker.MainTabControls.Training.Datasets
          }
       }
 
-      private (Color InputColor, Color OutputColor) GetDefaultPreferenceColors()
+      private static (Color InputColor, Color OutputColor) GetDefaultPreferenceColors()
       {
-         using (var preference = new Preference())
-         {
-            var inputColor = GetColor(preference.Inputs.Background);
-            var outputColor = GetColor(preference.Neurons.Background);
+         using var preference = new Preference();
 
-            return (inputColor, outputColor);
-         }
+         var inputColor = GetColor(preference.Inputs.Background);
+         var outputColor = GetColor(preference.Neurons.Background);
+
+         return (inputColor, outputColor);
       }
 
-      private Color GetColor(IBrush brush)
+      private static Color GetColor(IBrush brush)
       {
          var solidBrush = brush.CreateBrush(Rectangle.Empty) as SolidBrush
                         ?? Brushes.LightGreen.Clone() as SolidBrush;
@@ -342,7 +341,7 @@ namespace NeuralNetworkMaker.MainTabControls.Training.Datasets
 
       }
 
-      private void AddRow(DataGridView grid, params object[] values)
+      private static void AddRow(DataGridView grid, params object[] values)
       {
          int rowIndex = grid.Rows.Add(values);
 
@@ -394,7 +393,7 @@ namespace NeuralNetworkMaker.MainTabControls.Training.Datasets
          RemoveSelectedColumns(gridTest, columnNames);
       }
 
-      private void RemoveSelectedColumns(DataGridView grid, IEnumerable<string> columnNames)
+      private static void RemoveSelectedColumns(DataGridView grid, IEnumerable<string> columnNames)
       {
          foreach (var columnName in columnNames)
          {
@@ -409,7 +408,7 @@ namespace NeuralNetworkMaker.MainTabControls.Training.Datasets
          SetDoubleBufferControl(gridTest);
          SetDoubleBufferControl(toolLoadingData.Control);
 
-         void SetDoubleBufferControl(Control control)
+         static void SetDoubleBufferControl(Control control)
          {
             typeof(Control)
                .GetProperty("DoubleBuffered", BindingFlags.NonPublic | BindingFlags.Instance)
@@ -430,7 +429,7 @@ namespace NeuralNetworkMaker.MainTabControls.Training.Datasets
          FormatCell(grid, e.RowIndex, e.ColumnIndex);
       }
 
-      private void FormatCell(DataGridView grid, int rowIndex, int columnIndex)
+      private static void FormatCell(DataGridView grid, int rowIndex, int columnIndex)
       {
          if (rowIndex < 0)
             return;

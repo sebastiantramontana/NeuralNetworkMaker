@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
 
-namespace NeuralNetworkMaker.Preferences.Extensions
+namespace NeuralNetworkMaker.Preferences.Exts
 {
     internal static class GraphicsExtensions
     {

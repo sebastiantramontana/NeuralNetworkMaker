@@ -99,7 +99,7 @@ namespace NeuralNetworkMaker.Preferences.Dialogs
 
       private void UpdatePreview()
       {
-         lblPreview.Text = PreviewText;
+         lblPreview.Text = this.PreviewText;
          lblPreview.Refresh();
       }
 
